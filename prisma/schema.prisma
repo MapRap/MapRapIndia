@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum userTypes {
+  student
+  customer
+}
+
+model User{
+  id String @id @default(uuid())
+  name String
+  gmail String @unique
+  password String
+  otp String?
+  isVerified Boolean?
+  otpExpiry DateTime
+  type String
+  Phone String
+  paymentId String
+  country Boolean
+  stars String? @default("0")
+}
+model RealUsers{
+  id String @unique
+  name String
+  gmail String
+  Proof String?
+  isReal Boolean?
+  type String
+}
+
+model Paintings{
+  id String @id @default(uuid())
+  title String
+  description String
+  clientPrice Int
+  totalPrice Int
+  givenBy String
+  imageUrl String
+  published Boolean @default(false)
+  paid Boolean @default(false)
+}
+
+model Interior{
+  id String @id @default(uuid())
+  specifications String?
+  floors Int?
+  property String
+  area String
+  givenBy String
+  price String
+  isVerified Boolean?
+  assignedTo String?
+  completed Boolean @default(false)
+  imageUrl String
+  publishable Boolean
+  attachment String?
+  phone String
+  name String
+  plan String
+  studentPrice String?
+  steps InteriorSteps[]
+}
+
+model Plans{
+  id String @id @default(uuid())
+  package String
+  features String
+  inr String
+  area String
+  floors Int
+  type String
+ dollar String
+ property String
+}
+
+
+model OtherJobs{
+  id String @id @default(uuid())
+  title String
+  description String
+  clientPrice Int
+  totalPrice Int
+  givenBy String @unique
+  imageUrl String
+    attachments String @default("")
+  published Boolean @default(false)
+  paid Boolean @default(false)
+  requests OtherRequests[]
+}
+
+
+model Maps{
+  id String @id @default(uuid())
+  specifications String?
+  floors Int
+  area String
+  A Int
+  B Int
+  C Int
+  D Int
+  E Int?
+  D1 Int?
+  D2 Int?
+  D3 Int?
+  D4 Int?
+  plot String
+  givenBy String
+  price Int
+  isVerified Boolean?
+  assignedTo String?
+  completed Boolean @default(false)
+  imageUrl String
+  type String
+  direction String
+  publishable Boolean
+  phone String
+  name String
+  expected String?
+  studentPrice String?
+  // premium Boolean @default(false)
+  requests Requests[]
+  steps Steps[]
+}
+
+
+model Steps {
+  id String @id @default(uuid())
+  jobId String
+  type String
+  started Boolean @default(false)
+  currentStep Int @default(1)
+  receipt String?
+  onGmail String?
+  attachments String? 
+  comments String?
+  completed Boolean @default(false)
+  maps Maps @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
+model InteriorSteps {
+  id String @id @default(uuid())
+  jobId String
+  type String
+  started Boolean @default(false)
+  currentStep Int @default(1)
+  receipt String?
+  onGmail String?
+  attachments String? 
+  comments String?
+  completed Boolean @default(false)
+  interior Interior @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
+
+model Requests{
+  id String @id @default(uuid())
+  jobId String
+  by String
+  maps Maps @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  approved Boolean @default(false)
+    stars String? @default("0")
+}
+model OtherRequests{
+  id String @id @default(uuid())
+  otherJobId String
+  by String
+  gmail String
+  phone String
+attachment String
+  otherJobs OtherJobs @relation(fields: [otherJobId], references: [id], onDelete: Cascade)
+  approved Boolean @default(false)
+
+}
+
+model SiteVisit{
+  id String @id @default(uuid())
+  userId String
+  phone String
+  gmail String
+}
