@@ -694,7 +694,7 @@ export default function Home() {
         </div>
       </section>
       <section className="">
-        <div ref={section2Ref} className="bg-slate-200 p-4">
+        <div ref={section2Ref} className="bg-slate-200 md:p-4">
           <Foot />
         </div>
       </section>

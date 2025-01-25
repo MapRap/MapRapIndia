@@ -11,7 +11,7 @@ type Props = {
 };
 const WorkCard = ({ title, content, img, Butto, onClick }: Props) => {
   return (
-    <Card className="w-[70vw] md:h-[65vh] md:w-[30vw] lg:w-[25vw] shadow-xl p-6 cursor-pointer border-none bg-gray-50 hover:bg-gray-100">
+    <Card className="w-[70vw] md:w-[30vw] lg:w-[25vw] shadow-xl h-fit p-6 cursor-pointer border-none bg-gray-50 hover:bg-gray-100">
       <CardTitle className="flex flex-col items-center">
         <img
           width={100}
