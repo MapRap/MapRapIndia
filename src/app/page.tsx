@@ -574,8 +574,17 @@ export default function Home() {
           </a>
         )}
       </div> */}
-      <div className="items-center justify-center lg:m-24 lg:mx-16 ">
-        <div className="spl relative lg:w-full hidden lg:h-[10vh] lg:flex top-[-10vh]">
+      <div className="flex flex-col xl:block items-center justify-center lg:m-24 lg:mx-16 ">
+        div className=" flex w-max items-center justify-center xl:hidden h-fit top-20">
+
+          <img
+               src="../landingGif.gif"
+               alt="bg"
+               className="w-[50vh] h-[40vh]"
+               />
+               </div>       
+      <div className="relative lg:h-[6vh] lg:w-full xl:w-full hidden xl:h-[10vh] lg:top-[-30vh] xl:top-[-10vh] xl:flex top-[-10vh]">
+          
           <div className="absolute w-[50vw] h-[100vh] top-0">
             {tim ? (
               <Spline
@@ -587,14 +596,14 @@ export default function Home() {
             )}
           </div>
         </div>
-        <div className="visit flex flex-col w-screen lg:absolute z-10 lg:top-56 lg:w-[30vw] lg:h-[60vh] lg:right-44">
-          <h1 className="text-xl md:text-3xl xl:h-[5vw] font-bold lg:h-[10vw] my-8 lg:w-[40vw] w-full text-center text-black">
+        <div className="visit flex flex-col w-[90vw] xl:absolute z-10 lg:top-56 xl:w-[30vw] xl:h-[60vh] lg:right-44">
+          <h1 className="text-xl md:text-3xl xl:h-[5vw] lg:w-[90vw] font-bold my-8 xl:w-[40vw] w-full text-center text-black">
             Designing spaces that inspire, nurture, and elevate your lifestyle.
           </h1>
-          <div className="text-gray-500 text-sm md:text-2xl font-light text-center lg:w-[40vw]">
+          <div className="text-gray-500 text-sm md:text-2xl font-light text-center xl:w-[40vw]">
             Let MyNaksha bring your home ideas to life with exceptional design.
           </div>
-          <div className="flex items-center justify-center lg:w-[40vw]">
+          <div className="flex items-center justify-center xl:w-[40vw]">
             <Button
               className="text-md border rounded-lg text-white font-medium hover:bg-blue-800 p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
               onClick={() => {
@@ -606,7 +615,7 @@ export default function Home() {
             {/* <Button
               className="text-md border rounded-lg text-white font-medium p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
               onClick={() => {
-                createAdmin();
+                createOwner();
               }}
             >
               Crete Admin
