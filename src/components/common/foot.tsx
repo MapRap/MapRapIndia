@@ -4,6 +4,7 @@ import React from "react";
 // type Props = {};
 
 const Foot = () => {
+  console.log(process.env.NEXT_PUBLIC_DOMAIN_NAME);
   return (
     <div className="flex gap-3 justify-evenly">
       <div className="m-4 flex flex-col gap-4 text-sm items-center font-semibold">
@@ -39,16 +40,16 @@ const Foot = () => {
         {/* <div>Owner Gmail:</div> */}
       </div>
       <div className="m-4 flex flex-wrap flex-col gap-4 text-xs gs:text-sm md:text-base items-center ">
-        <a
+        {/* <a
           href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/privacy"
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
           Privacy Policy
-        </a>
+        </a> */}
         <a
-          href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/terms"
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/terms`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
@@ -56,7 +57,7 @@ const Foot = () => {
           Terms And Conditions
         </a>
         <a
-          href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/refund"
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/cancellation`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
@@ -66,7 +67,7 @@ const Foot = () => {
       </div>
       <div className="m-4 flex flex-col gap-4 flex-wrap items-center text-xs gs:text-sm md:text-base">
         <a
-          href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/shipping"
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/shipping`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"

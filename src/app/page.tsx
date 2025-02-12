@@ -574,19 +574,15 @@ export default function Home() {
           </a>
         )}
       </div> */}
-     <div className="flex flex-col justify-center items-center xl:block lg:m-24 lg:mx-16 ">
-            <div className=" flex w-max items-center justify-center xl:hidden h-fit top-20">
-
-          <img
-               src="../landingGif.gif"
-               alt="bg"
-               className="w-[50vh] h-[40vh]"
-               />
-               </div>
+      <div className="flex flex-col justify-center items-center xl:block lg:m-24 lg:mx-16 ">
+        <div className="flex w-max items-center justify-center xl:hidden h-fit top-20">
+          <video autoPlay loop muted className="w-screen">
+            <source src="../item.mp4" type="video/mp4"></source>
+          </video>
+        </div>
         <div className="relative lg:h-[6vh] lg:w-full xl:w-full hidden xl:h-[10vh] lg:top-[-30vh] xl:top-[-10vh] xl:flex top-[-10vh]">
           <div className="absolute w-[50vw] h-[100vh] top-0">
             {tim ? (
-              
               <Spline
                 scene="https://prod.spline.design/uxt2HKImyLJhYBYU/scene.splinecode"
                 className="w-full h-full object-contain scale-90"
