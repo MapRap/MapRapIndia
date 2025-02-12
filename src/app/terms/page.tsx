@@ -160,11 +160,11 @@ const TermsPage = () => {
           that the courts of India will have exclusive jurisdiction over any
           dispute.
         </div>
-        2. ujAny dispute or claim arising out of or in connection with or
-        relating to these Terms or their breach, termination or invalidity
-        hereof {"("} {`"`} Dispute {`")`} shall be referred to and finally
-        resolved by arbitration in Bengaluru in accordance with the Arbitration
-        and Conciliation Act, 1996 for the time being in force, which rules are
+        2. Any dispute or claim arising out of or in connection with or relating
+        to these Terms or their breach, termination or invalidity hereof {"("}{" "}
+        {`"`} Dispute {`")`} shall be referred to and finally resolved by
+        arbitration in Bengaluru in accordance with the Arbitration and
+        Conciliation Act, 1996 for the time being in force, which rules are
         deemed to be incorporated by reference in this clause 12.2. Within 30
         {"("}thirty{")"} days of the issue of a notice of Dispute, the parties
         shall mutually agree on the appointment of a sole arbitrator. If such

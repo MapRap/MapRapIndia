@@ -419,7 +419,7 @@ export default function Home() {
                 scrollToSection2();
               }}
             >
-              Contact us
+              Terms and Condition
             </button>
 
             <button
