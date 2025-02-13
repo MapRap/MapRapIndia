@@ -597,7 +597,7 @@ export default function Home() {
             Designing spaces that inspire, nurture, and elevate your lifestyle.
           </h1>
           <div className="text-gray-500 text-sm md:text-2xl font-light text-center xl:w-[40vw]">
-            Let MyNaksha bring your home ideas to life with exceptional design.
+            Let MapRap bring your home ideas to life with exceptional design.
           </div>
           <div className="flex items-center justify-center xl:w-[40vw]">
             <Button
