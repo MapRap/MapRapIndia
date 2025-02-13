@@ -26,7 +26,7 @@ const Foot = () => {
             width={20}
             className="border rounded-3xl"
           />
-          Gmail:
+          Gmail:maprapindia@gmail.com
         </div>
         <div className="flex ">
           <img
@@ -74,14 +74,14 @@ const Foot = () => {
         >
           Shipping
         </a>
-        <a
+        {/* <a
           href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/contact_us"
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
           Contact us
-        </a>
+        </a> */}
       </div>
     </div>
   );
