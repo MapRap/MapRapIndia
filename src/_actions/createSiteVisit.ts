@@ -4,18 +4,18 @@ import prisma from "@/lib/db";
 
 export const createSiteVisit = async ({
   userId,
-  phone,
+  // phone,
   gmail,
 }: {
   userId: string;
-  phone: string;
+  // phone: string;
   gmail: string;
 }) => {
   try {
     const visit = await prisma.siteVisit.create({
       data: {
         userId: userId,
-        phone: phone,
+        phone: "",
         gmail: gmail,
       },
     });

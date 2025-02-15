@@ -1,7 +1,8 @@
 "use client";
-// import { getClientJobsWithSteps } from "@/_actions/getClientJobs";
-import { getId } from "@/_actions/getId";
 import { Loading2 } from "@/components/common/loader2";
+// import { getClientJobsWithSteps } from "@/_actions/getClientJobs";
+// import { getId } from "@/_actions/getId";
+// import { Loading2 } from "@/components/common/loader2";
 import PricingCard from "@/components/common/pricingCard";
 import {
   Accordion,
@@ -9,20 +10,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+// import { set } from "date-fns";
+import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
 const PlanPage = () => {
-  const [user, setUser] = useState<{
-    id: string;
-    gmail: string;
-    name: string;
-    password: string;
-    otp: string | null;
-    isVerified: boolean | null;
-    otpExpiry: Date;
-    type: string;
-    Phone: string;
-  }>();
+  // const [user, setUser] = useState<{
+  //   id: string;
+  //   gmail: string;
+  //   name: string;
+  //   password: string;
+  //   otp: string | null;
+  //   isVerified: boolean | null;
+  //   otpExpiry: Date;
+  //   type: string;
+  //   Phone: string;
+  // }>();
   // const [jobs, setJobs] = useState<
   //   {
   //     id: string;
@@ -53,28 +56,13 @@ const PlanPage = () => {
   //   }[]
   // >([]);
   //   console.log(job?.interior);
+  const session = useSession();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getId().then((e) => {
-      if (e) {
-        // setLoading(false);
-        setLoading(false);
-        if (e !== "/unauthorized") {
-          setLoading(true);
-          setUser(e);
-          // getClientJobsWithSteps().then((j) => {
-          setLoading(false);
-          //   if (j) {
-          //     console.log(j);
-          //     if (typeof j !== "string") {
-          //       // console.log(j.interior);
-          //       setJobs(j);
-          //     }
-          //   }
-          // });
-        }
-      }
-    });
+    console.log(session);
+    if (session) {
+      setLoading(false);
+    }
   }, []);
 
   return loading ? (
@@ -140,7 +128,7 @@ const PlanPage = () => {
                   type="Silver"
                   price={30}
                   features="Assigned to Finest Experts"
-                  user={user}
+                  user={session.data?.user}
                   building="Residential"
                 />
                 <div className="bg-blue-600 text-white rounded-xl ">
@@ -151,7 +139,7 @@ const PlanPage = () => {
                     type="Gold"
                     price={60}
                     features="Unique Work | Assigned to Finest Experts"
-                    user={user}
+                    user={session.data?.user}
                     building="Residential"
                   />
                 </div>
@@ -159,7 +147,7 @@ const PlanPage = () => {
                   type="Platinum"
                   price={80}
                   features="Unique Work | Assigned to Finest Experts | First Priority"
-                  user={user}
+                  user={session.data?.user}
                   building="Residential"
                 />
               </div>
@@ -180,7 +168,7 @@ const PlanPage = () => {
                   type="Silver"
                   price={30}
                   features="Assigned to Finest Experts"
-                  user={user}
+                  user={session.data?.user}
                   building="Commercial"
                 />
                 <div className="bg-blue-600 text-white rounded-xl ">
@@ -191,7 +179,7 @@ const PlanPage = () => {
                     type="Gold"
                     price={60}
                     features="Unique Work | Assigned to Finest Experts"
-                    user={user}
+                    user={session.data?.user}
                     building="Commercial"
                   />
                 </div>
@@ -199,7 +187,7 @@ const PlanPage = () => {
                   type="Platinum"
                   price={100}
                   features="Unique Work | Assigned to Finest Experts | First Priority"
-                  user={user}
+                  user={session.data?.user}
                   building="Commercial"
                 />
               </div>

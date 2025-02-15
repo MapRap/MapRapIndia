@@ -1,28 +1,29 @@
 "use server";
 
-import { cookies } from "next/headers";
-import { decodeAuthToken } from "./token-generator";
+// import { cookies } from "next/headers";
+// import { decodeAuthToken } from "./token-generator";
 import prisma from "@/lib/db";
+import { auth } from "@/auth";
 
 export const getClientJobsWithSteps = async () => {
   try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token");
-    // console.log(token);
-    if (!token?.value) {
-      return "Please login";
-    }
-    const data = await decodeAuthToken(`${token.value}`);
-    if (!data) {
+    // const cookieStore = await cookies();
+    // const token = cookieStore.get("token");
+    // // console.log(token);
+    // if (!token?.value) {
+    //   return "Please login";
+    // }
+    const session = await auth();
+    if (!session?.user) {
       return "Wrong token, please login again!";
-    } else if (!data.payload.id) {
+    } else if (!session.user.id) {
       return "Wrong token, please login again!";
     } else {
-      if (data) {
-        console.log("Fata=", data);
+      if (session.user) {
+        // console.log("Fata=", data);
         const job = await prisma.maps.findMany({
           where: {
-            givenBy: data.payload.id,
+            givenBy: session.user.id,
           },
           include: {
             steps: true,
@@ -30,12 +31,12 @@ export const getClientJobsWithSteps = async () => {
         });
         if (!job) {
           console.log("hey");
-          return `${data.payload.id}`;
+          return `${session.user.id}`;
         }
         console.log("job=", job);
         if (job !== null) {
           if (job[0] === undefined) {
-            return `${data.payload.id}`;
+            return `${session.user.id}`;
           }
           return job;
         }

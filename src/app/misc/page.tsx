@@ -1,7 +1,7 @@
 "use client";
 import { addOtherJob } from "@/_actions/addOtherJob";
 // import { addPainting } from "@/_actions/addPaintings";
-import { getId } from "@/_actions/getId";
+// import { getId } from "@/_actions/getId";
 import { getOtherJobs } from "@/_actions/getOtherJobs";
 import { requestOtherJob } from "@/_actions/requestOtherJob";
 // import { getPaintings } from "@/_actions/getPaintings";
@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useUploadThing } from "@/lib/uploadthing";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -67,17 +68,17 @@ const MiscPage = () => {
   const router = useRouter();
   const [img, setImageUrl] = useState<string>("");
   const [z, setZ] = useState(true);
-  const [user, setUser] = useState<{
-    id: string;
-    gmail: string;
-    name: string;
-    password: string;
-    otp: string | null;
-    isVerified: boolean | null;
-    otpExpiry: Date;
-    type: string;
-    Phone: string;
-  }>();
+  // const [user, setUser] = useState<{
+  //   id: string;
+  //   gmail: string;
+  //   name: string;
+  //   password: string;
+  //   otp: string | null;
+  //   isVerified: boolean | null;
+  //   otpExpiry: Date;
+  //   type: string;
+  //   Phone: string;
+  // }>();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState("");
@@ -107,6 +108,7 @@ const MiscPage = () => {
   const [title, setTitle] = useState<string | undefined>();
   const [description, setDescription] = useState<string | undefined>();
   const [price, setPrice] = useState<number | undefined>(0);
+  const session = useSession();
   useEffect(() => {
     setInterval(() => {
       if (
@@ -132,17 +134,17 @@ const MiscPage = () => {
         }
       }
     });
-    getId().then((e) => {
-      if (e === "/unauthorized") {
-        console.log(e);
-        // router.push("/unauthorized");
-      } else {
-        setUser(e);
-      }
-    });
+    // getId().then((e) => {
+    //   if (e === "/unauthorized") {
+    //     console.log(e);
+    //     // router.push("/unauthorized");
+    //   } else {
+    //     setUser(e);
+    //   }
+    // });
   }, []);
   const handlePayment = async ({ price }: { price: number }) => {
-    if (user) {
+    if (session.data?.user) {
       try {
         if (!title || !description || !price || price === 0 || img === "") {
           setError("Please fill all the details");
@@ -208,7 +210,7 @@ const MiscPage = () => {
                       // Create a temporary download link for the Blob
                       const file = new File(
                         [blob],
-                        `receipt-${user?.gmail}1.pdf`,
+                        `receipt-${session.data.user?.email}1.pdf`,
                         {
                           type: "application/pdf",
                         }
@@ -255,9 +257,8 @@ const MiscPage = () => {
               }
             },
             prefill: {
-              name: user.name,
-              email: `${user.gmail}`,
-              contact: user.Phone,
+              name: session.data.user.name!,
+              email: `${session.data.user.email}`,
             },
             theme: {
               color: "#3399cc",
@@ -444,7 +445,7 @@ const MiscPage = () => {
                   <Button
                     className="bg-green-600 hover:bg-green-700 m-2 w-[10vw]"
                     onClick={() => {
-                      if (user) {
+                      if (session.data?.user) {
                         // job.requests.map((request) => {
                         //   if (request.by === user.id) {
                         //     setMessage(
@@ -455,9 +456,8 @@ const MiscPage = () => {
                         if (message === "") {
                           requestOtherJob({
                             id: job.id,
-                            userId: user.id,
-                            gmail: user.gmail,
-                            phone: user.Phone,
+                            userId: session.data.user.id!,
+                            gmail: session.data.user.email!,
                           }).then((e) => {
                             if (e) {
                               if (e === "Success") {
@@ -472,7 +472,7 @@ const MiscPage = () => {
                           });
                         }
                       }
-                      if (!user) {
+                      if (!session.data?.user) {
                         setMessage("Please login to continue");
                       }
                     }}

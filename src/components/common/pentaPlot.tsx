@@ -59,8 +59,8 @@ type Props = {
   type: string;
   // direction: string;
   name: string;
-  phone: string;
-  gmail: string;
+  // phone: string;
+  gmail: string | null;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   property: string;
 };
@@ -100,7 +100,7 @@ const PentaPlot = ({
   type,
   // direction,
   name,
-  phone,
+  // phone,
   gmail,
   setLoading,
   property,
@@ -291,7 +291,6 @@ const PentaPlot = ({
             prefill: {
               name: name,
               email: `${gmail}`,
-              contact: phone,
             },
             theme: {
               color: "#3399cc",

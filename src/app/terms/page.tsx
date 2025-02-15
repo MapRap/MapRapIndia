@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 
 const TermsPage = () => {
   return (
     <div className="m-2 flex flex-col ">
-      <div className="font-bold text-center">Terms and Condition</div>
+      <img
+        src={`../logo.png`}
+        alt="logo"
+        width={80}
+        className="rounded-lg cursor-pointer absolute top-0 left-0"
+        onClick={() => {
+          window.location.replace("/");
+        }}
+      />
+      <div className="font-bold text-center mt-4">Terms and Condition</div>
       By accessing this webpage, you are agreeing to be bound by these Terms and
       Conditions {`${"(Terms)"}`} in a legally binding agreement between us
       {`("${"Merchant"}"`} or {`"`} us {`"`} or {`"`} we {`"`} or {`"`}our{`")`}{" "}

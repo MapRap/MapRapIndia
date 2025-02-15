@@ -66,18 +66,48 @@ const directions = [
     label: "West",
   },
 ];
+
+// type PayerInfo = {
+//   name: {
+//     given_name: string;
+//     surname: string;
+//   };
+// };
+
+// type PaymentDetails = {
+//   payer: PayerInfo;
+//   id: string; // PayPal transaction ID
+//   status: string; // Payment status (e.g., 'COMPLETED', 'PENDING')
+// };
+
 export default function Calculated(props: { params: tParams }) {
   const [loading, setLoading] = useState(true);
+  // const [scriptLoaded, setScriptLoaded] = useState(false);
+
   const [values, setValues] = useState<{ type: string; plot: string }>({
     type: "",
     plot: "",
   });
+  // const addPayPalScript = () => {
+  //   if (window.paypal) {
+  //     // setScriptLoaded(true);
+  //     return;
+  //   }
+  //   const script = document.createElement("script");
+  //   script.src =
+  //     "https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID";
+  //   script.type = "text/javascript";
+  //   // script.onload = () => setScriptLoaded(true);
+  //   script.async = true;
+  //   document.body.appendChild(script);
+  // };
   useEffect(() => {
     props.params.then((e) => {
       if (e) {
         setValues({ type: e.type, plot: e.plot });
       }
     });
+    // addPayPalScript();
     getClientJobsWithSteps().then((e) => {
       if (e) {
         if (e === "Please login" || e === "Wrong token, please login again!") {
@@ -124,14 +154,14 @@ export default function Calculated(props: { params: tParams }) {
   const searchParams = useSearchParams();
   const [user, setUser] = useState<{
     id: string;
-    gmail: string;
-    name: string;
-    password: string;
+    email: string | null;
+    name: string | null;
+    password: string | null;
     otp: string | null;
-    isVerified: boolean | null;
-    otpExpiry: Date;
+    emailVerified: Date | null;
+    otpExpiry: Date | null;
     type: string;
-    Phone: string;
+    Phone: string | null;
   }>();
   const { startUpload } = useUploadThing("pdfUploader");
   const [message, setMessage] = useState("");
@@ -144,6 +174,7 @@ export default function Calculated(props: { params: tParams }) {
   const [value] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
+  // const paypalRef = useRef<HTMLDivElement>(null);
   const scrollToForm = () => {
     sec.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -261,7 +292,7 @@ export default function Calculated(props: { params: tParams }) {
                                           // Create a temporary download link for the Blob
                                           const file = new File(
                                             [blob],
-                                            `receipt${user.gmail}1.pdf`,
+                                            `receipt${user.email}1.pdf`,
                                             {
                                               type: "application/pdf",
                                             }
@@ -314,9 +345,8 @@ export default function Calculated(props: { params: tParams }) {
                   }
                 },
                 prefill: {
-                  name: user.name,
-                  email: `${user.gmail}`,
-                  contact: user.Phone,
+                  name: user.name!,
+                  email: `${user.email}`,
                 },
                 theme: {
                   color: "#3399cc",
@@ -342,6 +372,60 @@ export default function Calculated(props: { params: tParams }) {
       }
     }
   };
+
+  // const onPayClick = (e: {
+  //   A: number;
+  //   B: number;
+  //   floor: number;
+  //   C: number;
+  //   D: number;
+  //   specifications: string;
+  //   direction: string;
+  // }) => {
+  //   // const handleCustomPayButtonClick = () => {
+  //   if (window.paypal) {
+  //     // Trigger PayPal button to start the payment process
+  //     window.paypal
+  //       .Buttons({
+  //         createOrder: (data, actions) => {
+  //           // Create an order with PayPal
+  //           return actions.order.create({
+  //             purchase_units: [
+  //               {
+  //                 amount: {
+  //                   value: "10.00", // Specify the order amount
+  //                   currency_code: "USD",
+  //                 },
+  //                 description: "Payment for Order #12345", // Optional order description
+  //               },
+  //             ],
+  //           });
+  //         },
+  //         onApprove: (data, actions) => {
+  //           // Capture the payment once the user approves it
+  //           return actions.order.capture().then((details) => {
+  //             // Type assertion: we know 'details' is of type 'PaymentDetails'
+  //             const paymentDetails = details as PaymentDetails;
+  //             alert(
+  //               "Payment completed by " + paymentDetails.payer.name.given_name
+  //             );
+  //             // Send payment details to the backend for processing (e.g., create an order in the DB)
+  //           });
+  //         },
+  //         onCancel: (data) => {
+  //           alert("Payment was cancelled");
+  //           console.log(data);
+  //         },
+  //         onError: (err) => {
+  //           console.error("Error occurred during payment:", err);
+  //           alert("An error occurred while processing your payment.");
+  //         },
+  //       })
+  //       .render("#paypal-button-container");
+  //   }
+  //   // };
+  // };
+  console.log(user);
   const handleVisitPayment = async ({ price }: { price: number }) => {
     try {
       if (user) {
@@ -393,8 +477,7 @@ export default function Calculated(props: { params: tParams }) {
               alert(`Payment successful!`);
               const visit = await createSiteVisit({
                 userId: user.id,
-                phone: user.Phone,
-                gmail: user.gmail,
+                gmail: user.email!,
               });
               if (visit === "Success") {
                 setMessage(
@@ -414,7 +497,7 @@ export default function Calculated(props: { params: tParams }) {
                     rece.blob().then((blob) => {
                       const file = new File(
                         [blob],
-                        `receipt${user.gmail}1.pdf`,
+                        `receipt${user.email}1.pdf`,
                         {
                           type: "application/pdf",
                         }
@@ -443,9 +526,8 @@ export default function Calculated(props: { params: tParams }) {
             }
           },
           prefill: {
-            name: user.name,
-            email: `${user.gmail}`,
-            contact: user.Phone,
+            name: user.name!,
+            email: `${user.email}`,
           },
           theme: {
             color: "#3399cc",
@@ -543,7 +625,10 @@ export default function Calculated(props: { params: tParams }) {
               />
             </div>
             {values.plot === "plot1" && (
-              <Card className="w-[90vw] md:w-[70vw] lg:w-[40vw]">
+              <Card
+                className="w-[90vw] md:w-[70vw] lg:w-[40vw]"
+                // id="paypal-button-container"
+              >
                 <CardTitle>
                   <CardHeader>
                     <div ref={sec}>Fill in the details of the plot</div>
@@ -783,9 +868,9 @@ export default function Calculated(props: { params: tParams }) {
             )}
             {values.plot === "plot2" && (
               <TrapPlot
-                name={user.name}
-                phone={user?.Phone}
-                gmail={user?.gmail}
+                name={user.name!}
+                // phone={user?.Phone}
+                gmail={user?.email}
                 floors={Number(searchParams.get("floors"))}
                 setImageUrl={setImageUrl}
                 imageUrl={imageUrl}
@@ -798,9 +883,8 @@ export default function Calculated(props: { params: tParams }) {
             )}
             {values.plot === "plot3" && (
               <PentaPlot
-                name={user.name}
-                phone={user?.Phone}
-                gmail={user?.gmail}
+                name={user.name!}
+                gmail={user?.email}
                 floors={Number(searchParams.get("floors"))}
                 setImageUrl={setImageUrl}
                 imageUrl={imageUrl}

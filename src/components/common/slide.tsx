@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 
 const Slide = () => {
+  // console.log(screen.width < 700);
   return (
     <div className=" z-50 slid overflow-hidden w-[86vw] mt-6">
       <div className="flex slide-track w-[300vw] h-[40vh] lg:h-[60vh] gap-10">
@@ -16,7 +17,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[29vw] md:text-sm">
+                <div className="text-center text-[13px] w-[39vw] md:w-[29vw] md:text-sm">
                   5 Star Hotel
                 </div>
                 <Image
@@ -74,14 +75,14 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[22vw] md:text-sm">
+                <div className="text-center text-[13px] w-[32vw] md:w-[22vw] md:text-sm">
                   Mr Ayush Choudhary
                 </div>
                 <Image
                   src="https://utfs.io/f/GH57qH88dIR15WSz8yM3Rq9HnDQlUoLEwZT0a4gmIYB2jvOK"
                   loading="lazy"
-                  width={5000}
-                  height={300}
+                  width={7000}
+                  height={600}
                   className="m-2 w-full"
                   alt="gg"
                 />
@@ -116,7 +117,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
                   IIT Jodhpur Interior
                 </div>
                 <Image
@@ -208,7 +209,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
                   Landscape Design
                 </div>
                 <Image
@@ -274,7 +275,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] md:text-sm lg:w-[20vw]">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm lg:w-[20vw]">
                   Mr Aman Verma
                 </div>
                 <Image
@@ -316,7 +317,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] lg:w-[20vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
                   Mr Naresh Kumar
                 </div>
                 <Image
@@ -366,7 +367,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
                   National Center for performing Arts
                 </div>
                 <Image
@@ -432,7 +433,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] lg:w-[20vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
                   Mr. Rishab
                 </div>
                 <Image
@@ -482,7 +483,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
                   School Bishnah
                 </div>
                 <Image
@@ -548,7 +549,7 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
-                <div className="text-center text-[13px] w-[30vw] lg:w-[20vw] md:text-sm">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
                   Mr. Vinay
                 </div>
                 <Image

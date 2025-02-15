@@ -13,7 +13,7 @@ export const regenerate = async ({
     const otpExpiry = new Date();
     otpExpiry.setMinutes(otpExpiry.getMinutes() + 10);
     const user = await prisma.user.update({
-      where: { gmail: gmail },
+      where: { email: gmail },
       data: { otp: otp, otpExpiry: otpExpiry },
     });
     if (!user) {

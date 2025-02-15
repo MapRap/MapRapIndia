@@ -1,11 +1,12 @@
 "use client";
 import { createRequest } from "@/_actions/createRequest";
-import { getId } from "@/_actions/getId";
+// import { getId } from "@/_actions/getId";
 import { getJobs } from "@/_actions/getJobs";
 import { Loading2 } from "@/components/common/loader2";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { File } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -72,9 +73,10 @@ const JobsPage = () => {
     };
     getPublishableJobs();
   }, []);
+  const session = useSession();
   const handleRequestJob = async (id: string) => {
-    const user = await getId();
-    if (user === "/unauthorized") {
+    const user = session.data?.user;
+    if (!session.data) {
       setLogin(false);
       return "";
     }
@@ -83,7 +85,7 @@ const JobsPage = () => {
     if (!user) {
       return "NO user";
     }
-    const data = await createRequest({ userId: user.id, jobId: id });
+    const data = await createRequest({ userId: user.id!, jobId: id });
     if (!data) {
       return "Please login again";
     }
@@ -107,12 +109,8 @@ const JobsPage = () => {
         <div className="h-screen w-screen flex items-center justify-center">
           <Loading2 loading={loading} />
         </div>
-      ) : // <div></div>
-      jobs.length === 0 ? (
-        <div className="flex items-center justify-center h-screen text-3xl text-black">
-          <div className=" p-4">No new Jobs</div>
-        </div>
       ) : (
+        // <div></div>
         //bg-[#e7eafb]
         <div className="bg-slate-300 h-full min-h-screen py-4">
           <div className="text-3xl text-center font-bold">
@@ -152,118 +150,123 @@ const JobsPage = () => {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            {jobs.map((job) => (
-              <Card
-                key={job.id}
-                className="my-2 w-[80vw] lg:w-[90vw] opacity-90 text-black h-fit p-4"
-              >
-                <CardTitle className="my-0 py-0">
-                  <CardHeader className="text-base text-green-600 sm:text-lg lg:text-xl my-0 pb-0 border-b-4 text-center">
-                    {/* <div className="flex"> */}
-                    <div>{`${job.floors} Floored ${job.type} Building`}</div>
-                    {/* </div> */}
-                  </CardHeader>
-                </CardTitle>
-                <CardContent className="flex flex-wrap items-center gap-4 lg:gap-8 text-black py-0 h-fitaa font-semibold">
-                  <div>
-                    {/* <div>Plot : {`${job.plot}`}</div> */}
-                    <div className="flex my-1 flex-wrap text-[8px] sm:text-sm h-fit ">
-                      <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                        A : {`${job.A}`}
-                      </div>
-                      <div className=" mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                        B : {`${job.B}`}
-                      </div>
-                      <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                        C : {`${job.C}`}
-                      </div>
-                      <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                        D : {`${job.D}`}
-                      </div>
-                      {job.E && (
+            {jobs.length === 0 ? (
+              <div className="flex items-center justify-center h-screen text-3xl text-black">
+                <div className=" p-4">Coming soon...</div>
+              </div>
+            ) : (
+              jobs.map((job) => (
+                <Card
+                  key={job.id}
+                  className="my-2 w-[80vw] lg:w-[90vw] opacity-90 text-black h-fit p-4"
+                >
+                  <CardTitle className="my-0 py-0">
+                    <CardHeader className="text-base text-green-600 sm:text-lg lg:text-xl my-0 pb-0 border-b-4 text-center">
+                      {/* <div className="flex"> */}
+                      <div>{`${job.floors} Floored ${job.type} Building`}</div>
+                      {/* </div> */}
+                    </CardHeader>
+                  </CardTitle>
+                  <CardContent className="flex flex-wrap items-center gap-4 lg:gap-8 text-black py-0 h-fitaa font-semibold">
+                    <div>
+                      {/* <div>Plot : {`${job.plot}`}</div> */}
+                      <div className="flex my-1 flex-wrap text-[8px] sm:text-sm h-fit ">
                         <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                          E : {`${job.E}`}
+                          A : {`${job.A}`}
                         </div>
-                      )}
-                      {job.D1 && (
+                        <div className=" mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                          B : {`${job.B}`}
+                        </div>
                         <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                          D1 : {`${job.D1}`}
+                          C : {`${job.C}`}
                         </div>
-                      )}
-                      {job.D2 && (
                         <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                          D2 : {`${job.D2}`}
+                          D : {`${job.D}`}
                         </div>
-                      )}
-                      {job.D3 && (
-                        <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                          D3 : {`${job.D3}`}
-                        </div>
-                      )}
-                      {job.D4 && (
-                        <div className="border border-black mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
-                          D4 : {`${job.D4}`}
-                        </div>
-                      )}
-                    </div>
-                    <div className="pl-3 text-[12px] text-gray-700 md:text-base">
-                      Direction : {`${job.direction}`}
-                    </div>
-                    <div className="pl-3 text-[12px] text-gray-700 md:text-base">
-                      Specifications: {`${job.specifications}`}
-                    </div>
-                    {job.expected && (
+                        {job.E && (
+                          <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                            E : {`${job.E}`}
+                          </div>
+                        )}
+                        {job.D1 && (
+                          <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                            D1 : {`${job.D1}`}
+                          </div>
+                        )}
+                        {job.D2 && (
+                          <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                            D2 : {`${job.D2}`}
+                          </div>
+                        )}
+                        {job.D3 && (
+                          <div className="mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                            D3 : {`${job.D3}`}
+                          </div>
+                        )}
+                        {job.D4 && (
+                          <div className="border border-black mx-2 rounded-sm lg:rounded-lg p-1 w-[12vw] md:w-[8vw] lg:p-2">
+                            D4 : {`${job.D4}`}
+                          </div>
+                        )}
+                      </div>
                       <div className="pl-3 text-[12px] text-gray-700 md:text-base">
-                        Task : {`${job.expected}`}
+                        Direction : {`${job.direction}`}
                       </div>
-                    )}
-                    {job.price && (
                       <div className="pl-3 text-[12px] text-gray-700 md:text-base">
-                        Price : Rs {`${job.studentPrice}`}
+                        Specifications: {`${job.specifications}`}
                       </div>
-                    )}
-                    {job.requests.length < 5 && (
-                      <div className="text-red-600 ">Only few requests</div>
-                    )}
-                    <Button
-                      className="bg-blue-700 hover:bg-blue-800 mt-4 w-16 md:w-20 h-6"
-                      onClick={() => {
-                        handleRequestJob(job.id).then((e) => {
-                          if (typeof e === "string") setMessage(e);
-                          else if (e.data) {
-                            e.data.map((req) => {
-                              if (req.jobId === job.id) {
-                                setMessage(e.message);
-                                window.location.reload();
-                              }
-                            });
-                          } else {
-                            setMessage(e.message);
-                          }
-                        });
-                      }}
-                    >
-                      <div className="text-[10px]">Request Job</div>
-                    </Button>
-                    {logined === false && (
-                      <button
-                        className="text-md text-red-600 hover:underline cursor-pointer px-2 py-1 rounded-xl"
+                      {job.expected && (
+                        <div className="pl-3 text-[12px] text-gray-700 md:text-base">
+                          Task : {`${job.expected}`}
+                        </div>
+                      )}
+                      {job.price && (
+                        <div className="pl-3 text-[12px] text-gray-700 md:text-base">
+                          Price : Rs {`${job.studentPrice}`}
+                        </div>
+                      )}
+                      {job.requests.length < 5 && (
+                        <div className="text-red-600 ">Only few requests</div>
+                      )}
+                      <Button
+                        className="bg-blue-700 hover:bg-blue-800 mt-4 w-16 md:w-20 h-6"
                         onClick={() => {
-                          router.push("/");
+                          handleRequestJob(job.id).then((e) => {
+                            if (typeof e === "string") setMessage(e);
+                            else if (e.data) {
+                              e.data.map((req) => {
+                                if (req.jobId === job.id) {
+                                  setMessage(e.message);
+                                  window.location.reload();
+                                }
+                              });
+                            } else {
+                              setMessage(e.message);
+                            }
+                          });
                         }}
                       >
-                        {"Please login to continue !"}
-                      </button>
-                    )}
-                    <div>
-                      {job.requests.length === 0 ? "" : message}
-                      {/* // job.requests.map((request) => request.jobId === job.id)
+                        <div className="text-[10px]">Request Job</div>
+                      </Button>
+                      {logined === false && (
+                        <button
+                          className="text-md text-red-600 hover:underline cursor-pointer px-2 py-1 rounded-xl"
+                          onClick={() => {
+                            router.push("/");
+                          }}
+                        >
+                          {"Please login to continue !"}
+                        </button>
+                      )}
+                      <div>
+                        {job.requests.length === 0 ? "" : message}
+                        {/* // job.requests.map((request) => request.jobId === job.id)
                       //   ? message
                       //   : ""} */}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {/* <Image
+                    <div className="flex items-center gap-3">
+                      {/* <Image
                       src={`${job.imageUrl}`}
                       alt="gg"
                       loading="lazy"
@@ -271,45 +274,46 @@ const JobsPage = () => {
                       height={500}
                       className="m-2"
                       /> */}
-                    {/* <Button onClick={()=>{
+                      {/* <Button onClick={()=>{
 
                     }}>
                       View Attachment <File />
                     </Button> */}
-                    {/* <img
+                      {/* <img
                       src={`../${job.plot}.png`}
                       alt="gg"
                       width={200}
                       height={200}
                       className="m-2"
                     /> */}
-                    <a
-                      href={`${job.imageUrl}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline flex text-black font-bold text-[7px] sm:text-base lg:text-xl"
-                    >
-                      View Attachment <File />
-                    </a>
-                    <a
-                      href={`../${job.plot}.png`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline flex text-slate-800 border-2"
-                    >
-                      <img
-                        src={`../${job.plot}.png`}
-                        alt="gg"
-                        width={150}
-                        height={150}
-                        className="m-2 w-1/3 lg:w-[25vh]"
-                      />
-                    </a>
-                    <div></div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                      <a
+                        href={`${job.imageUrl}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex text-black font-bold text-[7px] sm:text-base lg:text-xl"
+                      >
+                        View Attachment <File />
+                      </a>
+                      <a
+                        href={`../${job.plot}.png`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex text-slate-800 border-2"
+                      >
+                        <img
+                          src={`../${job.plot}.png`}
+                          alt="gg"
+                          width={150}
+                          height={150}
+                          className="m-2 w-1/3 lg:w-[25vh]"
+                        />
+                      </a>
+                      <div></div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       )}

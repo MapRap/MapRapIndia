@@ -1,20 +1,20 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { getId } from "./getId";
+// import { getId } from "./getId";
+import { auth } from "@/auth";
 
 export const getOtherAssignedJobs = async () => {
   try {
-    const user = await getId();
-    if (!user) {
-      return "Request failed";
+    // const user = await getId();
+    const session = await auth();
+    if (!session?.user) {
+      return "Request failed! Login Again";
     }
-    if (user === "/unauthorized") {
-      return "Login Again!";
-    }
+
     const request = await prisma.otherRequests.findFirst({
       where: {
-        by: user.id,
+        by: session.user.id,
         approved: true,
       },
     });

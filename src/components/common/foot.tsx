@@ -4,13 +4,12 @@ import React from "react";
 // type Props = {};
 
 const Foot = () => {
-  console.log(process.env.NEXT_PUBLIC_DOMAIN_NAME);
   return (
-    <div className="flex gap-3 justify-evenly">
-      <div className="m-4 flex flex-col gap-4 text-sm items-center font-semibold">
+    <div className="flex w-screen gap-3 justify-evenly text-[10px] md:text-base">
+      <div className="flex flex-col gap-4 items-start ">
         <a
           href="https://www.instagram.com/mynaksha/"
-          className="flex hover:underline semibold text-sm"
+          className="flex hover:underline"
         >
           <img
             width={20}
@@ -26,7 +25,7 @@ const Foot = () => {
             width={20}
             className="border rounded-3xl"
           />
-          Gmail:maprapindia@gmail.com
+          Gmail : maprapindia@gmail.com
         </div>
         <div className="flex ">
           <img
@@ -35,11 +34,11 @@ const Foot = () => {
             width={20}
             className="border rounded-3xl"
           />
-          Phone:8899781150
+          Phone : 8899781150
         </div>
         {/* <div>Owner Gmail:</div> */}
       </div>
-      <div className="m-4 flex flex-wrap flex-col gap-4 text-xs gs:text-sm md:text-base items-center ">
+      <div className="m-4 flex flex-wrap flex-col gap-4 md:text-base items-center ">
         {/* <a
           href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/privacy"
           target="_blank"
@@ -65,7 +64,7 @@ const Foot = () => {
           Cancellataion And Refund
         </a>
       </div>
-      <div className="m-4 flex flex-col gap-4 flex-wrap items-center text-xs gs:text-sm md:text-base">
+      <div className="m-4 flex flex-col gap-4 flex-wrap items-center md:text-base">
         <a
           href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/shipping`}
           target="_blank"
@@ -74,14 +73,14 @@ const Foot = () => {
         >
           Shipping
         </a>
-        {/* <a
-          href="https://merchant.razorpay.com/policy/PewAz9Toht0Y2Z/contact_us"
+        <a
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/contact`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
           Contact us
-        </a> */}
+        </a>
       </div>
     </div>
   );

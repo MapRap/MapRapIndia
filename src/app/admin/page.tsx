@@ -6,7 +6,7 @@ import { completeJob } from "@/_actions/completeJob";
 // import { assignOtherjob } from "@/_actions/assignOtherjob";
 import { completeStep } from "@/_actions/completeStep";
 import { deleteJob } from "@/_actions/deleteJob";
-import { getId } from "@/_actions/getId";
+// import { getId } from "@/_actions/getId";
 // import { onPaintingDelete } from "@/_actions/deletePainting";
 // import { getJobs } from "@/_actions/getJobs";
 // import { deleteUser } from "@/_actions/deleteUser";
@@ -48,6 +48,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
+import { useSession } from "next-auth/react";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 // import { File } from "lucide-react";
 // import { pide } from "lucide-react";
@@ -130,7 +131,7 @@ const AdminPage = () => {
       Proof: string | null;
       isReal: boolean | null;
       type: string;
-      payment: string;
+      payment: string | null;
     }[]
   >([]);
   // const [paintings, setPaintings] = useState<
@@ -179,19 +180,19 @@ const AdminPage = () => {
   // >([]);
   // const [totalPrice, setTotalPrice] = useState(0);
   const [erro] = useState("");
-  const [user, setUser] = useState<{
-    id: string;
-    gmail: string;
-    name: string;
-    password: string;
-    otp: string | null;
-    isVerified: boolean | null;
-    otpExpiry: Date;
-    type: string;
-    Phone: string;
-    paymentId: string;
-    country: boolean;
-  }>();
+  // const [user, setUser] = useState<{
+  //   id: string;
+  //   gmail: string;
+  //   name: string;
+  //   password: string;
+  //   otp: string | null;
+  //   isVerified: boolean | null;
+  //   otpExpiry: Date;
+  //   type: string;
+  //   Phone: string;
+  //   paymentId: string;
+  //   country: boolean;
+  // }>();
   const [task, setTask] = useState("");
   const [comment, setComment] = useState("");
   const [studentPrice, setStudentPrice] = useState("");
@@ -199,6 +200,7 @@ const AdminPage = () => {
   const [loading, setLoading] = useState(true);
   const [stars, setStars] = useState("");
   const [message, setMessage] = useState("");
+  const session = useSession();
   useEffect(() => {
     // notVerifiedUsers().then((e) => {
     //   if (e) {
@@ -207,13 +209,14 @@ const AdminPage = () => {
     //     }
     //   }
     // });
-    getId().then((e) => {
-      if (e) {
-        if (e !== "/unauthorized") {
-          setUser(e);
-        }
-      }
-    });
+
+    // session.data?.user.id?.then((e) => {
+    //   if (e) {
+    //     if (e !== "/unauthorized") {
+    //       setUser(e);
+    //     }
+    //   }
+    // });
     // const assign = async () => {
     // if (jobs.length === 0) {
     // console.log(count);
@@ -454,7 +457,7 @@ const AdminPage = () => {
         >
           Go to interior Admin Page
         </Button>
-        {user && (
+        {session.data && session.data.user && (
           <Button
             onClick={() => {
               window.location.replace("/admin/addAdmin");

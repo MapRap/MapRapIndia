@@ -80,15 +80,15 @@ const AssignedPage = () => {
 
   const [user, setUser] = useState<{
     id: string;
-    gmail: string;
-    name: string;
-    password: string;
+    email: string | null;
+    name: string | null;
+    password: string | null;
     otp: string | null;
-    isVerified: boolean | null;
-    otpExpiry: Date;
+    emailVerified: Date | null;
+    otpExpiry: Date | null;
     type: string;
-    Phone: string;
-    paymentId: string;
+    Phone: string | null;
+    paymentId: string | null;
     country: boolean;
     stars: string | null;
   }>();
@@ -104,24 +104,24 @@ const AssignedPage = () => {
     getAssignedJobs().then((e) => {
       if (e) {
         setLoading(false);
-        if (e !== "Login Again!") {
-          if (e !== "Request failed") {
-            if (e !== "No Jobs assigned to you") {
-              setJobs(e);
-            }
+        if (e !== "Request failed! Login Again") {
+          // if (e !== "Request failed") {
+          if (e !== "No Jobs assigned to you") {
+            setJobs(e);
           }
+          // }
         }
       }
     });
     getOtherAssignedJobs().then((e) => {
       if (e) {
         setLoading(false);
-        if (e !== "Login Again!") {
-          if (e !== "Request failed") {
-            if (e !== "No Jobs assigned to you") {
-              setOtherJobs(e);
-            }
+        if (e !== "Request failed! Login Again") {
+          // if (e !== "Request failed") {
+          if (e !== "No Jobs assigned to you") {
+            setOtherJobs(e);
           }
+          // }
         }
       }
     });

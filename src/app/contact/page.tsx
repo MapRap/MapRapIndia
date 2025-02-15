@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 
 const ContactPage = () => {
   return (
     <div className="m-2">
-      <div className="text-3xl border-b-2 font-bold text-center">
+      <img
+        src={`../logo.png`}
+        alt="logo"
+        width={80}
+        className="rounded-lg cursor-pointer absolute top-0 left-0"
+        onClick={() => {
+          window.location.replace("/");
+        }}
+      />
+      <div className="text-3xl mt-8 border-b-2 font-bold text-center">
         Contact Us
       </div>
       <div className="m-2">

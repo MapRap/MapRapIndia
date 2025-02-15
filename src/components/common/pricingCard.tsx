@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
+import { User } from "next-auth";
 // import { Input } from "../ui/input";
 // import { RazorpayPaymentResponse } from "./trapPlot";
 // import { useUploadThing } from "@/lib/uploadthing";
@@ -21,17 +22,9 @@ const PricingCard = ({
   features: string;
   building: string;
   user:
-    | {
-        id: string;
-        gmail: string;
-        name: string;
-        password: string;
-        otp: string | null;
-        isVerified: boolean | null;
-        otpExpiry: Date;
+    | (User & {
         type: string;
-        Phone: string;
-      }
+      })
     | undefined;
 }) => {
   // const [area, setArea] = useState("");

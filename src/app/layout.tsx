@@ -1,7 +1,9 @@
-import Script from "next/script";
+// import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
 // import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 const font = DM_Sans({ subsets: ["latin"] });
@@ -22,22 +24,39 @@ export const metadata: Metadata = {
   description: "The Art of Home Design",
 };
 
-export default function RootLayout({
+// import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import Script from "next/script";
+
+// const initialOptions = {
+//   clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "",
+//   currency: "USD",
+//   intent: "capture",
+// };
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
-    <html lang="en">
-      {/* <Head> */}
-      {/* Include Razorpay's checkout script */}
-      {/* <script src="https://checkout.razorpay.com/v1/checkout.js"></script> */}
-      {/* </Head> */}
-      <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        strategy="afterInteractive" // Ensures script loads after page is interactive
-      />
-      <body className={`${font.className} text-black`}>{children}</body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang="en">
+        {/* <Head> */}
+        {/* Include Razorpay's checkout script */}
+        {/* <script src="https://checkout.razorpay.com/v1/checkout.js"></script> */}
+        {/* </Head> */}
+        <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="afterInteractive" // Ensures script loads after page is interactive
+        />
+
+        <body className={`${font.className} text-black`}>
+          {/* <PayPalScriptProvider options={initialOptions}> */}
+          {children}
+          {/* </PayPalScriptProvider> */}
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

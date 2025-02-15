@@ -16,6 +16,9 @@ export const verifyOtp = async ({
     if (!user) {
       return "Timeout";
     }
+    if (!user.otpExpiry) {
+      return "Timeout! Please try again!";
+    }
     const tim = new Date();
     if (user.otpExpiry.getMinutes() < tim.getMinutes()) {
       return "Session Timed Out! Please try again!";

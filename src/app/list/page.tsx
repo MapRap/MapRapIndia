@@ -76,7 +76,6 @@ const List = () => {
     getId()
       .then((i) => {
         if (i) {
-          setLoading(false);
           if (i !== "/unauthorized") {
             // setUser(i);
             // getClientJobsWithSteps().then((j) => {
@@ -88,7 +87,7 @@ const List = () => {
             // });
             if (i.country !== true) {
               // flushSync(() => {
-              setCurrency("USaD");
+              setCurrency("USD");
               // });
             }
           }
@@ -121,6 +120,7 @@ const List = () => {
                   updatedAreas.sort((a, b) => Number(a.area) - Number(b.area));
                   return updatedAreas;
                 });
+                setLoading(false);
               });
             }
           }

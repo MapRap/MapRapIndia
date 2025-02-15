@@ -37,7 +37,7 @@ const ResetPage = () => {
   const [password, setPassword] = useState<string | undefined>();
   const [confirmPassword, setConfirmPassword] = useState<string | undefined>();
   const [enterPass, setEnterPass] = useState(false);
-  const [det, setDet] = useState<{ id: string; gmail: string }>({
+  const [det, setDet] = useState<{ id: string; gmail: string | null }>({
     id: "",
     gmail: "",
   });
@@ -65,7 +65,7 @@ const ResetPage = () => {
           } else if (e === "No user with this gmail Exists") {
             setError(e);
           } else {
-            setDet({ id: e.id, gmail: e.gmail });
+            setDet({ id: e.id, gmail: e.email });
             const otpGen = Math.floor(Math.random() * 900000) + 100000;
             axios
               .post("/api/sendMail", {

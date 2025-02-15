@@ -87,8 +87,8 @@ type Props = {
   type: string;
   // direction: string;
   name: string;
-  gmail: string;
-  phone: string;
+  gmail: string | null;
+  // phone: string;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   property: string;
 };
@@ -102,7 +102,7 @@ const TrapPlot = ({
   // direction,
   name,
   gmail,
-  phone,
+  // phone,
   property,
   setLoading,
 }: Props) => {
@@ -287,7 +287,6 @@ const TrapPlot = ({
             prefill: {
               name: name,
               email: `${gmail}`,
-              contact: phone,
             },
             theme: {
               color: "#3399cc",

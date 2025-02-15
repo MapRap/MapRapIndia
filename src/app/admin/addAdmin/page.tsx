@@ -15,16 +15,17 @@ const EditAdminPage = () => {
   const [gmail, setGmail] = useState("");
   const [admins, setAdmins] = useState<
     {
-      id: string;
-      name: string;
-      gmail: string;
-      password: string;
-      otp: string | null;
-      isVerified: boolean | null;
-      otpExpiry: Date;
+      image: string | null;
+      password: string | null;
       type: string;
-      Phone: string;
-      paymentId: string;
+      name: string | null;
+      id: string;
+      email: string | null;
+      otp: string | null;
+      emailVerified: Date | null;
+      otpExpiry: Date | null;
+      Phone: string | null;
+      paymentId: string | null;
       country: boolean;
       stars: string | null;
     }[]
@@ -56,7 +57,7 @@ const EditAdminPage = () => {
                       className="flex gap-3 border-y-black border-2 items-center justify-center py-2 hover:bg-slate-100"
                     >
                       <div>{admin.name}</div>
-                      <div>{admin.gmail}</div>
+                      <div>{admin.email}</div>
                       <div>{admin.Phone}</div>
                       <Button
                         className="bg-red-600 hover:bg-red-700"

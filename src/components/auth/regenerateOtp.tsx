@@ -9,7 +9,7 @@ const RegenerateOtp = ({
   setFound,
   setSuccess,
 }: {
-  gmail: string;
+  gmail: string | null;
   id: string;
   setError: React.Dispatch<React.SetStateAction<string | undefined>>;
   setFound: React.Dispatch<React.SetStateAction<boolean>>;
@@ -53,7 +53,7 @@ const RegenerateOtp = ({
     <div
       className=" hover:underline text-black text-sm mt-2 cursor-pointer"
       onClick={() => {
-        regenerateOtp({ gmail });
+        if (gmail) regenerateOtp({ gmail });
       }}
     >
       Regenerate OTP

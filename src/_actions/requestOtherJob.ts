@@ -6,12 +6,12 @@ export const requestOtherJob = async ({
   id,
   userId,
   gmail,
-  phone,
-}: {
+}: // phone,
+{
   id: string;
   userId: string;
   gmail: string;
-  phone: string;
+  // phone: stsring;
 }) => {
   try {
     const unique = await prisma.otherRequests.findFirst({
@@ -20,12 +20,18 @@ export const requestOtherJob = async ({
     if (unique) {
       return "You have already made a request! Please wait for the request to get approved";
     }
+    const user = await prisma.user.findFirst({
+      where: { id: id },
+    });
+    if (!user) {
+      return "Error";
+    }
     const job = await prisma.otherRequests.create({
       data: {
         otherJobId: id,
         by: userId,
         gmail: gmail,
-        phone: phone,
+        phone: user.Phone!,
         attachment: "",
       },
     });

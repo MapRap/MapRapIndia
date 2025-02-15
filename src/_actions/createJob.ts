@@ -132,8 +132,8 @@ export const createJob = async (values: {
                 direction: values.direction,
                 publishable: false,
                 area: area,
-                phone: realUser.Phone,
-                name: realUser.name,
+                phone: realUser.Phone || "",
+                name: realUser.name!,
               },
             });
             if (map) {
@@ -160,8 +160,8 @@ export const createJob = async (values: {
                 type: values.property,
                 direction: values.direction,
                 publishable: false,
-                phone: realUser.Phone,
-                name: realUser.name,
+                phone: realUser.Phone || "",
+                name: realUser.name!,
               },
             });
             if (map) {
@@ -192,8 +192,8 @@ export const createJob = async (values: {
                 type: values.property,
                 direction: values.direction,
                 publishable: false,
-                phone: realUser.Phone,
-                name: realUser.name,
+                phone: realUser.Phone || "",
+                name: realUser.name!,
               },
             });
             if (map) {

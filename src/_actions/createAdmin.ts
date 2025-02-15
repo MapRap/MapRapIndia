@@ -16,13 +16,14 @@ export const createAdmin = async ({
   const otpExpiry = new Date();
   otpExpiry.setMinutes(otpExpiry.getMinutes() + 10);
   const password = await generateHashedPassword("MapRap@8899");
+  const emailVerified = new Date();
   const admin = await prisma.user.create({
     data: {
-      gmail: `${gmail}`,
+      email: `${gmail}`,
       password: password,
       name: `${name}`,
       otp: otp.toString(),
-      isVerified: true,
+      emailVerified: emailVerified,
       type: "admin",
       otpExpiry: otpExpiry,
       Phone: `${phone}`,
@@ -34,8 +35,8 @@ export const createAdmin = async ({
     const real = await prisma.realUsers.create({
       data: {
         id: admin.id,
-        name: admin.name,
-        gmail: admin.gmail,
+        name: admin.name!,
+        gmail: admin.email!,
         isReal: true,
         type: admin.type,
       },

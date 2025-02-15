@@ -8,13 +8,13 @@ import { useEffect, useRef, useState } from "react";
 //   PopoverTrigger,
 // } from "@/components/ui/popover";
 import Spline from "@splinetool/react-spline";
-import SignTri from "@/components/auth/signClientTrigger";
+// import SignTri from "@/components/auth/signClientTrigger";
 import { Button } from "@/components/ui/button";
 import CardHolder from "@/components/common/CardHolder";
 import Slide from "@/components/common/slide";
 import { Loading } from "@/components/common/Loading";
 // import { createAdmin } from "@/_actions/createAdmin";
-import { getId } from "@/_actions/getId";
+// import { getId } from "@/_actions/getId";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,12 +24,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { clearUserSession } from "@/_actions/logout";
+// import { clearUserSession } from "@/_actions/logout";
 // import PricingCard from "@/components/common/pricingCard";
 // import { getClientJobsWithSteps } from "@/_actions/bs";
 import { Loading2 } from "@/components/common/loader2";
 // import { useUploadThing } from "@/lib/uploadthing";
 import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
+// import { signOut } from "@/auth";
+import LogOutButton from "@/components/auth/logOutButton";
+// import { auth } from "@/auth";
+import { useSession } from "next-auth/react";
 // import { createSiteVisit } from "@/_actions/createSiteVisit";
 // import { getRealUsers } from "@/_actions/getRealUsers";
 
@@ -62,22 +66,23 @@ interface RazorpayInstance {
 }
 
 export default function Home() {
+  const session = useSession();
   // const cont = {};
   // const [receipt, setReceipt] = useState("");
-  const [user, setUser] = useState<
-    | {
-        id: string;
-        gmail: string;
-        name: string;
-        password: string;
-        otp: string | null;
-        isVerified: boolean | null;
-        otpExpiry: Date;
-        type: string;
-        Phone: string;
-      }
-    | undefined
-  >();
+  // const [user, setUser] = useState<
+  //   | {
+  //       id: string;
+  //       gmail: string;
+  //       name: string;
+  //       password: string;
+  //       otp: string | null;
+  //       isVerified: boolean | null;
+  //       otpExpiry: Date;
+  //       type: string;
+  //       Phone: string;
+  //     }
+  //   | undefined
+  // >();
   // const [job, setJob] = useState<{
   //   id: string;
   //   type: string;
@@ -120,25 +125,28 @@ export default function Home() {
     setTimeout(() => {
       setTim(true);
     }, 1000);
-    getId().then((e) => {
-      if (e) {
-        setLoading(false);
-        if (e !== "/unauthorized") {
-          setUser(e);
-          // getClientJobsWithSteps().then((j) => {
-          //   if (j) {
-          //     if (typeof j !== "string") {
-          //       setJob(j);
-          //     }
-          //   }
-          // });
-        }
-      }
-    });
+    if (session) {
+      setLoading(false);
+    }
+    //   getId().then((e) => {
+    //     if (e) {
+    //       setLoading(false);
+    //       if (e !== "/unauthorized") {
+    //         setUser(e);
+    //         // getClientJobsWithSteps().then((j) => {
+    //         //   if (j) {
+    //         //     if (typeof j !== "string") {
+    //         //       setJob(j);
+    //         //     }
+    //         //   }
+    //         // });
+    //       }
+    //     }
+    //   });
   }, []);
-  const scrollToSection1 = () => {
-    section1Ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToSection1 = () => {
+  //   section1Ref.current?.scrollIntoView({ behavior: "smooth" });
+  // };
   const scrollToSection2 = () => {
     section2Ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -359,7 +367,7 @@ export default function Home() {
       {/* <div className="absolute z-[-10]">
         <img src="../yel4.webp" alt="" className="h-[400vh]" />
       </div> */}
-      <section className="top-0 left-0 z-[1000] shadow-[#c7c3c3] shadow-md sticky bg-[url(https://utfs.io/f/GH57qH88dIR103p7T3PFZxh3y25JpRuUtmg0Yn4HXWMl8IrG)]">
+      <section className="top-0 left-0 w-screen z-[1000] shadow-[#c7c3c3] shadow-md sticky bg-[url(https://utfs.io/f/GH57qH88dIR103p7T3PFZxh3y25JpRuUtmg0Yn4HXWMl8IrG)]">
         <section className=" mt-0 flex flex-wrap justify-between items-center z-100 w-[90vw] p-2">
           <div className="">
             <img
@@ -370,51 +378,8 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-wrap w-[60vw] z-40 md:gap-10 justify-between text-white">
-            {/* <div className="text-md hover:underline cursor-pointer p-0 m-0 flex justify-center items-center">
-              <div>
-                <Popover>
-                  <PopoverTrigger
-                    asChild
-                    className="flex items-center justify-center p-0"
-                  >
-                    <div className="bg-[#273392] text-white hover:underline hover:text-orange-500 px-2 py-2 text-xs md:text-base rounded-xl">
-                      <ChevronDownIcon />
-                      Want a site visit
-                    </div>
-                  </PopoverTrigger>
-                  <PopoverContent className="flex flex-col p-0 mt-4">
-              
-                    <DropdownMenu>
-                      <DropdownMenuTrigger className="bg-gray-50 hover:bg-gray-100">
-                        Trikuta Nagar-Jammu
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuGroup>
-                          <DropdownMenuItem
-                            className="cursor-pointer border-b"
-                            onClick={() => {
-                              handlePayment({ price: 2000 });
-                            }}
-                          >
-                            Upto 5 km : Rs 1200
-                          </DropdownMenuItem>
-                          <DropdownMenuItem
-                            className="cursor-pointer border-b"
-                            onClick={() => {
-                              handlePayment({ price: 2500 });
-                            }}
-                          >
-                            Upto 10 km : Rs 1800
-                          </DropdownMenuItem>
-                        </DropdownMenuGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    </PopoverContent>
-                </Popover>
-              </div>
-            </div> */}
             <button
-              className="md:text-base bg-[#273392] text-white hover:text-orange-500 text-xs hover:underline cursor-pointer p-2 m-2 px-2 py-0 rounded-xl"
+              className="md:text-base bg-[#273392] text-white hover:text-orange-500 text-xs hover:underline cursor-pointer p-2 m-2 px-2 py-0 rounded-md md:rounded-xl"
               onClick={() => {
                 scrollToSection2();
               }}
@@ -423,7 +388,7 @@ export default function Home() {
             </button>
 
             <button
-              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-xl"
+              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-md md:rounded-xl"
               onClick={() => {
                 scrollToSection6();
               }}
@@ -431,7 +396,7 @@ export default function Home() {
               Past Projects
             </button>
             <button
-              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-xl"
+              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-md md:rounded-xl"
               onClick={() => {
                 window.location.replace("/plans");
               }}
@@ -439,47 +404,50 @@ export default function Home() {
               Interior
             </button>
             <button
-              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-xl"
+              className="p-2 m-2 text-xs md:text-base hover:underline hover:text-orange-500 cursor-pointer bg-[#273392] text-white px-2 py-1 rounded-md md:rounded-xl"
               onClick={() => {
                 window.location.replace("/jobs");
               }}
             >
               Jobs
             </button>
-            {user ? (
+
+            {session.data?.user && session.data?.user.name ? (
               <div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <div className="h-10 w-10 rounded-full flex items-center justify-center text-xl bg-purple-700 text-white hover:cursor-pointer">
-                      {user.name[0]}
+                      {session.data.user.name[0]}
                     </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="mt-4">
-                    <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+                    <DropdownMenuLabel>
+                      {session.data.user.name}
+                    </DropdownMenuLabel>
 
-                    {user.type === "admin" && (
+                    {session.data.user.type === "admin" && (
                       <DropdownMenuLabel className="font-normal">
                         Admin Account
                       </DropdownMenuLabel>
                     )}
-                    {user.type === "student" && (
+                    {session.data.user.type === "student" && (
                       <DropdownMenuLabel className="font-normal">
                         Student Account
                       </DropdownMenuLabel>
                     )}
-                    {user.type === "customer" && (
+                    {session.data.user.type === "customer" && (
                       <DropdownMenuLabel className="font-normal">
                         Client Account
                       </DropdownMenuLabel>
                     )}
-                    {user.type === "professional" && (
+                    {session.data.user.type === "professional" && (
                       <DropdownMenuLabel className="font-normal">
                         Professional Account
                       </DropdownMenuLabel>
                     )}
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                      {user.type === "customer" && (
+                      {session.data.user.type === "customer" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/projects");
@@ -489,7 +457,7 @@ export default function Home() {
                           My Projects
                         </DropdownMenuItem>
                       )}
-                      {user.type === "student" && (
+                      {session.data.user.type === "student" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/assigned");
@@ -499,7 +467,7 @@ export default function Home() {
                           My Workshop
                         </DropdownMenuItem>
                       )}
-                      {user.type === "student" && (
+                      {session.data.user.type === "student" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/assigned");
@@ -509,7 +477,7 @@ export default function Home() {
                           My Workshop
                         </DropdownMenuItem>
                       )}
-                      {user.type === "admin" && (
+                      {session.data.user.type === "admin" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/admin");
@@ -519,7 +487,7 @@ export default function Home() {
                           Admin Page
                         </DropdownMenuItem>
                       )}
-                      {user.type === "owner" && (
+                      {session.data.user.type === "owner" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/admin");
@@ -530,19 +498,8 @@ export default function Home() {
                         </DropdownMenuItem>
                       )}
 
-                      <DropdownMenuItem
-                        className="text-red-600 cursor-pointer"
-                        onClick={() => {
-                          clearUserSession().then((e) => {
-                            if (e) {
-                              if (e === "success") {
-                                window.location.reload();
-                              }
-                            }
-                          });
-                        }}
-                      >
-                        Logout
+                      <DropdownMenuItem className="text-red-600 cursor-pointer">
+                        <LogOutButton />
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                   </DropdownMenuContent>
@@ -550,9 +507,9 @@ export default function Home() {
               </div>
             ) : (
               <button
-                className="p-2 m-2 md:text-base hover:text-orange-500 text-xs hover:underline cursor-pointer bg-[#273392] text-white px-2 py-0 rounded-xl"
+                className="p-2 m-2 md:text-base hover:text-orange-500 text-xs hover:underline cursor-pointer bg-[#273392] text-white px-2 py-0 rounded-md md:rounded-xl"
                 onClick={() => {
-                  scrollToSection1();
+                  window.location.replace("/auth/login");
                 }}
               >
                 Login
@@ -611,7 +568,7 @@ export default function Home() {
             {/* <Button
               className="text-md border rounded-lg text-white font-medium p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
               onClick={() => {
-                createOwner();
+                createAdmin();
               }}
             >
               Crete Admin
@@ -623,7 +580,7 @@ export default function Home() {
         className="flex gap-36 md:m-20 items-center justify-center mx-16 lg:mt-[40vw]"
         ref={section6Ref}
       >
-        <div>
+        <div className="flex flex-col items-center">
           <div className="scrollAniRight">
             <Slide />
           </div>
@@ -636,12 +593,12 @@ export default function Home() {
       <section ref={section5Ref} className="">
         <CardHolder />
       </section>
-      <section>
+      <section className="flex items-center flex-col">
         <div
-          className="flex-wrap flex gap-10 lg:gap-32 w-[95vw] items-center justify-center mt-10"
+          className="flex-wrap bg-gray-50 shadow-xl p-2 md:p-0 rounded-lg md:border-none flex gap-10 lg:gap-32 w-[95vw] items-center justify-center mt-10"
           ref={section1Ref}
         >
-          <div className="scrollAniLeft lg:w-[45vw]">
+          <div className="scrollAniLeft lg:w-[45vw] text-center">
             <h1 className="text-2xl lg:text-4xl font-bold w-full text-center">
               Streamlined Project Planning from the Comfort of Your Home
             </h1>
@@ -651,7 +608,7 @@ export default function Home() {
               rest!
             </div>
             {/* </div> */}
-            <div className="text-center m-4">{!user && <SignTri />}</div>
+            {/* <div className="text-center m-4">{!user && <SignTri />}</div> */}
           </div>
           <div className="flex items-center w-[50vw] lg:w-[25vw] justify-center">
             <img
@@ -661,7 +618,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="w-[95vw] flex flex-wrap-reverse gap-10 lg:gap-36 items-center justify-center lg:mt-20">
+        <div className="w-[95vw] mt-4 md:mt-0 bg-gray-50 shadow-xl p-2 md:p-0 rounded-lg md:border-none flex flex-wrap-reverse gap-10 lg:gap-36 items-center justify-center lg:mt-20">
           <div className="flex justify-center lg:m-4 w-[50vw] lg:w-[30vw]">
             <img
               src="../img1.webp"
@@ -669,18 +626,18 @@ export default function Home() {
               className="scrollAniLeft lg:w-full m-2 md:m-0 rounded-xl"
             />
           </div>
-          <div className="scrollAniRight lg:w-[50vw]">
+          <div className="scrollAniRight lg:w-[50vw] ">
             <h1 className=" text-2xl lg:text-4xl font-bold w-full text-center">
               Empowering the Next Generation of Architects.
             </h1>
-            <div className="text-gray-600 px-20 lg:px-0 text-lg lg:text-2xl font-light mt-2 text-center">
+            <div className=" px-20 lg:px-0 text-lg lg:text-2xl font-light mt-2 text-center">
               At MyNaksha, we help college students gain practical skills and
               real-world experience through hands-on projects, preparing them
               for successful careers in the industry.
             </div>
           </div>
         </div>
-        <div className=" w-[95vw] flex flex-wrap gap-10 lg:gap-36 items-center justify-center lg:mt-20 mt-8">
+        <div className=" bg-gray-50 shadow-xl mb-2 p-2 md:p-0 rounded-lg mt-4 w-[95vw] flex flex-wrap gap-10 lg:gap-36 items-center justify-center lg:mt-20 md:mt-8">
           <div className="scrollAniRight lg:w-[50vw]">
             <h1 className="text-2xl lg:text-4xl font-bold w-full text-center">
               Easier Client Engagement, Anytime, Anywhere

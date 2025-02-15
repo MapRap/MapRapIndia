@@ -8,7 +8,7 @@ export const createInterioJob = async ({
   userId,
   price,
   imageUrl,
-  phone,
+  // phone,
   name,
   plan,
   property,
@@ -17,7 +17,7 @@ export const createInterioJob = async ({
   userId: string;
   price: string;
   imageUrl: string;
-  phone: string;
+  // phone: string;
   name: string;
   plan: string;
   property: string;
@@ -32,7 +32,7 @@ export const createInterioJob = async ({
         price: price,
         imageUrl: imageUrl,
         publishable: false,
-        phone: phone,
+        phone: "",
         name: name,
         plan: plan,
         property: property,

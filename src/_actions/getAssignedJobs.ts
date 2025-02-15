@@ -1,20 +1,19 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { getId } from "./getId";
+// import { getId } from "./getId";
+import { auth } from "@/auth";
 
 export const getAssignedJobs = async () => {
   try {
-    const user = await getId();
-    if (!user) {
-      return "Request failed";
+    const session = await auth();
+    if (!session?.user) {
+      return "Request failed! Login Again";
     }
-    if (user === "/unauthorized") {
-      return "Login Again!";
-    }
+
     const jobs = await prisma.maps.findMany({
       where: {
-        assignedTo: user.id,
+        assignedTo: session.user.id,
       },
       include: {
         steps: true,

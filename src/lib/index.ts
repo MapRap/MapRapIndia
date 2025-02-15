@@ -25,12 +25,13 @@ export const RegisterSchema = z.object({
   name: z.string().min(1, {
     message: "Name is required",
   }),
-  otp: z.number().min(6, {
-    message: "Minimum 6 digits required",
-  }),
-  type: z.string().min(1, {
-    message: "type is required",
-  }),
+  country: z.boolean(),
+  // otp: z.number().min(6, {
+  //   message: "Minimum 6 digits required",
+  // }),
+  // type: z.string().min(1, {
+  //   message: "type is required",
+  // }),
 });
 
 export const OtpVerifySchema = z.object({
