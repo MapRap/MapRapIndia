@@ -4,6 +4,7 @@ export const LoginSchema = z.object({
     message: "Gmail is required",
   }),
   password: z.string().min(1, { message: "Password is required" }),
+  // callbackUrl: z.string(),
 });
 
 export const ResetSchema1 = z.object({

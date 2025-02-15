@@ -34,6 +34,7 @@ import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
 import LogOutButton from "@/components/auth/logOutButton";
 // import { auth } from "@/auth";
 import { useSession } from "next-auth/react";
+// import { createOwner } from "@/_actions/createOwner";
 // import { createSiteVisit } from "@/_actions/createSiteVisit";
 // import { getRealUsers } from "@/_actions/getRealUsers";
 
@@ -568,7 +569,7 @@ export default function Home() {
             {/* <Button
               className="text-md border rounded-lg text-white font-medium p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
               onClick={() => {
-                createAdmin();
+                createOwner();
               }}
             >
               Crete Admin

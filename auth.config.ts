@@ -13,7 +13,12 @@ export default {
     }),
     Credentials({
       async authorize(credentials) {
-        const validateFields = LoginSchema.safeParse(credentials);
+        // const { mail, pass } = credentials;
+        const validateFields = LoginSchema.safeParse({
+          gmail: credentials.email,
+          password: credentials.password,
+        });
+        console.log("sre", validateFields.error);
         if (!validateFields.success) return null;
         if (validateFields.success) {
           const { gmail, password } = validateFields.data;

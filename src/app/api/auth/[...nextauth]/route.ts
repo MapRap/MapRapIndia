@@ -1,5 +1,5 @@
 // import { handlers } from "@/auth";
-export const runtime = "nodejs";
+// export const runtime = "nodejs";
 
 import { handlers } from "@/auth";
 

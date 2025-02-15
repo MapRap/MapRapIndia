@@ -192,12 +192,12 @@ const AddPlanPage = () => {
           {/* </CardDescription> */}
         </CardHeader>
         {/* <Button
-        onClick={() => {
-          addAreaPlans();
+          onClick={() => {
+            addAreaPlans();
           }}
-          >
-        Add Plans
-      </Button> */}
+        >
+          Add Plans
+        </Button> */}
       </Card>
       <Tabs defaultValue="residential" className="text-center m-0">
         <TabsList className="text-black bg-slate-300">
