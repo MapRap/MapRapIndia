@@ -17,46 +17,47 @@ const HamburgerContent: React.FC<ChildComponentProps> = ({
   return (
     <div className="absolute z-[10000] bg-slate-100 shadow-xl text-gray-800 w-full left-0 pb-2">
       <ul className="flex flex-col items-center w-full">
-        <li
+        {/* <li
           className="border-b-2 w-full hover:bg-white cursor-pointer flex justify-center text-slate-600 py-2"
           onClick={() => {
             window.location.replace("/plans");
           }}
         >
           Interior
-        </li>
-        <li
-          className="border-b-2 w-full flex hover:bg-white cursor-pointer justify-center text-slate-600 py-2"
-          onClick={() => {
-            scrollToSection1();
-          }}
-        >
-          Past Projects
-        </li>
+        </li> */}
         <li className="border-b-2 w-full hover:bg-white cursor-pointer flex justify-center text-slate-600 py-2">
           <DropdownMenu>
-            <DropdownMenuTrigger>Services</DropdownMenuTrigger>
-            <DropdownMenuContent className="mt-20">
-              <DropdownMenuLabel>Layout Plan</DropdownMenuLabel>
-              <DropdownMenuLabel>
-                Working Drawings Structure Drawings
+            <DropdownMenuTrigger className="w-full">
+              Services
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mt-32">
+              <DropdownMenuLabel
+                className="cursor-pointer hover:bg-gray-100"
+                onClick={() => {
+                  window.location.replace("/list");
+                }}
+              >
+                Select your house map
               </DropdownMenuLabel>
-              <DropdownMenuLabel>3D - Views </DropdownMenuLabel>
-              <DropdownMenuLabel>2D - Elevations</DropdownMenuLabel>
-              <DropdownMenuLabel>Plumbing Drawings</DropdownMenuLabel>
-              <DropdownMenuLabel>Electrical Drawings </DropdownMenuLabel>
-              <DropdownMenuLabel>Electrical Drawings </DropdownMenuLabel>
+              <DropdownMenuLabel
+                className="cursor-pointer hover:bg-gray-100"
+                onClick={() => {
+                  window.location.replace("/plans");
+                }}
+              >
+                Interior Design
+              </DropdownMenuLabel>
             </DropdownMenuContent>
           </DropdownMenu>
         </li>
-        <li
+        {/* <li
           className="flex w-full border-b-2 hover:bg-white cursor-pointer justify-center text-slate-600 py-2"
           onClick={() => {
             window.location.replace("/auth/login");
           }}
         >
           Login
-        </li>
+        </li> */}
         <li
           className="flex w-full hover:bg-white cursor-pointer justify-center text-slate-600 py-2"
           onClick={() => {
@@ -64,6 +65,14 @@ const HamburgerContent: React.FC<ChildComponentProps> = ({
           }}
         >
           Jobs
+        </li>
+        <li
+          className="border-t-2 w-full flex hover:bg-white cursor-pointer justify-center text-slate-600 py-2"
+          onClick={() => {
+            scrollToSection1();
+          }}
+        >
+          Past Projects
         </li>
       </ul>
     </div>

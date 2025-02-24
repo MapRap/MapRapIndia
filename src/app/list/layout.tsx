@@ -1,13 +1,13 @@
 "use client";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="m-0 p-0 bg-[url('/yel5.jpg')] h-fit min-h-screen">
+    <div className="m-0 p-0 bg-[url('/yel5.jpg')] bg-cover h-fit min-h-screen">
       <div className="flex">
         <img
-          src={`../logo.png`}
+          src={`/logo.png`}
           alt="logo"
           width={80}
-          className="rounded-lg cursor-pointers top-2 z-[10] left-2"
+          className="rounded-lg cursor-pointers w-20"
           onClick={() => {
             window.location.replace("/");
           }}

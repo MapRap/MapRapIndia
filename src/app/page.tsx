@@ -158,15 +158,7 @@ export default function Home() {
               className="rounded-lg cursor-pointer"
             />
           </div>
-          <div className="flex w-[60vw] z-40 md:gap-10 justify-between items-center text-white">
-            <button
-              className="md:text-base md:w-[10vw] bg-[#273392] w-[20vw] text-white hover:text-orange-500 text-[10px] hover:underline cursor-pointer p-2 m-2 px-2 py-1 rounded-md md:rounded-xl"
-              onClick={() => {
-                scrollToSection2();
-              }}
-            >
-              Privacy Policy
-            </button>
+          <div className="flex w-[60vw] z-40 md:gap-10 justify-end items-center text-white">
             {/* <button
               className="p-2 m-2 flex-1 text-[10px] md:text-base hover:underline hover:text-orange-500 md:w-min cursor-pointer bg-[#273392] text-white px-2 w-[20vw] py-3 md:py-1 rounded-md md:rounded-xl"
               onClick={() => {
@@ -176,14 +168,24 @@ export default function Home() {
               Jobs
             </button> */}
             <button
-              className="p-2 m-2 text-xs  md:text-base hover:underline hover:text-orange-500 md:w-min cursor-pointer bg-[#273392] text-white px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
+              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer bg-[#273392] text-white px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
               onClick={() => {
                 setMenu(!menu);
-                scrollToSection6();
+                // scrollToSection6();
               }}
             >
-              <HamburgerMenuIcon />
+              <HamburgerMenuIcon className="w-5 h-3 md:w-10 md:h-7" />
             </button>
+            {!session.data?.user && (
+              <button
+                className="md:text-base w-min bg-[#273392] text-white hover:text-orange-500 text-[10px] hover:underline cursor-pointer p-4 m-2 px-2 py-1 rounded- md:rounded-xl"
+                onClick={() => {
+                  window.location.replace("/auth/login");
+                }}
+              >
+                Login
+              </button>
+            )}
 
             {session.data?.user && session.data?.user.name && (
               <div>
@@ -282,7 +284,7 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <div ref={section6Ref}>
+      <div ref={section6Ref} className="sticky z-[1000] w-full top-20 right-0">
         {menu && <HamburgerContent scrollToSection1={scrollToSection1} />}
       </div>
 
@@ -322,7 +324,7 @@ export default function Home() {
             <Button
               className="text-md border rounded-lg text-white font-medium hover:bg-blue-800 p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
               onClick={() => {
-                scrollToSection5();
+                window.location.replace("/list");
               }}
             >
               Get Started
@@ -345,7 +347,7 @@ export default function Home() {
               <FcCheckmark />
             </div>
             <div className="text-center w-[70vw] lg:w-[20vw]">
-              Service delivered within 5 days{" "}
+              Service delivered within 5 to 10 days{" "}
             </div>
           </div>
         </div>

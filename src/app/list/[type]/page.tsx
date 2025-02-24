@@ -49,7 +49,7 @@ export default function CalculatePage(props: { params: tParams }) {
   console.log(count);
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [plot, setPlot] = useState("");
+  const [plot, setPlot] = useState("plot1");
   return loading ? (
     <div className="w-screen h-screen flex items-center justify-center">
       <Loading2 loading={loading} />
@@ -102,7 +102,7 @@ export default function CalculatePage(props: { params: tParams }) {
               </CardContent>
             </Card>
             <Card
-              className={`cursor-pointer h-[70vh] hover:border-slate-800 h-fit ${
+              className={`cursor-pointer hover:border-slate-800 h-fit ${
                 plot === "plot3" ? "border-slate-800 border-[4px]" : ""
               }`}
               onClick={() => {

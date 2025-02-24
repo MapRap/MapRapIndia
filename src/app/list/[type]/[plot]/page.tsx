@@ -777,7 +777,11 @@ export default function Calculated(props: { params: tParams }) {
                           name="drawing"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Upload Plot Reference Image</FormLabel>
+                              <FormLabel className="">
+                                Share your plot's reference image, <br />
+                                dimensions, or any helpful details to ensure
+                                accurate measurements and prefect design
+                              </FormLabel>
                               <FormControl>
                                 <FileUpload
                                   endPoint="imageUploader"

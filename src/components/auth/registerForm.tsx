@@ -265,7 +265,7 @@ const RegisterForm = () => {
                           </FormControl>
                           <FormLabel>
                             {" "}
-                            Do you live in India {`(Yes/No)`}
+                            Do you live Outside India {`(Yes/No)`}
                           </FormLabel>
                           <FormMessage />
                         </FormItem>

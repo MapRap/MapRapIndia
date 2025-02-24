@@ -88,7 +88,7 @@ const List = () => {
             //     }
             //   }
             // });
-            if (i.country !== true) {
+            if (i.country !== false) {
               // flushSync(() => {
               setCurrency("USD");
               // });

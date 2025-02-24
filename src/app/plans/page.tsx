@@ -70,7 +70,7 @@ const PlanPage = () => {
       <Loading2 loading={loading} />
     </div>
   ) : (
-    <div className="bg-[url(https://utfs.io/f/GH57qH88dIR16XKLQ9jxgPGhBNQryDlCL3wSsbFTdA1ni47v)] h-full min-h-screen">
+    <div className="s h-full min-h-screen">
       <div className="">
         <div className="border-blue-600 bg-[#474747] opacity-65 order-4 rounded-xl">
           <div className="w-full text-white underline text-center text-3xl font-bold">

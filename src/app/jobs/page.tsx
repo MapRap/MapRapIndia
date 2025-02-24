@@ -122,7 +122,8 @@ const JobsPage = () => {
               />
               <div>
                 <div className="text-base md:text-xl">
-                  Join a Real-World House Architecture Project
+                  Maprap isn't just ours—it truly belongs to our online
+                  employees.
                 </div>
                 <div className="text-[7px] lg:text-[15px] font-light md:ml-5 w-[50vw] md:text-sm leading-normal mr-2">
                   You will be ratead out of 5 star after every job. There are

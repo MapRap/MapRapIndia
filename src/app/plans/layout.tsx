@@ -1,13 +1,13 @@
 "use client";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="m-0 p-0 ">
+    <div className="m-0 bg-cover p-0 bg-[url(https://utfs.io/f/GH57qH88dIR16XKLQ9jxgPGhBNQryDlCL3wSsbFTdA1ni47v)]">
       {" "}
       <img
         src={`../logo.png`}
         alt="logo"
         width={80}
-        className="rounded-lg cursor-pointer absolute top-4 left-2 z-50"
+        className="rounded-lg cursor-pointer top-4 left-2 z-50"
         onClick={() => {
           window.location.replace("/");
         }}

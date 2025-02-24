@@ -214,7 +214,7 @@ const SiteVisitComp = ({}: Props) => {
           asChild
           className="flex items-center justify-center p-0 cursor-pointer"
         >
-          <div className="text-black hover:underline hover:text-gray-500 px-2 py-2 text-base md:text-base rounded-xla">
+          <div className="text-black hover:underline hover:text-gray-500 px-2 py-2 text-xl font-semibold md:text-2xl rounded-xla">
             <ChevronDownIcon />
             Want a site visit
           </div>
