@@ -131,16 +131,16 @@ export default function Home() {
   const scrollToSection1 = () => {
     section1Ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToSection2 = () => {
-    section2Ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToSection2 = () => {
+  //   section2Ref.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
-  const scrollToSection5 = () => {
-    section5Ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToSection6 = () => {
-    section6Ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToSection5 = () => {
+  //   section5Ref.current?.scrollIntoView({ behavior: "smooth" });
+  // };
+  // const scrollToSection6 = () => {
+  //   section6Ref.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return loading ? (
     <div className="h-screen w-screen flex items-center justify-center">

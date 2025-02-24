@@ -643,7 +643,7 @@ const TrapPlot = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      Share your plot's reference image, dimensions, or any
+                      Share your plot{`'`}s reference image, dimensions, or any
                       helpful details to ensure accurate measurements and a
                       perfect design
                     </FormLabel>

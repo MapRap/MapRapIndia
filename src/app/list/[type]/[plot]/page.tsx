@@ -778,7 +778,7 @@ export default function Calculated(props: { params: tParams }) {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="">
-                                Share your plot's reference image, <br />
+                                Share your plot{`'`}s reference image, <br />
                                 dimensions, or any helpful details to ensure
                                 accurate measurements and prefect design
                               </FormLabel>

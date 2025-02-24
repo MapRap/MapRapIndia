@@ -122,7 +122,7 @@ const JobsPage = () => {
               />
               <div>
                 <div className="text-base md:text-xl">
-                  Maprap isn't just ours—it truly belongs to our online
+                  Maprap isn{`'`}t just ours-it truly belongs to our online
                   employees.
                 </div>
                 <div className="text-[7px] lg:text-[15px] font-light md:ml-5 w-[50vw] md:text-sm leading-normal mr-2">

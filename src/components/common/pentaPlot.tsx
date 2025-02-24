@@ -720,7 +720,7 @@ const PentaPlot = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="w-3/4">
-                      Share your plot's reference image, dimensions, or any
+                      Share your plot{`'`}s reference image, dimensions, or any
                       helpful details to ensure accurate measurements and a
                       perfect design
                     </FormLabel>
