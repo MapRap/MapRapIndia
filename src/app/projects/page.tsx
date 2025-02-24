@@ -548,7 +548,11 @@ const ProjectPage = () => {
                               />
                             </a>
                           </div>
-                          <div className="text-center">{`${job.floors} Floored ${job.type} Building`}</div>
+                          <div className="text-center">
+                            {job.floors === 0
+                              ? "Custom Job"
+                              : `${job.floors} Floored ${job.type} Building`}
+                          </div>
                           {/* </div> */}
                         </CardHeader>
                       </CardTitle>
@@ -568,12 +572,27 @@ const ProjectPage = () => {
                             <div className="border border-black mx-2 rounded-lg p-2">
                               D : {`${job.D}`}
                             </div>
-                            <div className="border border-black mx-2 rounded-lg p-2">
-                              D1 : {`${job.D1}`}
-                            </div>
-                            <div className="border border-black mx-2 rounded-lg p-2">
-                              D2 : {`${job.D2}`}
-                            </div>
+                            {job.E && job.E !== 0 && <div>E:{`${job.E}`}</div>}
+                            {job.D1 && job.D1 !== 0 && (
+                              <div className="border border-black mx-2 rounded-lg p-2">
+                                D1 : {`${job.D1}`}
+                              </div>
+                            )}
+                            {job.D2 && job.D2 !== 0 && (
+                              <div className="border border-black mx-2 rounded-lg p-2">
+                                D2 : {`${job.D2}`}
+                              </div>
+                            )}
+                            {job.D3 && job.D3 !== 0 && (
+                              <div className="border border-black mx-2 rounded-lg p-2">
+                                D3 : {`${job.D3}`}
+                              </div>
+                            )}
+                            {job.D4 && job.D4 !== 0 && (
+                              <div className="border border-black mx-2 rounded-lg p-2">
+                                D4 : {`${job.D4}`}
+                              </div>
+                            )}
                           </div>
                           <div className="pl-3">
                             Direction : {`${job.direction}`}
@@ -581,9 +600,11 @@ const ProjectPage = () => {
                           <div className="pl-3">
                             Specifications: {`${job.specifications}`}
                           </div>
-                          <div className="pl-3">
-                            Total price: Rs. {job.price}
-                          </div>
+                          {job.price !== 0 && (
+                            <div className="pl-3">
+                              Total price: Rs. {job.price}
+                            </div>
+                          )}
                           {/* {job.completed && ( */}
                           <div className="pl-3">
                             Completed : {`${job.completed}`}
@@ -595,14 +616,16 @@ const ProjectPage = () => {
                               if (e.completed !== true) return e.currentStep;
                             })}{" "}
                           </div>
-                          <a
-                            href={`${job.imageUrl}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline flex text-black font-bold"
-                          >
-                            View Attachment <File />
-                          </a>
+                          {job.imageUrl && (
+                            <a
+                              href={`${job.imageUrl}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline flex text-black font-bold"
+                            >
+                              View Attachment <File />
+                            </a>
+                          )}
                           <div className="overflow-y-scroll md:w-[30vw] w-[60vw] h-[30vh] ">
                             Details:
                             {job.steps.map((step) => (

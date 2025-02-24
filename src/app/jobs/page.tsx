@@ -113,7 +113,7 @@ const JobsPage = () => {
         // <div></div>
         //bg-[#e7eafb]
         <div className="bg-slate-300 h-full min-h-screen py-4">
-          <div className="text-3xl text-center font-bold">
+          <div className="text-3xl text-center font-bold mt-10">
             <div className="flex items-center justify-center bg-[#9dc85e] gap-3 lg:gap-2 mx-4 h-[30vh] rounded-3xl">
               <img
                 src="../cartoon4.webp"
@@ -152,7 +152,20 @@ const JobsPage = () => {
           <div className="flex flex-col items-center">
             {jobs.length === 0 ? (
               <div className="flex items-center justify-center h-screen text-3xl text-black">
-                <div className=" p-4">Coming soon...</div>
+                <div className=" p-4">
+                  {!session.data?.user ? (
+                    <div
+                      className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-2 text-base"
+                      onClick={() => {
+                        window.location.replace("/auth/login");
+                      }}
+                    >
+                      Please Login
+                    </div>
+                  ) : (
+                    "No Jobs Yet..."
+                  )}
+                </div>
               </div>
             ) : (
               jobs.map((job) => (
@@ -163,7 +176,11 @@ const JobsPage = () => {
                   <CardTitle className="my-0 py-0">
                     <CardHeader className="text-base text-green-600 sm:text-lg lg:text-xl my-0 pb-0 border-b-4 text-center">
                       {/* <div className="flex"> */}
-                      <div>{`${job.floors} Floored ${job.type} Building`}</div>
+                      <div>
+                        {job.floors === 0
+                          ? "Custom Job"
+                          : `${job.floors} Floored ${job.type} Building`}
+                      </div>
                       {/* </div> */}
                     </CardHeader>
                   </CardTitle>
@@ -220,7 +237,7 @@ const JobsPage = () => {
                           Task : {`${job.expected}`}
                         </div>
                       )}
-                      {job.price && (
+                      {job.studentPrice && (
                         <div className="pl-3 text-[12px] text-gray-700 md:text-base">
                           Price : Rs {`${job.studentPrice}`}
                         </div>
@@ -286,14 +303,16 @@ const JobsPage = () => {
                       height={200}
                       className="m-2"
                     /> */}
-                      <a
-                        href={`${job.imageUrl}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline flex text-black font-bold text-[7px] sm:text-base lg:text-xl"
-                      >
-                        View Attachment <File />
-                      </a>
+                      {job.imageUrl && (
+                        <a
+                          href={`${job.imageUrl}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline flex text-black font-bold text-[7px] sm:text-base lg:text-xl"
+                        >
+                          View Attachment <File />
+                        </a>
+                      )}
                       <a
                         href={`../${job.plot}.png`}
                         target="_blank"

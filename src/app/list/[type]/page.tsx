@@ -27,7 +27,7 @@ export default function CalculatePage(props: { params: tParams }) {
     getClientJobsWithSteps().then((e) => {
       if (e) {
         if (e === "Please login" || e === "Wrong token, please login again!") {
-          window.location.replace("/unauthorized");
+          window.location.replace("/auth/login");
         }
         if (e !== "Please login" && e !== "Wrong token, please login again!") {
           setLoading(false);

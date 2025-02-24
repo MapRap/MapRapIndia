@@ -18,9 +18,10 @@ export default {
           gmail: credentials.email,
           password: credentials.password,
         });
-        console.log("sre", validateFields.error);
+        // console.log("sre", validateFields.error);
         if (!validateFields.success) return null;
         if (validateFields.success) {
+          console.log("gg");
           const { gmail, password } = validateFields.data;
           const user = await getUseByEmail(gmail);
           if (!user || !user.password) return null;

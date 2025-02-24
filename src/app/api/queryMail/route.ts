@@ -9,7 +9,8 @@ export async function POST(req: NextRequest) {
   const to = re.to;
   const subject = re.subject;
   const text = re.text;
-  const otp = re.otp;
+  const requirement = re.requirement;
+  //   const otp = re.otp;
   console.log(process.env.GMAIL_PASS);
   // Create a Nodemailer transporter object using Gmail's SMTP server
   const transporter = nodemailer.createTransport({
@@ -24,17 +25,16 @@ export async function POST(req: NextRequest) {
     // Send the email
     await transporter.sendMail({
       from: process.env.GMAIL_USER, // Sender address (your Gmail address)
-      to: to, // Receiver address
+      to: process.env.GMAIL_USER, // Receiver address
       subject: subject, // Email subject
       text: text, // Email body
       html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-        <h2 style="color: #333; text-align: center;">MapRap OTP Verification</h2>
-        <p style="font-size: 16px; color: #555;">Hi</p>
-        <p style="font-size: 16px; color: #555;">To complete your login or verify your email ${to} for MapRap, please use the following OTP:</p>
+        <h2 style="color: #333; text-align: center;">Query</h2>
+        <p style="font-size: 16px; color: #555;">you have query from email ${to}</p>
         <div style="text-align: center; margin: 20px 0;">
-        <span style="font-size: 24px; font-weight: bold; color: #2d3748; padding: 10px 20px; background-color: #f0f0f0; border-radius: 5px; display: inline-block;">${otp}</span>
+        <span style="font-size: 24px; font-weight: bold; color: #2d3748; padding: 10px 20px; background-color: #f0f0f0; border-radius: 5px; display: inline-block;">${requirement}</span>
         </div>
-        <p style="font-size: 16px; color: #555;">Please note, this OTP is valid for only 10 minutes. If you didn’t request this, please ignore this email or contact our support team immediately.</p>
+        <p style="font-size: 16px; color: #555;">${text}</p>
         <p style="font-size: 16px; color: #555;">Thank you,<br/>MapRap Team</p>
         <hr style="margin-top: 20px;"/>
         <p style="font-size: 12px; color: #888; text-align: center;">This is an automated email, please do not reply.</p>

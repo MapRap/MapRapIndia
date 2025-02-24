@@ -3,11 +3,11 @@
 import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
 import { FcGoogle } from "react-icons/fc";
-import { DEFAULT_LOGIN_REDIRECT } from "../../../route";
+// import { DEFAULT_LOGIN_REDIRECT } from "../../../route";
 
 export const Social = () => {
   const onClick = (provider: "google") => {
-    signIn(provider, { callBackUrl: DEFAULT_LOGIN_REDIRECT });
+    signIn(provider, { callBackUrl: "/list" });
   };
   return (
     <div className="flex items-center w-full gap-x-2">

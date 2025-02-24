@@ -1,18 +1,18 @@
 "use client";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="m-0 p-0 ">
+    <div className="m-0 p-0 bg-[url('/yel5.jpg')] h-fit min-h-screen">
       <div className="flex">
         <img
           src={`../logo.png`}
           alt="logo"
           width={80}
-          className="rounded-lg cursor-pointer absolute top-2 left-2"
+          className="rounded-lg cursor-pointers top-2 z-[10] left-2"
           onClick={() => {
             window.location.replace("/");
           }}
         />
-        <div className="hidden xl:block">
+        {/* <div className="hidden xl:block">
           <video
             src="../../bg-vid2b.mp4"
             autoPlay
@@ -27,7 +27,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             autoPlay
             muted
             loop
-            className="absolute z-[-10] w-[100vw]"
+            className="absolute hidden lg:block z-[-10] w-[100vw]"
           ></video>
         </div>
         <div className="md:hidden">
@@ -47,9 +47,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             autoPlay
             muted
             loop
-            className="absolute z-[-10] w-[100vw]"
+            className="absolute hidden md:block z-[-10] w-[100vw]"
           ></video>
-        </div>
+        </div> */}
       </div>
       <div className="bg-black absolute z-10 top-10 h-screen opacity-75"></div>
       {children}

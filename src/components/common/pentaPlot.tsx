@@ -44,6 +44,22 @@ const directions = [
     value: "west",
     label: "West",
   },
+  {
+    value: "northwest",
+    label: "NorthWest",
+  },
+  {
+    value: "southwest",
+    label: "SouthWest",
+  },
+  {
+    value: "northeast",
+    label: "NorthEast",
+  },
+  {
+    value: "southeast",
+    label: "SouthEast",
+  },
 ];
 declare global {
   interface Window {
@@ -54,6 +70,7 @@ type Props = {
   floors: number;
   // directions: typeof directions;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  setRotate: React.Dispatch<React.SetStateAction<string>>;
   imageUrl: string;
   price: number;
   type: string;
@@ -104,6 +121,7 @@ const PentaPlot = ({
   gmail,
   setLoading,
   property,
+  setRotate,
 }: Props) => {
   // console.log("type=", type);
   const router = useRouter();
@@ -112,6 +130,7 @@ const PentaPlot = ({
   const [currentStep, setCurrentStep] = useState(1); // Tracks the current step
   const [currency] = useState("INR"); // Tracks
   const [value] = React.useState("");
+  // const [rotate, setRotate] = useState("0");
   const [open, setOpen] = React.useState(false);
   const form = useForm<z.infer<typeof PentaPlotSchema>>({
     resolver: zodResolver(PentaPlotSchema),
@@ -127,6 +146,7 @@ const PentaPlot = ({
       D4: 0,
       floor: floors,
       direction: "north",
+      phone: "",
     },
   });
   const handleSubmit = async (e: {
@@ -142,6 +162,7 @@ const PentaPlot = ({
     D4: number;
     specifications: string;
     direction: string;
+    phone: string;
   }) => {
     startTransition(() => {
       const handlePayment = async () => {
@@ -327,6 +348,84 @@ const PentaPlot = ({
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)}>
             <div className="grid w-full justify-center items-center gap-4">
+              <FormField
+                control={form.control}
+                name="direction"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Enter Direction</FormLabel>
+                    <FormControl>
+                      <Popover open={open} onOpenChange={setOpen}>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            aria-expanded={open}
+                            className="w-[200px] justify-between ml-3"
+                          >
+                            {field.value
+                              ? directions.find(
+                                  (direction) => direction.value === field.value
+                                )?.label
+                              : "Enter Direction..."}
+                            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <Command>
+                            <CommandList>
+                              {directions.map((direction) => (
+                                <CommandItem
+                                  key={direction.value}
+                                  onSelect={() => {
+                                    field.onChange(direction.value);
+                                    if (direction.value === "north") {
+                                      setRotate("0");
+                                    }
+                                    if (direction.value === "south") {
+                                      setRotate("180");
+                                    }
+                                    if (direction.value === "east") {
+                                      setRotate("270");
+                                    }
+                                    if (direction.value === "west") {
+                                      setRotate("90");
+                                    }
+                                    if (direction.value === "northwest") {
+                                      setRotate("45");
+                                    }
+                                    if (direction.value === "northeast") {
+                                      setRotate("315");
+                                    }
+                                    if (direction.value === "southeast") {
+                                      setRotate("225");
+                                    }
+                                    if (direction.value === "southwest") {
+                                      setRotate("135");
+                                    }
+                                    setOpen(false);
+                                  }}
+                                >
+                                  {direction.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      "ml-auto h-4 w-4",
+                                      value === direction.value
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandList>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="A"
@@ -554,60 +653,6 @@ const PentaPlot = ({
               />{" "}
               <FormField
                 control={form.control}
-                name="direction"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Enter Direction</FormLabel>
-                    <FormControl>
-                      <Popover open={open} onOpenChange={setOpen}>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            role="combobox"
-                            aria-expanded={open}
-                            className="w-[200px] justify-between ml-3"
-                          >
-                            {field.value
-                              ? directions.find(
-                                  (direction) => direction.value === field.value
-                                )?.label
-                              : "Enter Direction..."}
-                            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <Command>
-                            <CommandList>
-                              {directions.map((direction) => (
-                                <CommandItem
-                                  key={direction.value}
-                                  onSelect={() => {
-                                    field.onChange(direction.value);
-                                    setOpen(false);
-                                  }}
-                                >
-                                  {direction.label}
-                                  <CheckIcon
-                                    className={cn(
-                                      "ml-auto h-4 w-4",
-                                      value === direction.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    )}
-                                  />
-                                </CommandItem>
-                              ))}
-                            </CommandList>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
                 name="floor"
                 render={({ field }) => (
                   <FormItem>
@@ -653,10 +698,28 @@ const PentaPlot = ({
               />
               <FormField
                 control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{"Enter your phone number"}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Enter your phone number"
+                        disabled={isPending}
+                        className="hover:border-slate-400"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="drawing"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Upload a drawing</FormLabel>
+                    <FormLabel>Upload Plot Reference Image</FormLabel>
 
                     <FormControl>
                       <FileUpload

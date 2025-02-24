@@ -16,6 +16,7 @@ module.exports = withUt({
         gs: "385px",
         as: "300px",
         ns: "800px",
+        txl: "1800px",
       },
       backgroundImage: {
         freelance:

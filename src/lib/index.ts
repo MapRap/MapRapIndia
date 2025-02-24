@@ -34,6 +34,83 @@ export const RegisterSchema = z.object({
   //   message: "type is required",
   // }),
 });
+export const QuerySchema = z.object({
+  email: z.string().email({
+    message: "Gmail is required",
+  }),
+  name: z.string().min(1, {
+    message: "Name is required",
+  }),
+  city: z.string().min(1, { message: "City required" }),
+  phone: z.string().min(10, {
+    message: "Enter valid value",
+  }),
+  requirement: z.string().min(1, {
+    message: "Required",
+  }),
+
+  // otp: z.number().min(6, {
+  //   message: "Minimum 6 digits required",
+  // }),
+  // type: z.string().min(1, {
+  //   message: "type is required",
+  // }),
+});
+
+export const CreateJobSchema = z.object({
+  specifications: z.string().min(6, {
+    message: "Minimum 6 letters required",
+  }),
+  floors: z.number().min(0, {
+    message: "If you do not want this field enter 0",
+  }),
+  area: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  A: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  B: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  C: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  D: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  E: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  D1: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  D2: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  D3: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  D4: z.number().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  direction: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  plot: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  type: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  expected: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  studentPrice: z.string().min(0, {
+    message: "Enter 0 if you do not want this field",
+  }),
+  drawing: z.string(),
+});
 
 export const OtpVerifySchema = z.object({
   otp: z.number().min(6, {
@@ -65,86 +142,93 @@ export const OtpFormSchema = z.object({
 });
 
 export const RectanglePlotSchema = z.object({
-  A: z.number().min(1, {
+  A: z.number().min(0, {
     message: "Enter valid value",
   }),
-  B: z.number().min(1, {
+  B: z.number().min(0, {
     message: "Enter valid value",
   }),
-  C: z.number().min(1, {
+  C: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D: z.number().min(1, {
+  D: z.number().min(0, {
     message: "Enter valid value",
   }),
   floor: z.number().min(2, {
     message: "minimum value:2(Ground +1)",
   }),
-  drawing: z.string().min(1),
+  drawing: z.string(),
   specifications: z.string(),
   direction: z.string(),
+  phone: z.string(),
 });
 
 export const TrapiziumPlotSchema = z.object({
-  A: z.number().min(1, {
+  A: z.number().min(0, {
     message: "Enter valid value",
   }),
-  B: z.number().min(1, {
+  B: z.number().min(0, {
     message: "Enter valid value",
   }),
-  C: z.number().min(1, {
+  C: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D: z.number().min(1, {
+  D: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D1: z.number().min(1, {
+  D1: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D2: z.number().min(1, {
+  D2: z.number().min(0, {
     message: "Enter valid value",
   }),
-  floor: z.number().min(2, {
+  floor: z.number().min(0, {
     message: "minimum value:2(Ground +1)",
   }),
-  drawing: z.string().min(1),
-  specifications: z.string(),
+  drawing: z.string().min(0, {
+    message: "Enter valid value",
+  }),
+  specifications: z.string().min(0, {
+    message: "Enter valid value",
+  }),
   direction: z.string(),
+  phone: z.string(),
 });
 export const PentaPlotSchema = z.object({
-  A: z.number().min(1, {
+  A: z.number().min(0, {
     message: "Enter valid value",
   }),
-  B: z.number().min(1, {
+  B: z.number().min(0, {
     message: "Enter valid value",
   }),
-  C: z.number().min(1, {
+  C: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D: z.number().min(1, {
+  D: z.number().min(0, {
     message: "Enter valid value",
   }),
-  E: z.number().min(1, {
+  E: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D1: z.number().min(1, {
+  D1: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D2: z.number().min(1, {
+  D2: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D3: z.number().min(1, {
+  D3: z.number().min(0, {
     message: "Enter valid value",
   }),
-  D4: z.number().min(1, {
+  D4: z.number().min(0, {
     message: "Enter valid value",
   }),
   floor: z.number().min(2, {
     message: "minimum value:2(Ground +1)",
   }),
-  drawing: z.string().min(1),
+  drawing: z.string(),
   specifications: z.string(),
   direction: z.string(),
+  phone: z.string(),
 });
 
 export const areaList = {

@@ -5,7 +5,7 @@ import React from "react";
 
 const Foot = () => {
   return (
-    <div className="flex w-screen gap-3 justify-evenly text-[10px] md:text-base">
+    <div className="flex w-[90vw] justify-evenly  text-[10px] md:text-base">
       <div className="flex flex-col gap-4 items-start ">
         <a
           href="https://www.instagram.com/mynaksha/"
@@ -48,13 +48,14 @@ const Foot = () => {
           Privacy Policy
         </a> */}
         <a
-          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/terms`}
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/privacy`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
-          Terms And Conditions
+          Privacy Policy
         </a>
+
         <a
           href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/cancellation`}
           target="_blank"
@@ -66,12 +67,12 @@ const Foot = () => {
       </div>
       <div className="m-4 flex flex-col gap-4 flex-wrap items-center md:text-base">
         <a
-          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/shipping`}
+          href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/terms`}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer hover:underline"
         >
-          Shipping
+          Terms And Conditions
         </a>
         <a
           href={`${process.env.NEXT_PUBLIC_DOMAIN_NAME}/contact`}

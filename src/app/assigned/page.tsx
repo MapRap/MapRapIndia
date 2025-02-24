@@ -208,27 +208,27 @@ const AssignedPage = () => {
                         D : {`${job.D}`}
                       </div>
 
-                      {job.E && (
+                      {job.E && job.E !== 0 && (
                         <div className="border mx-2 rounded-lg p-2">
                           E : {`${job.E}`}
                         </div>
                       )}
-                      {job.D1 && (
+                      {job.D1 && job.D1 !== 0 && (
                         <div className="border mx-2 rounded-lg p-2">
                           D1 : {`${job.D1}`}
                         </div>
                       )}
-                      {job.D2 && (
+                      {job.D2 && job.D2 !== 0 && (
                         <div className="border mx-2 rounded-lg p-2">
                           D2 : {`${job.D2}`}
                         </div>
                       )}
-                      {job.D3 && (
+                      {job.D3 && job.D3 !== 0 && (
                         <div className="border mx-2 rounded-lg p-2">
                           D3 : {`${job.D3}`}
                         </div>
                       )}
-                      {job.D4 && (
+                      {job.D4 && job.D4 !== 0 && (
                         <div className="border mx-2 rounded-lg p-2">
                           D4 : {`${job.D4}`}
                         </div>
@@ -237,14 +237,16 @@ const AssignedPage = () => {
                     <div>Direction : {`${job.direction}`}</div>
                     <div>Specifications: {`${job.specifications}`}</div>
                     <div className="flex">
-                      <a
-                        href={`${job.imageUrl}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline flex text-black font-bold"
-                      >
-                        View Attachment <File />
-                      </a>
+                      {job.imageUrl && (
+                        <a
+                          href={`${job.imageUrl}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline flex text-black font-bold"
+                        >
+                          View Attachment <File />
+                        </a>
+                      )}
                       <a
                         href={`../${job.plot}.png`}
                         target="_blank"

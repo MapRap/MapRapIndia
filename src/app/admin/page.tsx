@@ -457,15 +457,17 @@ const AdminPage = () => {
         >
           Go to interior Admin Page
         </Button>
-        {session.data && session.data.user && (
-          <Button
-            onClick={() => {
-              window.location.replace("/admin/addAdmin");
-            }}
-          >
-            Edit other admins
-          </Button>
-        )}
+        {session.data &&
+          session.data.user &&
+          session.data.user.type === "owner" && (
+            <Button
+              onClick={() => {
+                window.location.replace("/admin/addAdmin");
+              }}
+            >
+              Edit other admins
+            </Button>
+          )}
         <Button
           onClick={() => {
             window.location.replace("/admin/otherJobs");
@@ -481,12 +483,23 @@ const AdminPage = () => {
           Go to New Logins Page
         </Button>
         <div className="flex gap-3">
+          {session.data &&
+            session.data.user &&
+            session.data.user.type === "owner" && (
+              <Button
+                onClick={() => {
+                  window.location.replace("/admin/addPlan");
+                }}
+              >
+                Add new Area plans
+              </Button>
+            )}
           <Button
             onClick={() => {
-              window.location.replace("/admin/addPlan");
+              window.location.replace("/admin/createJob");
             }}
           >
-            Add new Area plans
+            Create Job
           </Button>
           <Button
             onClick={() => {
@@ -524,46 +537,57 @@ const AdminPage = () => {
                     <div className="font-bold text-center underline text-2xl">{`${job.floors} floored ${job.type} Building`}</div>
                     <div className="flex flex-col">
                       {/* <div> */}
-                      <div className="border-2 m-1 border-slate-400 rounded-md h-8 p-1">
-                        Price : Rs {`${job.price}`}
-                      </div>
+                      {job.price && job.price !== 0 && (
+                        <div className="border-2 m-1 border-slate-400 rounded-md h-8 p-1">
+                          Price : Rs {`${job.price}`}
+                        </div>
+                      )}
+
                       <div className="border-2 m-1 border-slate-400 rounded-md h-8 p-1">
                         Plot : {`${job.plot}`}
                       </div>
                       <div className="flex">
-                        <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
-                          A : {`${job.A}`}
-                        </div>
-                        <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
-                          B : {`${job.B}`}
-                        </div>
-                        <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
-                          C : {`${job.C}`}
-                        </div>
-                        <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
-                          D : {`${job.D}`}
-                        </div>
-                        {job.E && (
+                        {job.A !== 0 && (
+                          <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
+                            A : {`${job.A}`}
+                          </div>
+                        )}
+                        {job.B !== 0 && (
+                          <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
+                            B : {`${job.B}`}
+                          </div>
+                        )}
+                        {job.C !== 0 && (
+                          <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
+                            C : {`${job.C}`}
+                          </div>
+                        )}
+                        {job.D !== 0 && (
+                          <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
+                            D : {`${job.D}`}
+                          </div>
+                        )}
+                        {job.E && job.E !== 0 && (
                           <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
                             E : {`${job.E}`}
                           </div>
                         )}
-                        {job.D1 && (
+                        {job.D1 && job.D1 !== 0 && (
                           <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
                             D1 : {`${job.D1}`}
                           </div>
                         )}
-                        {job.D2 && (
+                        {job.D2 && job.D2 !== 0 && (
                           <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
                             D2 : {`${job.D2}`}
                           </div>
                         )}
-                        {job.D3 && (
+                        {job.D3 && job.D3 !== 0 && (
                           <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
                             D3 : {`${job.D3}`}
                           </div>
                         )}
-                        {job.D4 && (
+                        {job.D4 && job.D4 !== 0 && (
                           <div className="border-2 m-1 border-slate-400 h-8 p-1 rounded-md div-2">
                             D4 : {`${job.D4}`}
                           </div>
@@ -694,21 +718,25 @@ const AdminPage = () => {
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center justify-center">
-                      <Image
-                        src={`${job.imageUrl}`}
-                        alt="gg"
-                        loading="lazy"
-                        width={500}
-                        height={500}
-                        className="m-2"
-                      />
-                      <img
-                        src={`../${job.plot}.png`}
-                        alt="gg"
-                        width={300}
-                        height={300}
-                        className="m-2"
-                      />
+                      {job.imageUrl && (
+                        <Image
+                          src={`${job.imageUrl}`}
+                          alt="gg"
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                          className="m-2"
+                        />
+                      )}
+                      {job.plot && (
+                        <img
+                          src={`../${job.plot}.png`}
+                          alt="gg"
+                          width={300}
+                          height={300}
+                          className="m-2"
+                        />
+                      )}
                     </div>
 
                     <div>

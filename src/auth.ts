@@ -63,6 +63,12 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       token.type = existingUser.type;
       return token;
     },
+    async redirect({ url, baseUrl }) {
+      console.log("e", url);
+      console.log("ew", baseUrl);
+      // Always redirect to dashboard after login
+      return "/list";
+    },
   },
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },

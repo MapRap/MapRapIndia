@@ -1,14 +1,10 @@
 "use server";
 import { LoginSchema } from "@/lib";
-// import prisma from "@/lib/db";
 import * as z from "zod";
-// import { comparePassword } from "./passwordManage";
-// import { redirect } from "next/navigation";
-// import { generateAuthToken } from "./token-generator";
-// import { cookies } from "next/headers";
 import { signIn } from "@/auth";
-import { DEFAULT_LOGIN_REDIRECT } from "../../route";
+// import { DEFAULT_LOGIN_REDIRECT } from "../../route";
 import { AuthError } from "next-auth";
+
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
   if (!validatedFields.success) {
@@ -16,10 +12,10 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   }
   const { gmail, password } = validatedFields.data;
   try {
-    await signIn("credentials", {
+    const res = await signIn("credentials", {
       email: gmail,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirect: false,
     });
     // const user = await prisma.user.findUnique({
     //   where: {
@@ -79,6 +75,10 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     //     }
     //   }
     // }
+    if (!res) {
+      return { error: "An error occurred" };
+    }
+    return { success: "Successfully logined" };
   } catch (err) {
     if (err instanceof AuthError) {
       switch (err.type) {
@@ -88,8 +88,6 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
           return { error: "An error occurred" };
       }
     }
-    // console.log(err);
-    // return { error: "Wrong Id or password, Please try again" };
+    console.log(err);
   }
-  // redirect(`${process.env.PROTOCOL}${process.env.DOMAIN_NAME}`);
 };

@@ -3,6 +3,7 @@ import { getId } from "@/_actions/getId";
 // import { createSiteVisit } from "@/_actions/createSiteVisit";
 // import { getId } from "@/_actions/getId";
 import { getOtherPlans } from "@/_actions/getOtherPlans";
+// import { auth } from "@/auth";
 import { Loading2 } from "@/components/common/loader2";
 // import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
 import ViewPrice from "@/components/common/viewPrice";
@@ -25,6 +26,7 @@ import {
 //   PopoverTrigger,
 // } from "@/components/ui/popover";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useSession } from "next-auth/react";
 // import { useUploadThing } from "@/lib/uploadthing";
 // import { ChevronDownIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -33,6 +35,7 @@ import React, { useEffect, useState } from "react";
 // import PlanPage from "../plans/page";
 
 const List = () => {
+  const session = useSession();
   // const [user, setUser] = useState<
   //   | {
   //       id: string;
@@ -185,15 +188,21 @@ const List = () => {
                                       butto={`Proceed with ${plan.package} Plan`}
                                       floors={plan.floors}
                                       onClick={() => {
-                                        router.push(
-                                          `/list/${plan.area}?pack=${
-                                            plan.package
-                                          }&floors=${plan.floors}&price=${
-                                            currency === "INR"
-                                              ? plan.inr
-                                              : plan.dollar
-                                          }&property=${plan.property}`
-                                        );
+                                        if (session.data?.user) {
+                                          router.push(
+                                            `/list/${plan.area}?pack=${
+                                              plan.package
+                                            }&floors=${plan.floors}&price=${
+                                              currency === "INR"
+                                                ? plan.inr
+                                                : plan.dollar
+                                            }&property=${plan.property}`
+                                          );
+                                        } else {
+                                          router.replace(
+                                            `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/auth/register`
+                                          );
+                                        }
                                       }}
                                       currency={currency}
                                       property={`${plan.property}`}
@@ -220,15 +229,21 @@ const List = () => {
                                       butto={`Proceed with ${plan.package} Plan`}
                                       floors={plan.floors}
                                       onClick={() => {
-                                        router.push(
-                                          `/list/${plan.area}?pack=${
-                                            plan.package
-                                          }&floors=${plan.floors}&price=${
-                                            currency === "INR"
-                                              ? plan.inr
-                                              : plan.dollar
-                                          }&property=${plan.property}`
-                                        );
+                                        if (session.data?.user) {
+                                          router.push(
+                                            `/list/${plan.area}?pack=${
+                                              plan.package
+                                            }&floors=${plan.floors}&price=${
+                                              currency === "INR"
+                                                ? plan.inr
+                                                : plan.dollar
+                                            }&property=${plan.property}`
+                                          );
+                                        } else {
+                                          router.replace(
+                                            `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/auth/register`
+                                          );
+                                        }
                                       }}
                                       currency={currency}
                                       property={`${plan.property}`}
@@ -280,15 +295,21 @@ const List = () => {
                                       property={plan.property}
                                       currency={currency}
                                       onClick={() => {
-                                        router.push(
-                                          `/list/${plan.area}?pack=${
-                                            plan.package
-                                          }&floors=${plan.floors}&price=${
-                                            currency === "INR"
-                                              ? plan.inr
-                                              : plan.dollar
-                                          }&property=${plan.property}`
-                                        );
+                                        if (session.data?.user) {
+                                          router.push(
+                                            `/list/${plan.area}?pack=${
+                                              plan.package
+                                            }&floors=${plan.floors}&price=${
+                                              currency === "INR"
+                                                ? plan.inr
+                                                : plan.dollar
+                                            }&property=${plan.property}`
+                                          );
+                                        } else {
+                                          router.replace(
+                                            `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/auth/register`
+                                          );
+                                        }
                                       }}
                                       inr={plan.inr}
                                       dollar={plan.dollar}
@@ -314,15 +335,21 @@ const List = () => {
                                       floors={plan.floors}
                                       currency={currency}
                                       onClick={() => {
-                                        router.push(
-                                          `/list/${plan.area}?pack=${
-                                            plan.package
-                                          }&floors=${plan.floors}&price=${
-                                            currency === "INR"
-                                              ? plan.inr
-                                              : plan.dollar
-                                          }&property=${plan.property}`
-                                        );
+                                        if (session.data?.user) {
+                                          router.push(
+                                            `/list/${plan.area}?pack=${
+                                              plan.package
+                                            }&floors=${plan.floors}&price=${
+                                              currency === "INR"
+                                                ? plan.inr
+                                                : plan.dollar
+                                            }&property=${plan.property}`
+                                          );
+                                        } else {
+                                          router.replace(
+                                            `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/auth/register`
+                                          );
+                                        }
                                       }}
                                       property={`${plan.property}`}
                                       inr={plan.inr}

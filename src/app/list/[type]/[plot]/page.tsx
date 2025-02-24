@@ -30,7 +30,7 @@ import { Button } from "@/components/ui/button";
 import { useUploadThing } from "@/lib/uploadthing";
 import { createStep } from "@/_actions/createStep";
 import { Loading2 } from "@/components/common/loader2";
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
+import { ArrowDownIcon, CheckIcon } from "lucide-react";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Popover,
@@ -38,14 +38,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { createSiteVisit } from "@/_actions/createSiteVisit";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuGroup,
+//   DropdownMenuItem,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { createSiteVisit } from "@/_actions/createSiteVisit";
+import SiteVisitComp from "@/components/common/siteVisit";
 type tParams = Promise<{ plot: string; type: string }>;
 
 const directions = [
@@ -64,6 +65,22 @@ const directions = [
   {
     value: "west",
     label: "West",
+  },
+  {
+    value: "northwest",
+    label: "NorthWest",
+  },
+  {
+    value: "southwest",
+    label: "SouthWest",
+  },
+  {
+    value: "northeast",
+    label: "NorthEast",
+  },
+  {
+    value: "southeast",
+    label: "SouthEast",
   },
 ];
 
@@ -111,7 +128,7 @@ export default function Calculated(props: { params: tParams }) {
     getClientJobsWithSteps().then((e) => {
       if (e) {
         if (e === "Please login" || e === "Wrong token, please login again!") {
-          window.location.replace("/unauthorized");
+          window.location.replace("/auth/login");
         }
         if (e !== "Please login" && e !== "Wrong token, please login again!") {
           setLoading(false);
@@ -165,7 +182,7 @@ export default function Calculated(props: { params: tParams }) {
   }>();
   const { startUpload } = useUploadThing("pdfUploader");
   const [message, setMessage] = useState("");
-  const [receipt, setReceipt] = useState("");
+  const [receipt] = useState("");
   const [isPending, startTransition] = useTransition();
   const [count, setCount] = useState(0);
   const [currency] = useState("INR");
@@ -174,6 +191,7 @@ export default function Calculated(props: { params: tParams }) {
   const [value] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
+  const [rotate, setRotate] = useState("0");
   // const paypalRef = useRef<HTMLDivElement>(null);
   const scrollToForm = () => {
     sec.current?.scrollIntoView({ behavior: "smooth" });
@@ -187,6 +205,7 @@ export default function Calculated(props: { params: tParams }) {
       D: 0,
       floor: Number(searchParams.get("floors")),
       direction: "north",
+      phone: "",
     },
   });
 
@@ -198,6 +217,7 @@ export default function Calculated(props: { params: tParams }) {
     D: number;
     specifications: string;
     direction: string;
+    phone: string;
   }) => {
     if (user) {
       if (searchParams.get("property") !== null) {
@@ -426,129 +446,8 @@ export default function Calculated(props: { params: tParams }) {
   //   // };
   // };
   console.log(user);
-  const handleVisitPayment = async ({ price }: { price: number }) => {
-    try {
-      if (user) {
-        const response = await fetch("/api/payments/create-order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            totalAmount: 100 * price,
-            currency,
-          }),
-        });
 
-        const order = await response.json();
-        console.log(order);
-        if (!order.id) {
-          console.error("Failed to create order:", order);
-          return;
-        }
-
-        const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_ID as string,
-          amount: order.amount,
-          currency: order.currency,
-          name: "Make My Naksha",
-          description: `Premium Payment`,
-          order_id: order.id,
-          handler: async (response: RazorpayPaymentResponse) => {
-            // Verify payment
-            const payment_id = response.razorpay_payment_id;
-            const verificationResponse = await fetch(
-              "/api/payments/payment-verification",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  razorpay_order_id: response.razorpay_order_id,
-                  razorpay_payment_id: response.razorpay_payment_id,
-                  razorpay_signature: response.razorpay_signature,
-                }),
-              }
-            );
-
-            const verificationResult = await verificationResponse.json();
-            console.log(verificationResult);
-
-            if (verificationResult.success) {
-              alert(`Payment successful!`);
-              const visit = await createSiteVisit({
-                userId: user.id,
-                gmail: user.email!,
-              });
-              if (visit === "Success") {
-                setMessage(
-                  `Our team will contact you soon for further details `
-                );
-
-                fetch("/api/payments/receipt", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    payment_id: `${payment_id}`,
-                  }),
-                }).then((rece) => {
-                  if (rece.ok) {
-                    rece.blob().then((blob) => {
-                      const file = new File(
-                        [blob],
-                        `receipt${user.email}1.pdf`,
-                        {
-                          type: "application/pdf",
-                        }
-                      );
-                      try {
-                        startUpload([file]).then((uploadedFiles) => {
-                          if (uploadedFiles && uploadedFiles[0]) {
-                            console.log(
-                              "File uploaded successfully:",
-                              uploadedFiles[0].url
-                            );
-                            setReceipt(`${uploadedFiles[0].url}`);
-                          } else {
-                            console.error("File upload failed");
-                          }
-                        });
-                      } catch (error) {
-                        console.error("Error uploading file:", error);
-                      }
-                    });
-                  }
-                });
-              }
-            } else {
-              alert("Payment verification failed!");
-            }
-          },
-          prefill: {
-            name: user.name!,
-            email: `${user.email}`,
-          },
-          theme: {
-            color: "#3399cc",
-          },
-        };
-
-        const razorpay = new window.Razorpay(options);
-        razorpay.open();
-        return { success: "Payment started" };
-      }
-      if (!user) {
-        console.log("hey");
-
-        setMessage("Please Login to continue!");
-      }
-    } catch (error) {
-      console.error("Error initiating payment:", error);
-      return { error: error };
-    } finally {
-    }
-  };
+  console.log(rotate);
   return loading ? (
     <div className="w-full h-screen flex items-center justify-center bg-white">
       <Loading2 loading={loading} />
@@ -557,44 +456,11 @@ export default function Calculated(props: { params: tParams }) {
     user && (
       <div className="flex flex-col">
         <div>
-          <Popover>
-            <PopoverTrigger
-              asChild
-              className="flex items-center justify-center p-0 cursor-pointer"
-            >
-              <div className="text-black hover:underline hover:text-orange-500 px-2 py-2 text-xs md:text-base rounded-xla">
-                <ChevronDownIcon />
-                Want a site visit
-              </div>
-            </PopoverTrigger>
-            <PopoverContent className="flex flex-col p-0 mt-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger className="bg-gray-50 hover:bg-gray-100">
-                  Trikuta Nagar-Jammu
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem
-                      className="cursor-pointer border-b"
-                      onClick={() => {
-                        handleVisitPayment({ price: 1200 });
-                      }}
-                    >
-                      Upto 5 km : Rs 1200
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      className="cursor-pointer border-b"
-                      onClick={() => {
-                        handleVisitPayment({ price: 1800 });
-                      }}
-                    >
-                      Upto 10 km : Rs 1800
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </PopoverContent>
-          </Popover>
+          <SiteVisitComp
+            user={user}
+            currency={currency}
+            setMessage={setMessage}
+          />
           <div className="">
             <div className="flex justify-center text-center text-green-600 bg-green-300">
               {message}{" "}
@@ -623,6 +489,23 @@ export default function Calculated(props: { params: tParams }) {
                 alt=""
                 onClick={scrollToForm}
               />
+              <div className="flex flex-col items-center">
+                <div className="mt-4">
+                  <ArrowDownIcon className="w-20" />
+                </div>
+                <div
+                  className="transition-transform mt-4"
+                  style={{ transform: `rotate(${rotate}deg)` }}
+                >
+                  <img
+                    width={200}
+                    height={200}
+                    className={`rounded-full mt-2 `}
+                    src={`../../compass.jpg`}
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
             {values.plot === "plot1" && (
               <Card
@@ -638,6 +521,93 @@ export default function Calculated(props: { params: tParams }) {
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(handleSubmit)}>
                       <div className="grid w-[35vw] items-center gap-4">
+                        <FormField
+                          control={form.control}
+                          name="direction"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Enter Direction</FormLabel>
+                              <FormControl>
+                                <Popover open={open} onOpenChange={setOpen}>
+                                  <PopoverTrigger asChild>
+                                    <Button
+                                      variant="outline"
+                                      role="combobox"
+                                      aria-expanded={open}
+                                      className="w-[200px] justify-between ml-3"
+                                    >
+                                      {field.value
+                                        ? directions.find(
+                                            (direction) =>
+                                              direction.value === field.value
+                                          )?.label
+                                        : "Enter Direction..."}
+                                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                    </Button>
+                                  </PopoverTrigger>
+                                  <PopoverContent>
+                                    <Command>
+                                      <CommandList>
+                                        {directions.map((direction) => (
+                                          <CommandItem
+                                            key={direction.value}
+                                            onSelect={() => {
+                                              field.onChange(direction.value);
+                                              if (direction.value === "north") {
+                                                setRotate("0");
+                                              }
+                                              if (direction.value === "south") {
+                                                setRotate("180");
+                                              }
+                                              if (direction.value === "east") {
+                                                setRotate("270");
+                                              }
+                                              if (direction.value === "west") {
+                                                setRotate("90");
+                                              }
+                                              if (
+                                                direction.value === "northwest"
+                                              ) {
+                                                setRotate("45");
+                                              }
+                                              if (
+                                                direction.value === "northeast"
+                                              ) {
+                                                setRotate("315");
+                                              }
+                                              if (
+                                                direction.value === "southeast"
+                                              ) {
+                                                setRotate("225");
+                                              }
+                                              if (
+                                                direction.value === "southwest"
+                                              ) {
+                                                setRotate("135");
+                                              }
+                                              setOpen(false);
+                                            }}
+                                          >
+                                            {direction.label}
+                                            <CheckIcon
+                                              className={cn(
+                                                "ml-auto h-4 w-4",
+                                                value === direction.value
+                                                  ? "opacity-100"
+                                                  : "opacity-0"
+                                              )}
+                                            />
+                                          </CommandItem>
+                                        ))}
+                                      </CommandList>
+                                    </Command>
+                                  </PopoverContent>
+                                </Popover>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
                         <FormField
                           control={form.control}
                           name="A"
@@ -738,61 +708,7 @@ export default function Calculated(props: { params: tParams }) {
                             </FormItem>
                           )}
                         />
-                        <FormField
-                          control={form.control}
-                          name="direction"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Enter Direction</FormLabel>
-                              <FormControl>
-                                <Popover open={open} onOpenChange={setOpen}>
-                                  <PopoverTrigger asChild>
-                                    <Button
-                                      variant="outline"
-                                      role="combobox"
-                                      aria-expanded={open}
-                                      className="w-[200px] justify-between ml-3"
-                                    >
-                                      {field.value
-                                        ? directions.find(
-                                            (direction) =>
-                                              direction.value === field.value
-                                          )?.label
-                                        : "Enter Direction..."}
-                                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                    </Button>
-                                  </PopoverTrigger>
-                                  <PopoverContent>
-                                    <Command>
-                                      <CommandList>
-                                        {directions.map((direction) => (
-                                          <CommandItem
-                                            key={direction.value}
-                                            onSelect={() => {
-                                              field.onChange(direction.value);
-                                              setOpen(false);
-                                            }}
-                                          >
-                                            {direction.label}
-                                            <CheckIcon
-                                              className={cn(
-                                                "ml-auto h-4 w-4",
-                                                value === direction.value
-                                                  ? "opacity-100"
-                                                  : "opacity-0"
-                                              )}
-                                            />
-                                          </CommandItem>
-                                        ))}
-                                      </CommandList>
-                                    </Command>
-                                  </PopoverContent>
-                                </Popover>
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+
                         <FormField
                           control={form.control}
                           name="floor"
@@ -840,11 +756,28 @@ export default function Calculated(props: { params: tParams }) {
                         />
                         <FormField
                           control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>{"Enter your phone number"}</FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  placeholder="Enter your phone number"
+                                  disabled={isPending}
+                                  className="hover:border-slate-400"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
                           name="drawing"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Upload a drawing</FormLabel>
-
+                              <FormLabel>Upload Plot Reference Image</FormLabel>
                               <FormControl>
                                 <FileUpload
                                   endPoint="imageUploader"
@@ -857,6 +790,7 @@ export default function Calculated(props: { params: tParams }) {
                             </FormItem>
                           )}
                         />
+
                         <Button disabled={isPending}>
                           Pay Now <ArrowRightIcon />
                         </Button>
@@ -879,6 +813,7 @@ export default function Calculated(props: { params: tParams }) {
                 type={values.type}
                 setLoading={setLoading}
                 property={`${searchParams.get("property")}`}
+                setRotate={setRotate}
               />
             )}
             {values.plot === "plot3" && (
@@ -893,6 +828,7 @@ export default function Calculated(props: { params: tParams }) {
                 type={values.type}
                 setLoading={setLoading}
                 property={`${searchParams.get("property")}`}
+                setRotate={setRotate}
               />
             )}
           </div>

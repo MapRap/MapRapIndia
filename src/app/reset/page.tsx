@@ -34,6 +34,7 @@ import RegenerateOtp from "@/components/auth/regenerateOtp";
 const ResetPage = () => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const [password, setPassword] = useState<string | undefined>();
   const [confirmPassword, setConfirmPassword] = useState<string | undefined>();
   const [enterPass, setEnterPass] = useState(false);
@@ -42,7 +43,6 @@ const ResetPage = () => {
     gmail: "",
   });
   const [otp, setOtp] = useState<string | undefined>();
-  const [success, setSuccess] = useState<string | undefined>("");
   const [found, setFound] = useState(false);
   const form1 = useForm<z.infer<typeof ResetSchema1>>({
     resolver: zodResolver(ResetSchema1),

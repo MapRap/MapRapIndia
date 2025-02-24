@@ -59,8 +59,7 @@ const TermsPage = () => {
           5. {`"`}User/Users{`"`}, means any person availing the products and/or
           services offered on the Platform; &ldquo;
         </div>
-        6. {`"`}Website{`"`} shall mean www.instamojo.com or the mobile
-        application
+        6. {`"`}Website{`"`} shall mean www.MapRap.com or the mobile application
         <div className="font-semibold">MERCHANT{`'`}S RIGHTS</div>
         <div>
           1. You agree that we may collect, store, and share the information

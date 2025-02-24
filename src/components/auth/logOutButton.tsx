@@ -7,7 +7,9 @@ const LogOutButton = () => {
     <div
       onClick={async () => {
         // onClick={async () => {
-        await signOut();
+        signOut().then(() => {
+          window.location.replace("/");
+        });
         // clearUserSession().then((e) => {
         //   if (e) {
         //     if (e === "success") {
