@@ -16,8 +16,8 @@ const ShippingPage = () => {
       <div className="font-bold text-3xl mt-6">Privacy Policy</div>
       <div className="w-4/5 text-slate-600">
         <div>
-          Last updated: February 24, 2025 This Privacy Policy describes how Bal
-          threads {`(`}the {`"`}Site{`"`}, {`"`}we{`"`}, {`"`}us{`"`}, or {`"`}
+          Last updated: February 24, 2025 This Privacy Policy describes how
+          MapRap {`(`}the {`"`}Site{`"`}, {`"`}we{`"`}, {`"`}us{`"`}, or {`"`}
           our
           {`"`}
           {`)`} collects, uses, and discloses your personal information when you

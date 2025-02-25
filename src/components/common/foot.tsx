@@ -18,7 +18,7 @@ const Foot = () => {
           />
           instagram
         </a>
-        <div className="flex text-[8px]">
+        <div className="flex text-[8px] md:text-xs">
           <img
             src="../Screenshot (42).png"
             alt=""
