@@ -50,6 +50,7 @@ import Slide from "@/components/common/slide2";
 import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
+import TestSiteVisitComp from "@/components/common/textComp";
 
 declare global {
   interface Window {
@@ -175,6 +176,15 @@ export default function Home() {
               }}
             >
               <HamburgerMenuIcon className="w-5 h-3 md:w-10 md:h-7" />
+            </button>
+            <button
+              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer bg-[#273392] text-white px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
+              onClick={() => {
+                // setMenu(!menu);
+                // scrollToSection6();
+              }}
+            >
+              <TestSiteVisitComp />
             </button>
             {!session.data?.user && (
               <button
