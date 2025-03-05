@@ -32,12 +32,6 @@ const TestSiteVisitComp = () => {
           }
           window.location.href = `${res.message}`;
         }
-
-        const data = await response.json();
-        if (data.data && data.data.instrumentResponse.redirectInfo.url) {
-          //   setPaymentUrl(data.data.instrumentResponse.redirectInfo.url);
-          window.location.href = data.data.instrumentResponse.redirectInfo.url;
-        }
       } catch (error) {
         console.log("Payment error:", error);
       } finally {
