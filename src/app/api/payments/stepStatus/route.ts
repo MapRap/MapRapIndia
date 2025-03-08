@@ -7,7 +7,8 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
     const merchantId = searchParams.get("merchantId");
     const step = searchParams.get("step");
-    const stepAmount = searchParams.get("stepAmount");
+    const stepAmount = searchParams.get("amount");
+    // console.log("dsf", stepAmount);
     // const request = await req.json();
     // console.log(request.udf1);
     const jobId = searchParams.get("jobId");

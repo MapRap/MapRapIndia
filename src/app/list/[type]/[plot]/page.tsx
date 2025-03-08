@@ -277,7 +277,7 @@ export default function Calculated(props: { params: tParams }) {
                                     currency,
                                     step: currentStep,
                                     totalSteps: steps,
-                                    jobId: res.id,
+                                    jobId: j.job!.id,
                                   }),
                                 }
                               );
