@@ -168,11 +168,11 @@ model Maps{
   name String
   expected String?
   studentPrice String?
+  initialPayment Boolean @default(false)
   // premium Boolean @default(false)
   requests Requests[]
   steps Steps[]
 }
-
 
 model Steps {
   id String @id @default(uuid())

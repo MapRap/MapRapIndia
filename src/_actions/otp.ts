@@ -29,8 +29,10 @@ export const otpGen = async (values: {
         },
       });
       if (user) {
+        console.log(user);
         return { error: "User already exist please use different gmail" };
       }
+      console.log("SD");
       const hashedPassword = await generateHashedPassword(values.password);
       // await prisma.$transaction(async (tx) => {
       // const otpExpiry = new Date();

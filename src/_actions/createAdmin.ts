@@ -27,7 +27,7 @@ export const createAdmin = async ({
       type: "admin",
       otpExpiry: otpExpiry,
       Phone: `${phone}`,
-      country: true,
+      country: false,
       paymentId: "",
     },
   });

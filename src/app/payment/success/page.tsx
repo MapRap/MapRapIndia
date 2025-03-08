@@ -1,3 +1,70 @@
+"use client";
+import { changeInititalPayment } from "@/_actions/changeInititalPaymentDetails";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
 export default function PaymentSuccessPage() {
-  return <h1>Payment Successful!</h1>;
+  const searchParams = useSearchParams();
+  const jobId = searchParams.get("jobId");
+  const orderId = searchParams.get("orderId");
+  const amount = searchParams.get("amount");
+  const [job, setJob] = useState<{
+    id: string;
+    type: string;
+    direction: string;
+    floors: number;
+    price: number;
+    plot: string;
+    specifications: string | null;
+    imageUrl: string;
+    A: number;
+    B: number;
+    C: number;
+    D: number;
+    E: number | null;
+    D1: number | null;
+    D3: number | null;
+    D4: number | null;
+    D2: number | null;
+    givenBy: string;
+    isVerified: boolean | null;
+    assignedTo: string | null;
+    completed: boolean;
+    publishable: boolean;
+    name: string;
+    phone: string;
+    expected: string | null;
+    studentPrice: string | null;
+    initialPayment: boolean;
+  }>();
+  useEffect(() => {
+    if (jobId) {
+      changeInititalPayment({ id: jobId }).then((e) => {
+        if (e) {
+          if (e !== "Error") {
+            if (e !== "Error! Please try again") {
+              if (e !== "No such job") {
+                setJob(e);
+              }
+            }
+          }
+        }
+      });
+    }
+  }, []);
+  return (
+    <div>
+      {job && orderId && jobId && amount && (
+        <div>
+          <div className="flex flex-col items-center justify-center h-screen">
+            <h1>Payment Successful!</h1>
+            <div>orderId: {orderId}</div>
+            <div>Amount: {amount}</div>
+            <div>By: {job.name}</div>
+          </div>
+          <div>Our Team will soon start working on your project</div>
+        </div>
+      )}
+    </div>
+  );
 }

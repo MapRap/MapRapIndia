@@ -80,14 +80,6 @@ const List = () => {
       .then((i) => {
         if (i) {
           if (i !== "/unauthorized") {
-            // setUser(i);
-            // getClientJobsWithSteps().then((j) => {
-            //   if (j) {
-            //     if (typeof j !== "string") {
-            //       setJob(j);
-            //     }
-            //   }
-            // });
             if (i.country !== false) {
               // flushSync(() => {
               setCurrency("USD");

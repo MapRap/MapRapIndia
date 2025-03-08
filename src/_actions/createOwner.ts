@@ -19,7 +19,7 @@ export const createOwner = async () => {
       type: "owner",
       otpExpiry: otpExpiry,
       Phone: ``,
-      country: true,
+      country: false,
       paymentId: "",
     },
   });

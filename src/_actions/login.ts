@@ -4,6 +4,7 @@ import * as z from "zod";
 import { signIn } from "@/auth";
 // import { DEFAULT_LOGIN_REDIRECT } from "../../route";
 import { AuthError } from "next-auth";
+// import { error } from "console";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -75,6 +76,12 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     //     }
     //   }
     // }
+    // if (!res.emailVerified) {
+    //   return {
+    //     error:
+    //       "Email is not verified! Please wait our team will verify your details soon",
+    //   };
+    // }
     if (!res) {
       return { error: "An error occurred" };
     }
@@ -83,7 +90,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     if (err instanceof AuthError) {
       switch (err.type) {
         case "CredentialsSignin":
-          return { error: "Invalid Credentials" };
+          return {
+            error: "Invalid Credentials or our team is viewing your details",
+          };
         default:
           return { error: "An error occurred" };
       }

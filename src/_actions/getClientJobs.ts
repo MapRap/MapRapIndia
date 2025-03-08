@@ -21,6 +21,12 @@ export const getClientJobsWithSteps = async () => {
     } else {
       if (session.user) {
         // console.log("Fata=", data);
+        const unPaidJobs = await prisma.maps.deleteMany({
+          where: { givenBy: session.user.id, initialPayment: false },
+        });
+        if (!unPaidJobs) {
+          return `${session.user.id}`;
+        }
         const job = await prisma.maps.findMany({
           where: {
             givenBy: session.user.id,
@@ -30,10 +36,10 @@ export const getClientJobsWithSteps = async () => {
           },
         });
         if (!job) {
-          console.log("hey");
+          // console.log("hey");
           return `${session.user.id}`;
         }
-        console.log("job=", job);
+        // console.log("job=", job);
         if (job !== null) {
           if (job[0] === undefined) {
             return `${session.user.id}`;

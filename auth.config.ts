@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { LoginSchema } from "@/lib";
 import { getUseByEmail } from "@/_actions/getUserByEmail";
 import { comparePassword } from "@/_actions/passwordManage";
+import { getRealUsers } from "@/_actions/getRealUsers";
 
 export default {
   providers: [
@@ -24,8 +25,11 @@ export default {
           console.log("gg");
           const { gmail, password } = validateFields.data;
           const user = await getUseByEmail(gmail);
+
           if (!user || !user.password) return null;
+          const realUser = await getRealUsers(user.id);
           const passwordsMatch = await comparePassword(password, user.password);
+          if (realUser === "no such user!") return null;
           if (!passwordsMatch) return null;
           if (passwordsMatch) {
             return user;

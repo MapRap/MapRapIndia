@@ -15,6 +15,7 @@ export const notVerifiedUsers = async () => {
       console.log("No new Users");
       return "No new users";
     }
+    console.log("DF");
     return notVerified;
   } catch (err) {
     console.log(err);

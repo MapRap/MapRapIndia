@@ -27,7 +27,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             exist.type === "customer" ||
             exist.type === "owner"
           ) {
-            console.log("link", user);
+            // console.log("link", user);
             await prisma.user.update({
               where: { id: user.id },
               data: { emailVerified: new Date() },
@@ -63,9 +63,9 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       token.type = existingUser.type;
       return token;
     },
-    async redirect({ url, baseUrl }) {
-      console.log("e", url);
-      console.log("ew", baseUrl);
+    async redirect() {
+      // console.log("e", url);
+      // console.log("ew", baseUrl);
       // Always redirect to dashboard after login
       return "/list";
     },

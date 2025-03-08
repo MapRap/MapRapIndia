@@ -2,10 +2,11 @@
 import { deleteUser } from "@/_actions/deleteUser";
 import { notVerifiedUsers } from "@/_actions/getUnVerifiedUeses";
 import { verifyUser } from "@/_actions/verify";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-day-picker";
+// import { Button } from "react-day-picker";
 
 const TotalLoginsPage = () => {
   const [logins, setLogin] = useState<
@@ -22,11 +23,12 @@ const TotalLoginsPage = () => {
     notVerifiedUsers().then((e) => {
       if (e) {
         if (e !== "No new users") {
+          console.log(e);
           setLogin(e);
         }
       }
     });
-  });
+  }, []);
   return (
     <div>
       {logins.length === 0
@@ -46,21 +48,31 @@ const TotalLoginsPage = () => {
                   <div className="flex items-center justify-around">
                     <div>
                       <div>Type: {user.type}</div>
-                      Proof:{" "}
-                      <Image
-                        src={`${user.Proof}`}
-                        alt="gg"
-                        loading="lazy"
-                        width={500}
-                        height={300}
-                        className="m-2"
-                      />
+                      {user.Proof && (
+                        <div>
+                          Proof:{" "}
+                          <Image
+                            src={`${user.Proof}`}
+                            alt="gg"
+                            loading="lazy"
+                            width={500}
+                            height={300}
+                            className="m-2"
+                          />
+                        </div>
+                      )}
                     </div>
                     <div>
                       <Button
                         className="bg-green-600 cursor-pointer hover:bg-green-700 m-2"
                         onClick={() => {
-                          verifyUser(user.id);
+                          verifyUser(user.id).then((e) => {
+                            if (e) {
+                              if (e.message === "Verified User") {
+                                window.location.reload();
+                              }
+                            }
+                          });
                         }}
                       >
                         Verify

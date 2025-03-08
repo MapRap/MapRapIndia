@@ -6,8 +6,11 @@ export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
     const merchantId = searchParams.get("merchantId");
+    const step = searchParams.get("step");
+    const stepAmount = searchParams.get("stepAmount");
     // const request = await req.json();
     // console.log(request.udf1);
+    const jobId = searchParams.get("jobId");
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,
@@ -25,7 +28,7 @@ export async function GET(req: NextRequest) {
       }
     );
     if (!tokenResponse) {
-      console.log("SJE");
+      // console.log("SJE");
       return NextResponse.json({ error: "No token" });
     }
     const tokenObj = await tokenResponse.json();
@@ -46,14 +49,17 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Order Status Error" });
     }
     const orderStatusObj = await orderStatusResponse.json();
-    if (orderStatusObj.state == "COMPLETED") {
-      return NextResponse.json({
-        message: "success",
-      });
+    if (orderStatusObj.state === "COMPLETED") {
+      return NextResponse.redirect(
+        new URL(
+          `/payment/success?orderId=${merchantId}&step=${step}&amount=${stepAmount}&jobId=${jobId}`,
+          process.env.NEXT_PUBLIC_DOMAIN_NAME
+        )
+      );
     }
-    return NextResponse.json({
-      message: "error",
-    });
+    return NextResponse.redirect(
+      new URL("/payment/failure", process.env.NEXT_PUBLIC_DOMAIN_NAME)
+    );
   } catch (err) {
     console.log(err);
   }

@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-// import { addAreaPlans } from "@/_actions/addPlans";
+import { addAreaPlans } from "@/_actions/addPlans";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -191,13 +191,13 @@ const AddPlanPage = () => {
           {/* </div> */}
           {/* </CardDescription> */}
         </CardHeader>
-        {/* <Button
+        <Button
           onClick={() => {
             addAreaPlans();
           }}
         >
           Add Plans
-        </Button> */}
+        </Button>
       </Card>
       <Tabs defaultValue="residential" className="text-center m-0">
         <TabsList className="text-black bg-slate-300">

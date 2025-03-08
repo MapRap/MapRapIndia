@@ -156,6 +156,7 @@ CREATE TABLE "Maps" (
     "name" TEXT NOT NULL,
     "expected" TEXT,
     "studentPrice" TEXT,
+    "initialPayment" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Maps_pkey" PRIMARY KEY ("id")
 );

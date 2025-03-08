@@ -17,11 +17,11 @@ import FileUpload from "./fileUpload";
 import { PentaPlotSchema } from "@/lib";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createJob } from "@/_actions/createJob";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { ArrowRightIcon, CheckIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { createStep } from "@/_actions/createStep";
-import { useUploadThing } from "@/lib/uploadthing";
+// import { useUploadThing } from "@/lib/uploadthing";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Command, CommandItem, CommandList } from "../ui/command";
@@ -116,18 +116,18 @@ const PentaPlot = ({
   price,
   type,
   // direction,
-  name,
+  // name,
   // phone,
-  gmail,
+  // gmail,
   setLoading,
   property,
   setRotate,
 }: Props) => {
   // console.log("type=", type);
-  const router = useRouter();
-  const { startUpload } = useUploadThing("pdfUploader");
+  // const router = useRouter();
+  // const { startUpload } = useUploadThing("pdfUploader");
   const [isPending, startTransition] = useTransition();
-  const [currentStep, setCurrentStep] = useState(1); // Tracks the current step
+  const [currentStep] = useState(1); // Tracks the current step
   const [currency] = useState("INR"); // Tracks
   const [value] = React.useState("");
   // const [rotate, setRotate] = useState("0");
@@ -172,154 +172,217 @@ const PentaPlot = ({
         }
 
         try {
-          const response = await fetch("/api/payments/create-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              totalAmount: 100 * price,
-              currency,
-              step: currentStep,
-            }),
-          });
+          // const response = await fetch("/api/payments/create-order", {
+          //   method: "POST",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //   },
+          //   body: JSON.stringify({
+          //     totalAmount: 100 * price,
+          //     currency,
+          //     step: currentStep,
+          //   }),
+          // });
 
-          const order = await response.json();
+          // const order = await response.json();
 
-          if (!order.id) {
-            console.error("Failed to create order:", order);
-            return;
+          // if (!order.id) {
+          //   console.error("Failed to create order:", order);
+          //   return;
+          // }
+
+          // // Razorpay options
+          // const options = {
+          //   key: process.env.NEXT_PUBLIC_RAZORPAY_ID as string,
+          //   amount: order.amount,
+          //   currency: order.currency,
+          //   name: "Make My Naksha",
+          //   description: `Step ${currentStep} Payment`,
+          //   order_id: order.id,
+          //   handler: async (response: RazorpayPaymentResponse) => {
+          //     // Verify payment
+          //     const payment_id = response.razorpay_payment_id;
+          //     const verificationResponse = await fetch(
+          //       "/api/payments/payment-verification",
+          //       {
+          //         method: "POST",
+          //         headers: { "Content-Type": "application/json" },
+          //         body: JSON.stringify({
+          //           razorpay_order_id: response.razorpay_order_id,
+          //           razorpay_payment_id: response.razorpay_payment_id,
+          //           razorpay_signature: response.razorpay_signature,
+          //         }),
+          //       }
+          //     );
+
+          //     const verificationResult = await verificationResponse.json();
+          //     console.log(verificationResult);
+
+          //     if (verificationResult.success) {
+          //       alert(`Step ${currentStep} payment successful!`);
+          //       // setReceipts((prev) => [...prev, order.receipt]); // Add receipt to the list
+          //       setCurrentStep((prevStep) => prevStep + 1); // Move to next step
+          //       // console.log("type=", type);
+          //       createJob({
+          //         ...e,
+          //         plot: "plot3",
+          //         imageUrl: imageUrl,
+          //         price: price,
+          //         type: type,
+          //         property: property,
+          //         // direction: direction,
+          //       }).then((res) => {
+          //         if (res) {
+          //           if (res !== "Error") {
+          //             if (res === "user not approved") {
+          //             } else if (res?.success && res?.job) {
+          //               createStep({
+          //                 jobId: res.job?.id,
+          //                 type: "full",
+          //                 step: 1,
+          //               }).then((e) => {
+          //                 if (e) {
+          //                   if (e !== "Network error") {
+          //                     if (e !== "No such job exists") {
+          //                       fetch("/api/payments/receipt", {
+          //                         method: "POST",
+          //                         headers: {
+          //                           "Content-Type": "application/json",
+          //                         },
+          //                         body: JSON.stringify({
+          //                           payment_id: `${payment_id}`,
+          //                         }),
+          //                       }).then((rece) => {
+          //                         if (rece.ok) {
+          //                           rece.blob().then((blob) => {
+          //                             // Create a temporary download link for the Blob
+          //                             const file = new File(
+          //                               [blob],
+          //                               `receipt${gmail}1.pdf`,
+          //                               {
+          //                                 type: "application/pdf",
+          //                               }
+          //                             );
+          //                             try {
+          //                               startUpload([file]).then(
+          //                                 (uploadedFiles) => {
+          //                                   if (
+          //                                     uploadedFiles &&
+          //                                     uploadedFiles[0]
+          //                                   ) {
+          //                                     console.log(
+          //                                       "File uploaded successfully:",
+          //                                       uploadedFiles[0].url
+          //                                     );
+          //                                     router.push(
+          //                                       `${window.location.pathname}/success?receipt=${uploadedFiles[0].url}`
+          //                                     );
+          //                                   } else {
+          //                                     console.error(
+          //                                       "File upload failed"
+          //                                     );
+          //                                   }
+          //                                 }
+          //                               );
+          //                             } catch (error) {
+          //                               console.error(
+          //                                 "Error uploading file:",
+          //                                 error
+          //                               );
+          //                             }
+          //                           });
+          //                         }
+          //                       });
+          //                     } else {
+          //                       console.log("GG");
+          //                     }
+          //                   }
+          //                 }
+          //               });
+          //             } else if (res?.error) {
+          //               router.push(`${window.location.pathname}/error`);
+          //             }
+          //           }
+          //         }
+          //       });
+          //     } else {
+          //       alert("Payment verification failed!");
+          //     }
+          //   },
+          //   prefill: {
+          //     name: name,
+          //     email: `${gmail}`,
+          //   },
+          //   theme: {
+          //     color: "#3399cc",
+          //   },
+          // };
+
+          // const razorpay = new window.Razorpay(options);
+          // razorpay.open();
+          let steps = 2;
+          if (Number(price) > 10000 && Number(price) < 20000) {
+            steps = 3;
           }
-
-          // Razorpay options
-          const options = {
-            key: process.env.NEXT_PUBLIC_RAZORPAY_ID as string,
-            amount: order.amount,
-            currency: order.currency,
-            name: "Make My Naksha",
-            description: `Step ${currentStep} Payment`,
-            order_id: order.id,
-            handler: async (response: RazorpayPaymentResponse) => {
-              // Verify payment
-              const payment_id = response.razorpay_payment_id;
-              const verificationResponse = await fetch(
-                "/api/payments/payment-verification",
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    razorpay_order_id: response.razorpay_order_id,
-                    razorpay_payment_id: response.razorpay_payment_id,
-                    razorpay_signature: response.razorpay_signature,
-                  }),
-                }
-              );
-
-              const verificationResult = await verificationResponse.json();
-              console.log(verificationResult);
-
-              if (verificationResult.success) {
-                alert(`Step ${currentStep} payment successful!`);
-                // setReceipts((prev) => [...prev, order.receipt]); // Add receipt to the list
-                setCurrentStep((prevStep) => prevStep + 1); // Move to next step
-                // console.log("type=", type);
-                createJob({
-                  ...e,
-                  plot: "plot3",
-                  imageUrl: imageUrl,
-                  price: price,
-                  type: type,
-                  property: property,
-                  // direction: direction,
-                }).then((res) => {
-                  if (res) {
-                    if (res !== "Error") {
-                      if (res === "user not approved") {
-                      } else if (res?.success && res?.job) {
-                        createStep({
-                          jobId: res.job?.id,
-                          type: "full",
-                          step: 1,
-                        }).then((e) => {
-                          if (e) {
-                            if (e !== "Network error") {
-                              if (e !== "No such job exists") {
-                                fetch("/api/payments/receipt", {
-                                  method: "POST",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  body: JSON.stringify({
-                                    payment_id: `${payment_id}`,
-                                  }),
-                                }).then((rece) => {
-                                  if (rece.ok) {
-                                    rece.blob().then((blob) => {
-                                      // Create a temporary download link for the Blob
-                                      const file = new File(
-                                        [blob],
-                                        `receipt${gmail}1.pdf`,
-                                        {
-                                          type: "application/pdf",
-                                        }
-                                      );
-                                      try {
-                                        startUpload([file]).then(
-                                          (uploadedFiles) => {
-                                            if (
-                                              uploadedFiles &&
-                                              uploadedFiles[0]
-                                            ) {
-                                              console.log(
-                                                "File uploaded successfully:",
-                                                uploadedFiles[0].url
-                                              );
-                                              router.push(
-                                                `${window.location.pathname}/success?receipt=${uploadedFiles[0].url}`
-                                              );
-                                            } else {
-                                              console.error(
-                                                "File upload failed"
-                                              );
-                                            }
-                                          }
-                                        );
-                                      } catch (error) {
-                                        console.error(
-                                          "Error uploading file:",
-                                          error
-                                        );
-                                      }
-                                    });
-                                  }
-                                });
-                              } else {
-                                console.log("GG");
-                              }
+          if (Number(price) > 20000) {
+            steps = 4;
+          }
+          createJob({
+            ...e,
+            plot: "plot3",
+            imageUrl: imageUrl,
+            price: Number(price),
+            type: type,
+            property: property || "Basic",
+          }).then((j) => {
+            if (j) {
+              if (j !== "Error") {
+                if (j !== "user not approved") {
+                  createStep({
+                    jobId: j.job!.id,
+                    type: "full",
+                    step: 1,
+                  }).then(async (res) => {
+                    if (res) {
+                      if (res !== "Network error") {
+                        if (res !== "No such job exists") {
+                          const response = await fetch(
+                            "/api/payments/stepPayments",
+                            {
+                              method: "POST",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify({
+                                totalAmount: Number(price),
+                                currency,
+                                step: currentStep,
+                                totalSteps: steps,
+                                jobId: res.id,
+                              }),
                             }
+                          );
+                          const order = await response.json();
+                          if (!order) {
+                            console.error("Failed to create order");
+                            window.location.replace("/payment/failure");
+                            // return;
                           }
-                        });
-                      } else if (res?.error) {
-                        router.push(`${window.location.pathname}/error`);
+                          if (!order.message) {
+                            console.error("Failed to create order");
+                            window.location.replace("/payment/failure");
+                            // return;
+                          }
+                          window.location.href = `${order.message}`;
+                        }
                       }
                     }
-                  }
-                });
-              } else {
-                alert("Payment verification failed!");
+                  });
+                }
               }
-            },
-            prefill: {
-              name: name,
-              email: `${gmail}`,
-            },
-            theme: {
-              color: "#3399cc",
-            },
-          };
+            }
+          });
 
-          const razorpay = new window.Razorpay(options);
-          razorpay.open();
           setLoading(true);
           return { success: "Payment started" };
         } catch (error) {

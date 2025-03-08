@@ -1,4 +1,5 @@
 "use client";
+// import { deleteNotPaid } from "@/_actions/deleteNotPaid";
 import { getClientInteriorJobs } from "@/_actions/getClientaInteriorJobs";
 import { getClientJobsWithSteps } from "@/_actions/getClientJobs";
 import { getClientOtherJobs } from "@/_actions/getClientOtherJobs";
@@ -93,6 +94,7 @@ const ProjectPage = () => {
       phone: string;
       expected: string | null;
       studentPrice: string | null;
+      initialPayment: boolean;
     })[]
   >([]);
   // {
@@ -190,7 +192,6 @@ const ProjectPage = () => {
     });
     getClientInteriorJobs().then((e) => {
       if (e) {
-        setLoading(false);
         if (e !== "Network Error") {
           if (e !== "Please login to continue") {
             setIsJob(true);
@@ -199,10 +200,6 @@ const ProjectPage = () => {
         }
       }
     });
-    console.log(otherJobs);
-    // setTimeout(() => {
-    //   console.log(receipats);
-    // }, 3000);
   }, []);
   // const downloadReceipt = () => {
   //   // Trigger download of the receipt
@@ -453,9 +450,9 @@ const ProjectPage = () => {
               link.click(); // Trigger the download
               window.URL.revokeObjectURL(url); // Clean up the URL object
             }
-            console.log("JSD");
+            // console.log("JSD");
             startInteriorStepProp({ id: stepId }).then((changed) => {
-              console.log(changed, "da");
+              // console.log(changed, "da");
               if (changed) {
                 if (changed === "Successfully strted the step") {
                   window.location.reload();

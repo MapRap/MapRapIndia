@@ -51,6 +51,7 @@ import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
 import TestSiteVisitComp from "@/components/common/textComp";
+import { createOwner } from "@/_actions/createOwner";
 
 declare global {
   interface Window {
@@ -252,7 +253,7 @@ export default function Home() {
                           My Workshop
                         </DropdownMenuItem>
                       )}
-                      {session.data.user.type === "student" && (
+                      {session.data.user.type === "professional" && (
                         <DropdownMenuItem
                           onClick={() => {
                             window.location.replace("/assigned");
@@ -338,6 +339,14 @@ export default function Home() {
               }}
             >
               Get Started
+            </Button>
+            <Button
+              className="text-md border rounded-lg text-white font-medium hover:bg-blue-800 p-4 cursor-pointer m-gap-10a text-center bg-[#273392]"
+              onClick={() => {
+                createOwner();
+              }}
+            >
+              Create owner
             </Button>
           </div>
         </div>
