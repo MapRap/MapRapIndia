@@ -49,29 +49,11 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { File } from "lucide-react";
-// import { pide } from "lucide-react";
-// import { pide } from "lucide-react";
+
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-// import { flushSync } from "react-dom";
-// import { flushSync } from "react-dom";
-
-// type Props = {};
 
 const AdminPage = () => {
-  // const [logins, setLogin] = useState<
-  //   {
-  //     id: string;
-  //     name: string;
-  //     gmail: string;
-  //     Proof: string | null;
-  //     isReal: boolean | null;
-  //     type: string;
-  //   }[]
-  // >([]);
-  // console.log(logins);
   const [done, setDone] = useState("");
   const [jobs, setJobs] = useState<
     ({
@@ -134,65 +116,8 @@ const AdminPage = () => {
       payment: string | null;
     }[]
   >([]);
-  // const [paintings, setPaintings] = useState<
-  //   {
-  //     id: string;
-  //     title: string;
-  //     description: string;
-  //     clientPrice: number;
-  //     totalPrice: number;
-  //     givenBy: string;
-  //     imageUrl: string;
-  //     published: boolean;
-  //     paid: boolean;
-  //   }[]
-  // >([]);
-  // const [otherJobs, setOtherJobs] = useState<
-  //   ({
-  //     requests: {
-  //       id: string;
-  //       gmail: string;
-  //       phone: string;
-  //       otherJobId: string;
-  //       by: string;
-  //       approved: boolean;
-  //       attachment: string;
-  //     }[];
-  //   } & {
-  //     id: string;
-  //     title: string;
-  //     description: string;
-  //     clientPrice: number;
-  //     totalPrice: number;
-  //     givenBy: string;
-  //     imageUrl: string;
-  //     published: boolean;
-  //     paid: boolean;
-  //   })[]
-  // >([]);
-  // const [visits, setVisits] = useState<
-  //   {
-  //     id: string;
-  //     userId: string;
-  //     phone: string;
-  //     gmail: string;
-  //   }[]
-  // >([]);
-  // const [totalPrice, setTotalPrice] = useState(0);
   const [erro] = useState("");
-  // const [user, setUser] = useState<{
-  //   id: string;
-  //   gmail: string;
-  //   name: string;
-  //   password: string;
-  //   otp: string | null;
-  //   isVerified: boolean | null;
-  //   otpExpiry: Date;
-  //   type: string;
-  //   Phone: string;
-  //   paymentId: string;
-  //   country: boolean;
-  // }>();
+
   const [task, setTask] = useState("");
   const [comment, setComment] = useState("");
   const [studentPrice, setStudentPrice] = useState("");
@@ -201,53 +126,27 @@ const AdminPage = () => {
   const [stars, setStars] = useState("");
   const [message, setMessage] = useState("");
   const session = useSession();
+  // console.log("dfsae", session);
   useEffect(() => {
-    // notVerifiedUsers().then((e) => {
-    //   if (e) {
-    //     if (e !== "No new users") {
-    //       setLogin(e);
-    //     }
-    //   }
-    // });
-
-    // session.data?.user.id?.then((e) => {
-    //   if (e) {
-    //     if (e !== "/unauthorized") {
-    //       setUser(e);
-    //     }
-    //   }
-    // });
-    // const assign = async () => {
-    // if (jobs.length === 0) {
-    // console.log(count);
-    // if (count < 5) {
-    // setCount(count + 1);
+    // if (!session) {
+    //   console.log("er");
+    //   window.location.replace("/");
+    // }
+    // if (!session.data) {
+    //   console.log("ere");
+    //   window.location.replace("/");
+    // }
+    // if (!session.data?.user) {
+    //   console.log("erew");
+    //   window.location.replace("/");
+    // }
     getJobs().then((a) => {
       if (a) {
         if (a !== "No jobs") {
           // flushSync(() => {
           setJobs(a);
-
-          // hasFetchedData.current = true;
-          // });
-          // console.log("GG");
-          // if (count < 5) {
-          // if (jobs.length !== 0) {
           console.log("hey");
           a.map((e) => {
-            // e.steps.map((step) => {
-            // if (step) {
-            //   setSteps((prevSteps) => {
-            //     const exists = prevSteps.find(
-            //       (userStep) =>
-            //         userStep.id === e.id &&
-            //         userStep.completed === e.completed
-            //     );
-            //     if (exists) return prevSteps;
-            //     return [...prevSteps, step];
-            //   });
-            // }
-            // });
             e.requests.map((request) => {
               isRealUser(request.by).then((e) => {
                 console.log("E", e);
@@ -274,141 +173,7 @@ const AdminPage = () => {
       }
       setLoading(false);
     });
-    // getOtherJobs().then((e) => {
-    //   if (e) {
-    //     if (e !== "No Jobs") {
-    //       // console.log(e);
-    //       e.map((job) => {
-    //         setOtherJobs((prevJobs) => {
-    //           const exists = prevJobs.find((j) => j.id === job.id);
-    //           if (exists) return prevJobs;
-    //           return [...prevJobs, job];
-    //         });
-    //       });
-    //     }
-    //   }
-    // });
-    // }
-    // };
-    // getVisit().then((e) => {
-    //   if (e) {
-    //     if (e !== "Error") {
-    //       e.map((visit) => {
-    //         setVisits((prevVisits) => {
-    //           const exists = prevVisits.find((v) => v.id === visit.id);
-    //           if (exists) return prevVisits;
-    //           return [...prevVisits, visit];
-    //         });
-    //       });
-    //     }
-    //   }
-    // });
-    // getPaintings().then((e) => {
-    //   if (e) {
-    //     if (e !== "No paintings") {
-    //       e.map((paint) => {
-    //         setPaintings((prevPaintings) => {
-    //           const exists = prevPaintings.find((p) => p.id === paint.id);
-    //           if (exists) return prevPaintings;
-    //           return [...prevPaintings, paint];
-    //         });
-    //       });
-    //     }
-    //   }
-    // });
-    // assign();
-    // console.log(requestUser);
   }, [setJobs]);
-
-  // const publishPainting = async ({ paintingId }: { paintingId: string }) => {
-  //   try {
-  //     const data = await publishPaint({
-  //       id: paintingId,
-  //       totalPrice: totalPrice,
-  //     });
-  //     if (!data) {
-  //       console.log("Error");
-  //     } else if (data === "Timeout! Please try again") {
-  //       console.log(data);
-  //     } else if (data === "success") {
-  //       return data;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const publishOtherJobs = async ({ OtherId }: { OtherId: string }) => {
-  //   try {
-  //     const data = await publishOtherJob({
-  //       id: OtherId,
-  //       totalPrice: totalPrice,
-  //     });
-  //     if (!data) {
-  //       console.log("Error");
-  //     } else if (data === "Timeout! Please try again") {
-  //       console.log(data);
-  //     } else if (data === "success") {
-  //       return data;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const unPub = async ({ id }: { id: string }) => {
-  //   try {
-  //     const success = await unPublishPainting({ id: id });
-  //     if (!success) {
-  //       console.log("Error");
-  //     } else if (success === "Error! Please try again") {
-  //       console.log(success);
-  //     } else if (success === "success") {
-  //       return success;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const unPubOther = async ({ id }: { id: string }) => {
-  //   try {
-  //     const success = await unPublishOtherJob({ id: id });
-  //     if (!success) {
-  //       console.log("Error");
-  //     } else if (success === "Error! Please try again") {
-  //       console.log(success);
-  //     } else if (success === "success") {
-  //       return success;
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const onDelete = async ({ id }: { id: string }) => {
-  //   try {
-  //     const result = await onPaintingDelete({ id });
-  //     if (result === "Error! Please try again") {
-  //       console.log("error");
-  //     } else if (result === "Succefully deleted painting") {
-  //       window.location.reload();
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const onDeleteOther = async ({ id }: { id: string }) => {
-  //   try {
-  //     const result = await onOtherJobDelete({ id });
-  //     if (result === "Error! Please try again") {
-  //       console.log("error");
-  //     } else if (result === "Succefully deleted painting") {
-  //       window.location.reload();
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const handleAssign = async ({
     userId,
@@ -430,11 +195,6 @@ const AdminPage = () => {
       console.log(err);
     }
   };
-  // jobs.map((job) => {
-  //   job.steps.map((step) => {
-  //     console.log(step.completed);
-  //   });
-  // });
   return loading ? (
     <div className="w-screen h-screen flex items-center justify-center">
       <Loading2 loading={loading} />
