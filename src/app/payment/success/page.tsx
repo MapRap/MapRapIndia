@@ -2,12 +2,14 @@
 import { changeInititalPayment } from "@/_actions/changeInititalPaymentDetails";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Loading2 } from "@/components/common/loader2";
 
 export default function PaymentSuccessPage() {
   const searchParams = useSearchParams();
   const jobId = searchParams.get("jobId");
   const orderId = searchParams.get("orderId");
   const amount = searchParams.get("amount");
+    const [loading, setLoading] = useState(true);
   const [job, setJob] = useState<{
     id: string;
     type: string;
@@ -54,7 +56,11 @@ export default function PaymentSuccessPage() {
     }
   }, [jobId]);
   console.log(job, orderId, jobId, amount);
-  return (
+  return loading ? (
+    <div className="h-screen w-screen flex items-center justify-center">
+      <Loading2 loading={loading} />
+    </div>
+  ) :  (
     <div>
       {job && orderId && jobId && amount && (
         <div>
