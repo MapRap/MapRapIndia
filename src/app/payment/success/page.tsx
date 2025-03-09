@@ -41,6 +41,7 @@ export default function PaymentSuccessPage() {
     if (jobId) {
       changeInititalPayment({ id: jobId }).then((e) => {
         if (e) {
+          console.log(e);
           if (e !== "Error") {
             if (e !== "Error! Please try again") {
               if (e !== "No such job") {
@@ -51,7 +52,8 @@ export default function PaymentSuccessPage() {
         }
       });
     }
-  }, []);
+  }, [jobId]);
+  console.log(job, orderId, jobId, amount);
   return (
     <div>
       {job && orderId && jobId && amount && (

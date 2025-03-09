@@ -252,6 +252,7 @@ export default function Calculated(props: { params: tParams }) {
                 type: values.type,
                 property: searchParams.get("property") || "Basic",
               }).then((j) => {
+                console.log("dsfa", j);
                 if (j) {
                   if (j !== "Error") {
                     if (j !== "user not approved") {

@@ -45,6 +45,7 @@ export const createJob = async (values: {
   const session = await auth();
 
   try {
+    // console.lof
     const plans = await getOtherPlans();
     if (!plans) {
       return "Error";
@@ -171,6 +172,7 @@ export const createJob = async (values: {
             return {
               success:
                 "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+              job: map,
             };
           }
         } else if (values.plot === "plot3") {
