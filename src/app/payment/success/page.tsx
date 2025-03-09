@@ -42,6 +42,7 @@ export default function PaymentSuccessPage() {
   useEffect(() => {
     if (jobId) {
       changeInititalPayment({ id: jobId }).then((e) => {
+        console.log(e);
         if (e) {
           console.log(e);
           if (e !== "Error") {
