@@ -47,6 +47,7 @@ export default function PaymentSuccessPage() {
           if (e !== "Error") {
             if (e !== "Error! Please try again") {
               if (e !== "No such job") {
+                setLoading(false)
                 setJob(e);
               }
             }
