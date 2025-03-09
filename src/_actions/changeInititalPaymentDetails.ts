@@ -1,3 +1,5 @@
+"use server"
+
 import prisma from "@/lib/db";
 
 export const changeInititalPayment = async ({ id }: { id: string }) => {
