@@ -69,7 +69,7 @@ export default function PaymentSuccessPage() {
           <div className="flex flex-col items-center justify-center h-screen">
             <h1>Payment Successful!</h1>
             <div>orderId: {orderId}</div>
-            <div>Amount: {amount}</div>
+            <div>Amount: {Number(amount)/100}</div>
             <div>By: {job.name}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
