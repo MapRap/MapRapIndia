@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const TwoStepsArr = [60, 40];
     const ThreeStepsArr = [40, 30, 30];
     const FourStepsArr = [25, 25, 25];
-    const jobId = request.jobId;
+    // const jobId = request.jobId;
 
     let totalSteps = 2;
     let stepAmount = request.totalAmount;
@@ -79,7 +79,8 @@ export async function POST(req: NextRequest) {
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/stepStatus/?merchantId=${merchantOrderId}&step=${step}&amount=${stepAmount}&jobId=${jobId}`,
+            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/payments/success`,
+            callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/stepStatus`,
           },
         },
       }),
