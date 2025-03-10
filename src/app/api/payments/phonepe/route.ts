@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         merchantOrderId: merchantOrderId,
-        amount: 100,
+        amount: 5000,
         expireAfter: 1200,
         metaInfo: {
           udf1: "additional-information-1",

@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "@/lib/db";
 
 export const changeInititalPayment = async ({ id }: { id: string }) => {
@@ -14,6 +16,7 @@ export const changeInititalPayment = async ({ id }: { id: string }) => {
         initialPayment: true,
       },
     });
+    console.log("Sd");
     if (!updatedJob) {
       return "Error! Please try again";
     }
