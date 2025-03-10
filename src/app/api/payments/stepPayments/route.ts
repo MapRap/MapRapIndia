@@ -7,27 +7,27 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     // console.log(request.udf1);
     const amount = request.totalAmount;
-    const step = request.step;
-    const TwoStepsArr = [60, 40];
-    const ThreeStepsArr = [40, 30, 30];
-    const FourStepsArr = [25, 25, 25];
+    // const step = request.step;
+    // const TwoStepsArr = [60, 40];
+    // const ThreeStepsArr = [40, 30, 30];
+    // const FourStepsArr = [25, 25, 25];
     // const jobId = request.jobId;
 
     let totalSteps = 2;
-    let stepAmount = request.totalAmount;
+    // let stepAmount = request.totalAmount;
     if (amount > 10000 && amount < 20000) {
       totalSteps = 3;
     } else if (amount > 20000) {
       totalSteps = 4;
     }
-    // const stepAmount=amount*0.9;
-    if (totalSteps === 2) {
-      stepAmount = amount * TwoStepsArr[step - 1];
-    } else if (totalSteps === 3) {
-      stepAmount = amount * ThreeStepsArr[step - 1];
-    } else {
-      stepAmount = amount * FourStepsArr[step - 1];
-    }
+    // // const stepAmount=amount*0.9;
+    // if (totalSteps === 2) {
+    //   stepAmount = amount * TwoStepsArr[step - 1];
+    // } else if (totalSteps === 3) {
+    //   stepAmount = amount * ThreeStepsArr[step - 1];
+    // } else {
+    //   stepAmount = amount * FourStepsArr[step - 1];
+    // }
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         merchantOrderId: merchantOrderId,
-        amount: stepAmount,
+        amount: 100,
         expireAfter: 1200,
         metaInfo: {
           udf1: `${totalSteps}`,
