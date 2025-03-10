@@ -358,7 +358,7 @@ const PentaPlot = ({
                                 currency,
                                 step: currentStep,
                                 totalSteps: steps,
-                                jobId: res.id,
+                                jobId: j.job!.id,
                               }),
                             }
                           );

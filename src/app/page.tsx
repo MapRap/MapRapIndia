@@ -2,11 +2,7 @@
 import Foot from "@/components/common/foot";
 // import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/components/ui/popover";
+
 import Spline from "@splinetool/react-spline";
 // import SignTri from "@/components/auth/signClientTrigger";
 import { Button } from "@/components/ui/button";
