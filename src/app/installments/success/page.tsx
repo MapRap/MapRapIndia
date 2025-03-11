@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function PaymentSuccessPage() {
   const searchParams = useSearchParams();
-  const stepId = searchParams.get("jobId");
+  const stepId = searchParams.get("stepId");
   const orderId = searchParams.get("orderId");
   const [loading, setLoading] = useState(true);
   const amount = searchParams.get("amount");
