@@ -52,7 +52,7 @@ export default function PaymentSuccessPage() {
       });
     }
   }, [stepId]);
-  // console.log(job, orderId, jobId, amount);
+   console.log(orderId, stepId, amount);
   return loading ? (
     <div className="h-screen w-screen flex items-center justify-center">
       <Loading2 loading={loading} />
