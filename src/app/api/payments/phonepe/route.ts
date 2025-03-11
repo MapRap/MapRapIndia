@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     // console.log(request.udf1);
     const amount = request.totalAmount;
-    const step = request.currentStep;
+    const step = request.step;
     const TwoStepsArr = [60, 40];
     const ThreeStepsArr = [40, 30, 30];
     const FourStepsArr = [25, 25, 25];
