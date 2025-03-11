@@ -43,6 +43,7 @@ export default function PaymentSuccessPage() {
   useEffect(() => {
     if (stepId) {
       startStepProp({ id: stepId }).then((changed) => {
+        console.log(changed);
         if (changed) {
           if (changed === "Successfully strted the step") {
             setLoading(false);
@@ -52,6 +53,7 @@ export default function PaymentSuccessPage() {
       });
     }
   }, [stepId]);
+  console.log(orderId, stepId, amount);
   console.log(orderId, stepId, amount);
   return loading ? (
     <div className="h-screen w-screen flex items-center justify-center">

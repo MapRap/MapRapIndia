@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
     } else {
       stepAmount = amount * FourStepsArr[step - 1];
     }
+    console.log(amount,step,stepId);
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,

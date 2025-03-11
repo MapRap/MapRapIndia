@@ -173,7 +173,7 @@ const ProjectPage = () => {
           //   console.log(e);
           if (typeof e !== "string") {
             setIsJob(true);
-            // console.log(e.type);
+            console.log(e);
             setJobs(e);
           }
         }

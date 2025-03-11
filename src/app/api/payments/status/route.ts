@@ -32,6 +32,8 @@ export async function GET(req: NextRequest) {
       // console.log("SJE");
       return NextResponse.json({ error: "No token" });
     }
+    
+    console.log(stepAmount,step,stepId);
     const tokenObj = await tokenResponse.json();
     cachedToken = tokenObj.access_token;
     // const request = await req.json();
