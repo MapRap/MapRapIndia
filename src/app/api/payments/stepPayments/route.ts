@@ -7,27 +7,27 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     // console.log(request.udf1);
     const amount = request.totalAmount;
-    // const step = request.step;
-    // const TwoStepsArr = [60, 40];
-    // const ThreeStepsArr = [40, 30, 30];
-    // const FourStepsArr = [25, 25, 25];
-    // const jobId = request.jobId;
+    const step = request.step;
+    const TwoStepsArr = [60, 40];
+    const ThreeStepsArr = [40, 30, 30];
+    const FourStepsArr = [25, 25, 25];
+    const jobId = request.jobId;
 
     let totalSteps = 2;
-    // let stepAmount = request.totalAmount;
+    let stepAmount = request.totalAmount;
     if (amount > 10000 && amount < 20000) {
       totalSteps = 3;
     } else if (amount > 20000) {
       totalSteps = 4;
     }
-    // // const stepAmount=amount*0.9;
-    // if (totalSteps === 2) {
-    //   stepAmount = amount * TwoStepsArr[step - 1];
-    // } else if (totalSteps === 3) {
-    //   stepAmount = amount * ThreeStepsArr[step - 1];
-    // } else {
-    //   stepAmount = amount * FourStepsArr[step - 1];
-    // }
+    // const stepAmount=amount*0.9;
+    if (totalSteps === 2) {
+      stepAmount = amount * TwoStepsArr[step - 1];
+    } else if (totalSteps === 3) {
+      stepAmount = amount * ThreeStepsArr[step - 1];
+    } else {
+      stepAmount = amount * FourStepsArr[step - 1];
+    }
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,
@@ -79,8 +79,7 @@ export async function POST(req: NextRequest) {
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/payments/success`,
-            callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/stepStatus`,
+            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/stepStatus?merchantId=${merchantOrderId}&amount=${stepAmount}&jobId=${jobId}/step=${step}`,
           },
         },
       }),

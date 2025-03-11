@@ -5,8 +5,29 @@ let cachedToken: string | null = null;
 export async function POST(req: NextRequest) {
   try {
     const request = await req.json();
-    console.log(request.udf1);
+    // console.log(request.udf1);
+    const amount = request.totalAmount;
+    const step = request.currentStep;
+    const TwoStepsArr = [60, 40];
+    const ThreeStepsArr = [40, 30, 30];
+    const FourStepsArr = [25, 25, 25];
+    const stepId = request.stepId;
 
+    let totalSteps = 2;
+    let stepAmount = request.totalAmount;
+    if (amount > 10000 && amount < 20000) {
+      totalSteps = 3;
+    } else if (amount > 20000) {
+      totalSteps = 4;
+    }
+    // const stepAmount=amount*0.9;
+    if (totalSteps === 2) {
+      stepAmount = amount * TwoStepsArr[step - 1];
+    } else if (totalSteps === 3) {
+      stepAmount = amount * ThreeStepsArr[step - 1];
+    } else {
+      stepAmount = amount * FourStepsArr[step - 1];
+    }
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,
@@ -24,7 +45,7 @@ export async function POST(req: NextRequest) {
       }
     );
     if (!tokenResponse) {
-      console.log("SJE");
+      // console.log("SJE");
       return NextResponse.json({ error: "No token" });
     }
     const tokenObj = await tokenResponse.json();
@@ -45,11 +66,11 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         merchantOrderId: merchantOrderId,
-        amount: 5000,
+        amount: 100,
         expireAfter: 1200,
         metaInfo: {
-          udf1: "additional-information-1",
-          udf2: "additional-information-2",
+          udf1: `${totalSteps}`,
+          udf2: `${request.step}`,
           udf3: "additional-information-3",
           udf4: "additional-information-4",
           udf5: "additional-information-5",
@@ -58,21 +79,21 @@ export async function POST(req: NextRequest) {
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/status/?merchantId=${merchantOrderId}`,
+            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/status?merchantId=${merchantOrderId}&amount=${stepAmount}&stepId=${stepId}/step=${step}`,
           },
         },
       }),
     });
     if (!response) {
-      console.log("SereE");
+      // console.log("SereE");
       return NextResponse.json({ error: "Initialization error" });
     }
     const initialtePayment = await response.json();
     if (!initialtePayment) {
-      console.log("SereE");
+      // console.log("SereE");
       return NextResponse.json({ error: "Initialization error" });
     }
-    console.log(initialtePayment);
+    // console.log(initialtePayment);
     return NextResponse.json({
       message: `${initialtePayment.redirectUrl}`,
     });
