@@ -184,6 +184,7 @@ model Steps {
   onGmail String?
   attachments String? 
   comments String?
+  totalSteps Int @default(2)
   completed Boolean @default(false)
   maps Maps @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }

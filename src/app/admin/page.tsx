@@ -729,6 +729,11 @@ const AdminPage = () => {
                                                       "Error! Please try again"
                                                     ) {
                                                       setMessage(ste);
+                                                    } else if (
+                                                      ste ===
+                                                      "All steps completed"
+                                                    ) {
+                                                      setMessage(ste);
                                                     } else {
                                                       setMessage(
                                                         "Pdf sent to client!"

@@ -6,10 +6,12 @@ export const createStep = async ({
   jobId,
   step,
   type,
+  steps,
 }: {
   jobId: string;
   step: number;
   type: string;
+  steps: number;
 }) => {
   try {
     const job = prisma.maps.findUnique({
@@ -26,6 +28,7 @@ export const createStep = async ({
         type: type,
         currentStep: step,
         started: true,
+        totalSteps: steps,
       },
     });
     if (!res) {

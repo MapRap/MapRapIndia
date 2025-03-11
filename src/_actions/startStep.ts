@@ -12,14 +12,20 @@ export const startStep = async ({ id }: { id: string }) => {
     if (!step) {
       return "Error! Please try again";
     }
-    // if (step.type === "full") {
-    //   return;
-    // }
+
+    if (step.currentStep > step.totalSteps) {
+      return "All steps completed";
+    }
+    if (step.currentStep === step.totalSteps) {
+      return "All steps completed";
+    }
+
     const newStep = await prisma.steps.create({
       data: {
         jobId: step.jobId,
         type: step.type,
         currentStep: step.currentStep + 1,
+        totalSteps: step.totalSteps,
       },
     });
     if (!newStep) {

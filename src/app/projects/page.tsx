@@ -240,7 +240,6 @@ const ProjectPage = () => {
       alert("All payments are completed!");
       return;
     }
-
     // const stepPercentage = stepPercentages[currentStep - 1];
     // const stepAmount = Math.round((price * stepPercentage) / 100); // Calculate amount for this step
 
@@ -254,7 +253,7 @@ const ProjectPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          totalAmount: Number(price),
+          totalAmount: price,
           currency,
           step: currentStep,
           // totalSteps: steps,
