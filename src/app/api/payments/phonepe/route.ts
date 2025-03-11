@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const request = await req.json();
     // console.log(request.udf1);
     const amount = request.totalAmount;
-    const step = request.step;
+    const step = Number(request.step);
     const TwoStepsArr = [60, 40];
     const ThreeStepsArr = [40, 30, 30];
     const FourStepsArr = [25, 25, 25];
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/status?merchantId=${merchantOrderId}&amount=${stepAmount}&stepId=${stepId}/step=${step}`,
+            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/status?merchantId=${merchantOrderId}&amount=${stepAmount}&stepId=${stepId}&step=${step}`,
           },
         },
       }),
