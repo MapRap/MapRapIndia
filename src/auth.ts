@@ -19,6 +19,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   events: {
     async linkAccount({ user }) {
+      console.log("Sdfekndf");
       if (user.id) {
         const exist = await prisma.user.findUnique({ where: { id: user.id } });
         if (exist) {
@@ -48,6 +49,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async session({ session, token }) {
+      console.log("Dsfde");
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -63,9 +65,9 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       token.type = existingUser.type;
       return token;
     },
-    async redirect() {
-      // console.log("e", url);
-      // console.log("ew", baseUrl);
+    async redirect({ url, baseUrl }) {
+      console.log("e", url);
+      console.log("ew", baseUrl);
       // Always redirect to dashboard after login
       return "/list";
     },

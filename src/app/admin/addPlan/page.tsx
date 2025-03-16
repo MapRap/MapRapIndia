@@ -21,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRouter } from "next/navigation";
 // import { Tabs } from "@radix-ui/react-tabs";
 import React, { useEffect, useState } from "react";
+import { addAreaPlans } from "@/_actions/addPlans";
 // import { Aladin } from "next/font/google";
 
 const AddPlanPage = () => {
@@ -191,13 +192,13 @@ const AddPlanPage = () => {
           {/* </div> */}
           {/* </CardDescription> */}
         </CardHeader>
-        {/* <Button
+        <Button
           onClick={() => {
             addAreaPlans();
           }}
         >
           Add Plans
-        </Button> */}
+        </Button>
       </Card>
       <Tabs defaultValue="residential" className="text-center m-0">
         <TabsList className="text-black bg-slate-300">

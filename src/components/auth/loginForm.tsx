@@ -21,10 +21,13 @@ import { Button } from "../ui/button";
 // import { set } from "date-fns";
 import { login } from "@/_actions/login";
 import { useSearchParams } from "next/navigation";
+import { Eye } from "lucide-react";
+import { EyeClosedIcon } from "@radix-ui/react-icons";
 // import { set } from "date-fns";
 
 const LoginForm = () => {
   const searchParams = useSearchParams();
+  const [visible, setVisible] = useState(false);
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email already in use with different provider"
@@ -96,13 +99,23 @@ const LoginForm = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="*******"
-                      type="password"
-                      className="hover:border-slate-400"
-                      disabled={isPending}
-                    />
+                    <div className="flex gap-2 items-center">
+                      <Input
+                        {...field}
+                        placeholder="*******"
+                        type={visible ? "text" : "password"}
+                        className="hover:border-slate-400"
+                        disabled={isPending}
+                      ></Input>
+                      <div
+                        className="flex hover:text-gray-500 cursor-pointer items-end justify-end w-8"
+                        onClick={() => {
+                          setVisible(!visible);
+                        }}
+                      >
+                        {visible ? <EyeClosedIcon /> : <Eye />}
+                      </div>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,10 +136,10 @@ const LoginForm = () => {
               // setReg(!reg);
               setError("");
               setSuccess("");
-            }}
-          >
-            Don{"'"}t have an account?
-          </button> */}
+              }}
+              >
+              Don{"'"}t have an account?
+              </button> */}
         </div>
       </Form>
     </CardWrapper>

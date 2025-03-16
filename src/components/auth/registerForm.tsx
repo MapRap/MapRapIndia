@@ -26,9 +26,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Checkbox } from "../ui/checkbox";
 import { registerClient } from "@/_actions/registerClient";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { CaretSortIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon, EyeClosedIcon } from "@radix-ui/react-icons";
 import { Command, CommandItem, CommandList } from "../ui/command";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FileUpload from "../common/fileUpload";
 // import axios from "axios";
@@ -57,7 +57,9 @@ const RegisterForm = () => {
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = useState<string | undefined>("");
   const [value] = React.useState("");
+  const [visible, setVisible] = useState(false);
   const [img, setImg] = useState("");
+  const [credVisible, setCredVisible] = useState(false);
   // const [mail, setMail] = useState("");
   // const [sentMail, setSentMail] = React.useState(false);
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -115,10 +117,10 @@ const RegisterForm = () => {
     startTransition(() => {
       registerClient(values).then((data) => {
         if (data) {
-          console.log("data", data);
+          // console.log("data", data);
           setError(data.error);
           if (data.success) {
-            setSuccess("Successfully registered");
+            setSuccess("Successfully registered! Please login");
           }
           // if (data.type) {
           //   setType(data.type);
@@ -140,7 +142,7 @@ const RegisterForm = () => {
         <TabsTrigger value="Client" className="w-full">
           Client
         </TabsTrigger>
-        <TabsTrigger value="Student" className="w-fit">
+        <TabsTrigger value="Student" className="w-full">
           Student/Professional
         </TabsTrigger>
       </TabsList>
@@ -240,13 +242,23 @@ const RegisterForm = () => {
                         <FormItem>
                           <FormLabel>Password</FormLabel>
                           <FormControl>
-                            <Input
-                              {...field}
-                              placeholder="Enter password"
-                              type="password"
-                              className="hover:border-slate-400"
-                              disabled={isPending}
-                            />
+                            <div className="flex gap-2">
+                              <Input
+                                {...field}
+                                placeholder="Enter password"
+                                type={visible ? "text" : "password"}
+                                className="hover:border-slate-400"
+                                disabled={isPending}
+                              />
+                              <div
+                                className="flex hover:text-gray-500 cursor-pointer items-end justify-end h-8"
+                                onClick={() => {
+                                  setVisible(!visible);
+                                }}
+                              >
+                                {visible ? <EyeClosedIcon /> : <Eye />}
+                              </div>
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -256,7 +268,7 @@ const RegisterForm = () => {
                       control={form3.control}
                       name="country"
                       render={({ field }) => (
-                        <FormItem>
+                        <FormItem className="flex items-center justify-center">
                           <FormControl>
                             <Checkbox
                               checked={field.value}
@@ -388,7 +400,7 @@ const RegisterForm = () => {
         >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onRegisterSubmit)}>
-              <div className="grid w-full items-center gap-4 h-[40vh]">
+              <div className="grid w-full items-center gap-4 h-full">
                 <FormField
                   control={form.control}
                   name="name"
@@ -434,13 +446,23 @@ const RegisterForm = () => {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input
-                          {...field}
-                          placeholder="*******"
-                          type="password"
-                          className="hover:border-slate-400"
-                          disabled={isPending}
-                        />
+                        <div className="flex gap-2 ">
+                          <Input
+                            {...field}
+                            placeholder="*******"
+                            type={credVisible ? "text" : "password"}
+                            className="hover:border-slate-400"
+                            disabled={isPending}
+                          />
+                          <div
+                            className="flex hover:text-gray-500 cursor-pointer items-end justify-end w-9"
+                            onClick={() => {
+                              setCredVisible(!credVisible);
+                            }}
+                          >
+                            {credVisible ? <EyeClosedIcon /> : <Eye />}
+                          </div>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

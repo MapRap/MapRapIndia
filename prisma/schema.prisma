@@ -109,6 +109,7 @@ model Interior{
   name String
   plan String
   studentPrice String?
+  initialPayment Boolean @default(false)
   steps InteriorSteps[]
 }
 
@@ -198,6 +199,7 @@ model InteriorSteps {
   onGmail String?
   attachments String? 
   comments String?
+  totalSteps Int @default(2)
   completed Boolean @default(false)
   interior Interior @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }

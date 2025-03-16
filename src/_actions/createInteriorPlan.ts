@@ -36,6 +36,7 @@ export const createInterioJob = async ({
         name: name,
         plan: plan,
         property: property,
+        initialPayment: false,
       },
     });
     if (!interior) {

@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // import { FormLabel } from "@/coaaaaaaaaaaaaaamponents/ui/form";
 import { Input } from "@/components/ui/input";
-import { useUploadThing } from "@/lib/uploadthing";
+// import { useUploadThing } from "@/lib/uploadthing";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState, useTransition } from "react";
@@ -92,7 +92,7 @@ const ChooseAraePage = () => {
   //   Phone: string;
   // }>();
   const [message, setMessage] = useState("");
-  const { startUpload } = useUploadThing("pdfUploader");
+  // const { startUpload } = useUploadThing("pdfUploader");
   const searchParams = useSearchParams();
   const session = useSession();
   useEffect(() => {
@@ -128,212 +128,83 @@ const ChooseAraePage = () => {
           //   }
           // }
           if (area !== 0) {
+            let steps = 2;
+            if (
+              Number(searchParams.get("price")) > 10000 &&
+              Number(searchParams.get("price")) < 20000
+            ) {
+              steps = 3;
+            }
+            if (Number(searchParams.get("price")) > 20000) {
+              steps = 4;
+            }
             // const newArea = Number(area);
             // if (newArea !== 0) {
             // console.log();
             const totalPrice = Number(searchParams.get("price")) * area;
             // console.log("Area", totalPrice);
-            const response = await fetch("/api/payments/create-interiororder", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                totalAmount: 100 * totalPrice,
-                currency,
-                step: 1,
-              }),
-            });
 
-            const order = await response.json();
-            console.log(order);
-            if (!order.id) {
-              console.error("Failed to create order:", order);
-              return;
-            }
-
-            // Razorpay options
-            const options = {
-              key: process.env.NEXT_PUBLIC_RAZORPAY_ID as string,
-              amount: order.amount,
-              currency: order.currency,
-              name: "Make My Naksha",
-              description: `Step 1 Payment`,
-              order_id: order.id,
-              handler: async (response: RazorpayPaymentResponse) => {
-                // Verify payment
-                const payment_id = response.razorpay_payment_id;
-                const verificationResponse = await fetch(
-                  "/api/payments/payment-verification",
-                  {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      razorpay_order_id: response.razorpay_order_id,
-                      razorpay_payment_id: response.razorpay_payment_id,
-                      razorpay_signature: response.razorpay_signature,
-                    }),
-                  }
-                );
-
-                const verificationResult = await verificationResponse.json();
-                console.log(verificationResult);
-
-                if (verificationResult.success) {
-                  alert(`Payment successful!`);
-                  if (searchParams.get("property") !== null) {
-                    createInterioJob({
-                      userId: session.data.user.id!,
-                      name: session.data.user.name!,
-                      property: searchParams.get("property") || "Residential",
-                      plan: searchParams.get("type") || "platinum",
-                      specifications: specifications,
-                      price: totalPrice.toString(),
-                      imageUrl: imageUrl,
-                      area: searchParams.get("area") || "1400",
-                    }).then((e) => {
-                      if (e) {
-                        if (e !== "Error") {
-                          fetch("/api/payments/receipt", {
+            createInterioJob({
+              userId: session.data.user.id!,
+              name: session.data.user.name!,
+              property: searchParams.get("property") || "Residential",
+              plan: searchParams.get("title") || "platinum",
+              specifications: specifications,
+              price: totalPrice.toString(),
+              imageUrl: imageUrl,
+              area: `${area}` || "1400",
+            }).then((e) => {
+              if (e) {
+                if (e !== "Error") {
+                  createFirstInteriorStep({
+                    jobId: e.id,
+                    type: `${e.property} ${e.plan}`,
+                    steps: steps,
+                    // receipt: uploadedFiles[0].url,
+                  }).then(async (res) => {
+                    if (res) {
+                      if (res !== "Error") {
+                        const response = await fetch(
+                          "/api/payments/interior/start",
+                          {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
                             },
                             body: JSON.stringify({
-                              payment_id: `${payment_id}`,
+                              totalAmount: totalPrice,
+                              currency,
+                              step: 1,
+                              totalSteps: steps,
+                              jobId: e.id,
                             }),
-                          }).then((rece) => {
-                            if (rece.ok) {
-                              rece.blob().then((blob) => {
-                                // Create a temporary download link for the Blob
-                                const file = new File(
-                                  [blob],
-                                  `receipt${session.data.user.email}1.pdf`,
-                                  {
-                                    type: "application/pdf",
-                                  }
-                                );
-                                try {
-                                  startUpload([file]).then((uploadedFiles) => {
-                                    if (uploadedFiles && uploadedFiles[0]) {
-                                      console.log(
-                                        "File uploaded successfully:",
-                                        uploadedFiles[0].url
-                                      );
-                                      // setLoading(false);
-                                      createFirstInteriorStep({
-                                        jobId: e.id,
-                                        type: `${e.property} ${e.plan}`,
-                                        receipt: uploadedFiles[0].url,
-                                      }).then((e) => {
-                                        if (e) {
-                                          if (e === "Success") {
-                                            window.location.replace(
-                                              `${window.location.pathname}/result?receipt=${uploadedFiles[0].url}`
-                                            );
-                                          }
-                                        }
-                                      });
-                                    } else {
-                                      console.error("File upload failed");
-                                    }
-                                  });
-                                } catch (error) {
-                                  console.error("Error uploading file:", error);
-                                }
-                              });
-                            }
-                          });
+                          }
+                        );
+                        const order = await response.json();
+                        // console.log(order);
+                        if (!order) {
+                          console.error("Failed to create order");
+                          window.location.replace("/interiorStatus/failure");
+                          // return;
                         }
+                        if (!order.message) {
+                          console.error("Failed to create order");
+                          window.location.replace("/interiorStatuss/failure");
+                        }
+                        window.location.href = `${order.message}`;
                       }
-                    });
-                  }
-
-                  // fetch("/api/payments/receipt", {
-                  //   method: "POST",
-                  //   headers: {
-                  //     "Content-Type": "application/json",
-                  //   },
-                  //   body: JSON.stringify({
-                  //     payment_id: `${payment_id}`,
-                  //   }),
-                  // }).then((rece) => {
-                  //   if (rece.ok) {
-                  //     rece.blob().then((blob) => {
-                  //       // Create a temporary download link for the Blob
-                  //       const file = new File(
-                  //         [blob],
-                  //         `receipt${user.gmail}1.pdf`,
-                  //         {
-                  //           type: "application/pdf",
-                  //         }
-                  //       );
-                  //       try {
-                  //         startUpload([file]).then((uploadedFiles) => {
-                  //           if (uploadedFiles && uploadedFiles[0]) {
-                  //             console.log(
-                  //               "File uploaded successfully:",
-                  //               uploadedFiles[0].url
-                  //             );
-                  //             window.location.replace(`${window.location.pathname}/success?receipt=${uploadedFiles[0].url}`);
-                  //             //   router.push(
-                  //             //     `${window.location.pathname}/success?receipt=${uploadedFiles[0].url}`
-                  //             //   );
-                  //           } else {
-                  //             console.error("File upload failed");
-                  //           }
-                  //         });
-                  //       } catch (error) {
-                  //         console.error("Error uploading file:", error);
-                  //       }
-                  //     });
-                  //   }
-                  // });
-                  // }
-                  //  else {
-                  //   console.log("GG");
-                  // }
-                  // }
-                  // }
-                  // });
-                  // }
-                  // else if (res?.error) {
-                  //   router.push(`${window.location.pathname}/error`);
-                  // }
-                  // }
-                  // });
-                } else {
-                  alert("Payment verification failed!");
+                    }
+                  });
                 }
-              },
-              prefill: {
-                name: session.data.user.name!,
-                email: `${session.data.user.email}`,
-                // contact: user.Phone,
-              },
-              theme: {
-                color: "#3399cc",
-              },
-            };
 
-            const razorpay = new window.Razorpay(options);
-            razorpay.open();
-            setLoading(true);
-            return { success: "Payment started" };
-            // }
-          } else {
-            setMessage("Please enter valid area");
+                setLoading(true);
+                return { success: "Payment started" };
+                // }
+              } else {
+                setMessage("Please enter valid area");
+              }
+            });
           }
-          // }
-          // } else {
-          //   setMessage(
-          //     `You have selected a ${job.type} Building, please select ${job.type} Premium`
-          //   );
-          // }
-          // }
-          // if (!job) {
-          //   setMessage("Please first assign a job");
-          // }
         }
       }
       if (!session.data?.user) {

@@ -94,14 +94,16 @@ const PricingCard = ({
         </div> */}
         <Button
           className={`${
-            type === "Platinum"
+            type === "Gold"
               ? "bg-blue-600 hover:bg-blue-700"
               : "text-blue-600 hover:bg-gray-200 bg-white border-blue-600 border-2"
           }`}
           onClick={() => {
             if (user) {
               window.location.replace(
-                `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/plans/choose?price=${price}&title=${type}&property=${building}`
+                `${
+                  process.env.NEXT_PUBLIC_DOMAIN_NAME
+                }/plans/choose?price=${price}&title=${type.toLowerCase()}&property=${building}`
               );
             } else {
               setMessage("Please Login to continue!");

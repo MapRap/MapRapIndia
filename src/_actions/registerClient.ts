@@ -25,13 +25,28 @@ export const registerClient = async (
         return { error: "User already exists" };
       }
       const hashedPassword = await generateHashedPassword(values.password);
-      await prisma.user.create({
+      const user = await prisma.user.create({
         data: {
           email: values.gmail,
           name: values.name,
           password: hashedPassword,
         },
       });
+      if (!user) {
+        return { error: "Network Error" };
+      }
+      const realUser = await prisma.realUsers.create({
+        data: {
+          id: user.id,
+          name: user.name!,
+          gmail: user.email!,
+          isReal: true,
+          type: user.type,
+        },
+      });
+      if (!realUser) {
+        return { error: "Network Error" };
+      }
       return { success: "User created!" };
       // if (user && user.emailVerified === true) {
       //   return { message: "User already exist please use different gmail" };

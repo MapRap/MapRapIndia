@@ -6,11 +6,11 @@ import prisma from "@/lib/db";
 export const createFirstInteriorStep = async ({
   jobId,
   type,
-  receipt,
+  steps,
 }: {
   jobId: string;
   type: string;
-  receipt: string;
+  steps: number;
 }) => {
   try {
     const step = await prisma.interiorSteps.create({
@@ -18,7 +18,7 @@ export const createFirstInteriorStep = async ({
         jobId: jobId,
         type: type,
         started: true,
-        receipt: receipt,
+        totalSteps: steps,
       },
     });
     if (!step) {

@@ -20,16 +20,24 @@ export default {
           password: credentials.password,
         });
         // console.log("sre", validateFields.error);
-        if (!validateFields.success) return null;
+
+        if (!validateFields.success) {
+          return null;
+        }
         if (validateFields.success) {
-          console.log("gg");
+          // console.log("gg");
           const { gmail, password } = validateFields.data;
           const user = await getUseByEmail(gmail);
 
-          if (!user || !user.password) return null;
+          if (!user || !user.password) {
+            return null;
+          }
           const realUser = await getRealUsers(user.id);
           const passwordsMatch = await comparePassword(password, user.password);
-          if (realUser === "no such user!") return null;
+          if (realUser === "no such user!") {
+            console.log("This is it");
+            return null;
+          }
           if (!passwordsMatch) return null;
           if (passwordsMatch) {
             return user;

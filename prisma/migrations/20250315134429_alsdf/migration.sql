@@ -92,6 +92,7 @@ CREATE TABLE "Interior" (
     "name" TEXT NOT NULL,
     "plan" TEXT NOT NULL,
     "studentPrice" TEXT,
+    "initialPayment" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Interior_pkey" PRIMARY KEY ("id")
 );
@@ -172,6 +173,7 @@ CREATE TABLE "Steps" (
     "onGmail" TEXT,
     "attachments" TEXT,
     "comments" TEXT,
+    "totalSteps" INTEGER NOT NULL DEFAULT 2,
     "completed" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Steps_pkey" PRIMARY KEY ("id")
@@ -188,6 +190,7 @@ CREATE TABLE "InteriorSteps" (
     "onGmail" TEXT,
     "attachments" TEXT,
     "comments" TEXT,
+    "totalSteps" INTEGER NOT NULL DEFAULT 2,
     "completed" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "InteriorSteps_pkey" PRIMARY KEY ("id")
