@@ -1,6 +1,4 @@
-// import { jwtVerify } from "jose";
-// import { cookies } from "next/headers";
-// import { NextRequest, NextResponse } from "next/server";
+
 
 import NextAuth from "next-auth";
 import authConfig from "../auth.config";
