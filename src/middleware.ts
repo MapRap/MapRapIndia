@@ -8,7 +8,6 @@ import {
   DEFAULT_LOGIN_REDIRECT,
   publicRoutes,
 } from "../route";
-// import { NextRequest } from "next/server";
 
 // export async function middleware(request: NextRequest) {
 // const { pathname } = request.nextUrl;
