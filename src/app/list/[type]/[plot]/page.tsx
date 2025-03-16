@@ -259,8 +259,8 @@ export default function Calculated(props: { params: tParams }) {
                       createStep({
                         jobId: j.job!.id,
                         type: "full",
-                        step: 1,
                         steps: steps,
+                        step: 1,
                       }).then(async (res) => {
                         if (res) {
                           if (res !== "Network error") {

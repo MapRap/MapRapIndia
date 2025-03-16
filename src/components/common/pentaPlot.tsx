@@ -342,6 +342,7 @@ const PentaPlot = ({
                     jobId: j.job!.id,
                     type: "full",
                     step: 1,
+                    steps: steps,
                   }).then(async (res) => {
                     if (res) {
                       if (res !== "Network error") {
