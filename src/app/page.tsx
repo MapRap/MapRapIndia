@@ -20,9 +20,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { clearUserSession } from "@/_actions/logout";
-// import PricingCard from "@/components/common/pricingCard";
-// import { getClientJobsWithSteps } from "@/_actions/bs";
 import { Loading2 } from "@/components/common/loader2";
 // import { useUploadThing } from "@/lib/uploadthing";
 import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
