@@ -1,6 +1,5 @@
 "use client";
 import Foot from "@/components/common/foot";
-// import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 
 import Spline from "@splinetool/react-spline";
