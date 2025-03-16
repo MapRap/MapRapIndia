@@ -10,7 +10,7 @@ export const changeInteriorInititalPayment = async ({ id }: { id: string }) => {
     if (!job) {
       return "No such job";
     }
-    const updatedJob = await prisma.maps.update({
+    const updatedJob = await prisma.interior.update({
       where: { id: job.id },
       data: {
         initialPayment: true,
