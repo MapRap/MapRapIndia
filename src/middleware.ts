@@ -9,10 +9,7 @@ import {
   publicRoutes,
 } from "../route";
 
-//   const id = payload.id;
-//   if (!id) {
-//     return NextResponse.redirect(new URL("/", request.url));
-//   }
+
 //   if (
 //     pathname.startsWith("/jobs") &&
 //     !["student", "admin", "owner", "professional"].includes(
