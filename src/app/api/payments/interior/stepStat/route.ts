@@ -55,13 +55,16 @@ export async function GET(req: NextRequest) {
     if (orderStatusObj.state === "COMPLETED") {
       return NextResponse.redirect(
         new URL(
-          `/installments/success?orderId=${merchantId}&step=${step}&amount=${stepAmount}&stepId=${stepId}`,
+          `/interiorStatus/stepSuccess?orderId=${merchantId}&step=${step}&amount=${stepAmount}&stepId=${stepId}`,
           process.env.NEXT_PUBLIC_DOMAIN_NAME
         )
       );
     }
     return NextResponse.redirect(
-      new URL("/installments/failure", process.env.NEXT_PUBLIC_DOMAIN_NAME)
+      new URL(
+        "/interiorStatus/stepFailure",
+        process.env.NEXT_PUBLIC_DOMAIN_NAME
+      )
     );
   } catch (err) {
     console.log(err);

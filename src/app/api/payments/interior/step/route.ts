@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           type: "PG_CHECKOUT",
           message: "Payment message used for collect requests",
           merchantUrls: {
-            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/status?merchantId=${merchantOrderId}&amount=${stepAmount}&stepId=${stepId}&step=${step}`,
+            redirectUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/api/payments/interior/stepStatus?merchantId=${merchantOrderId}&amount=${stepAmount}&stepId=${stepId}&step=${step}`,
           },
         },
       }),
