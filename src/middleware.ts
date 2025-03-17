@@ -9,11 +9,6 @@ import {
   publicRoutes,
 } from "../route";
 
-// export async function middleware(request: NextRequest) {
-// const { pathname } = request.nextUrl;
-// const cookie = await cookies();
-// const token = cookie.get("token")?.value;
-// try {
 // if (token) {
 //   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 //   const { payload } = await jwtVerify(token, secret);
