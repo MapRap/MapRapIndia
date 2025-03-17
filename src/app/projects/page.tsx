@@ -3,10 +3,6 @@
 import { getClientInteriorJobs } from "@/_actions/getClientaInteriorJobs";
 import { getClientJobsWithSteps } from "@/_actions/getClientJobs";
 import { getClientOtherJobs } from "@/_actions/getClientOtherJobs";
-// import { getId } from "@/_actions/getId";
-// import { startInteriorStep } from "@/_actions/startInteriorStep";
-import { startInteriorStepProp } from "@/_actions/startInteriorStepProp";
-// import { startStepProp } from "@/_actions/startStepProp";
 import { Loading2 } from "@/components/common/loader2";
 // import { stepPercentages } from "@/components/common/trapPlot";
 import { Button } from "@/components/ui/button";
@@ -19,15 +15,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { File } from "lucide-react";
-// import { unstable_getStaticParams } from "next/dist/build/templates/pages";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
-// interface RazorpayPaymentResponse {
-//   razorpay_payment_id: string;
-//   razorpay_order_id: string;
-//   razorpay_signature: string;
-// }
 
 const ProjectPage = () => {
   const [isJob, setIsJob] = useState(false);
@@ -46,15 +35,8 @@ const ProjectPage = () => {
     }[]
   >([]);
   const [loading, setLoading] = useState(true);
-  // const [receipts, setReceipts] = useState("");
   const [jobs, setJobs] = useState<
     ({
-      // requests: {
-      //   id: string;
-      //   jobId: string;
-      //   by: string;
-      //   approved: boolean;
-      // }[];
       steps: {
         id: string;
         completed: boolean;
@@ -263,12 +245,12 @@ const ProjectPage = () => {
       const order = await response.json();
       if (!order) {
         console.error("Failed to create order");
-        window.location.replace("/payment/failure");
+        window.location.replace("/installments/failure");
         // return;
       }
       if (!order.message) {
         console.error("Failed to create order");
-        window.location.replace("/payment/failure");
+        window.location.replace("/installments/failure");
         // return;
       }
       window.location.href = `${order.message}`;
@@ -375,6 +357,29 @@ const ProjectPage = () => {
     price: number;
     stepId: string;
   }) => {
+    // startInteriorStepProp({ id: stepId });
+    // const stepPercentage = stepPercentages[currentStep - 1];
+    // const stepAmount = Math.round((price * stepPercentage) / 100); // Calculate amount for this step
+
+    let totalSteps = 2;
+    // let stepAmount = request.totalAmount;
+    if (price > 10000 && price < 20000) {
+      totalSteps = 3;
+    } else if (price > 20000) {
+      totalSteps = 4;
+    }
+    // const stepAmount=amount*0.9;
+    // if (totalSteps === 2) {
+    //   stepAmount = amount * TwoStepsArr[step - 1];
+    // } else if (totalSteps === 3) {
+    //   stepAmount = amount * ThreeStepsArr[step - 1];
+    // } else {
+    //   stepAmount = amount * FourStepsArr[step - 1];
+    // }
+    if (currentStep > totalSteps) {
+      alert("All payments are completed!");
+      return;
+    }
     // const stepPercentage = stepPercentages[currentStep - 1];
     // const stepAmount = Math.round((price * stepPercentage) / 100); // Calculate amount for this step
 
@@ -382,27 +387,31 @@ const ProjectPage = () => {
       // setIsProcessing(true);
       const currency = "INR";
       // Create order for the current step
-      const response = await fetch("/api/payments/create-interiororder", {
+      const response = await fetch("/api/payments/interior/step", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          totalAmount: 100 * price,
+          totalAmount: price,
           currency,
           step: currentStep,
+          // totalSteps: steps,
+          stepId: stepId,
         }),
       });
-
       const order = await response.json();
-      // console.log(order);
-
-      if (!order.id) {
-        console.error("Failed to create order:", order);
-        return;
+      if (!order) {
+        console.error("Failed to create order");
+        window.location.replace("/interiorStatus/stepFailure");
+        // return;
       }
-      startInteriorStepProp({ id: stepId });
-      // Razorpay options
+      if (!order.message) {
+        console.error("Failed to create order");
+        window.location.replace("/interiorStatus/stepFailure");
+        // return;
+      }
+      window.location.href = `${order.message}`;
       // const options = {
       //   key: process.env.NEXT_PUBLIC_RAZORPAY_ID as string,
       //   amount: order.amount,
@@ -410,73 +419,71 @@ const ProjectPage = () => {
       //   name: "Your Website Name",
       //   description: `Step ${currentStep} Payment`,
       //   order_id: order.id,
-      // handler: async (response: RazorpayPaymentResponse) => {
-      // Verify payment
-      // const payment_id = response.razorpay_payment_id;
-      // const verificationResponse = await fetch(
-      //   "/api/payments/payment-verification",
-      //   {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify({
-      //       razorpay_order_id: response.razorpay_order_id,
-      //       razorpay_payment_id: response.razorpay_payment_id,
-      //       razorpay_signature: response.razorpay_signature,
-      //     }),
-      //   }
-      // );
+      //   handler: async (response: RazorpayPaymentResponse) => {
+      //     // Verify payment
+      //     const payment_id = response.razorpay_payment_id;
+      //     const verificationResponse = await fetch(
+      //       "/api/payments/payment-verification",
+      //       {
+      //         method: "POST",
+      //         headers: { "Content-Type": "application/json" },
+      //         body: JSON.stringify({
+      //           razorpay_order_id: response.razorpay_order_id,
+      //           razorpay_payment_id: response.razorpay_payment_id,
+      //           razorpay_signature: response.razorpay_signature,
+      //         }),
+      //       }
+      //     );
 
-      // const verificationResult = await verificationResponse.json();
+      //     const verificationResult = await verificationResponse.json();
 
-      // if (verificationResult.success) {
-      // console.log(verificationResponse);
-      // alert(`Step ${currentStep} payment successful!`);
-      // setReceipts((prev) => [...prev, order.receipt]); // Add receipt to the list
-      // console.log(payment_id);
-      // const rece = await fetch("/api/payments/receipt", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ payment_id: `${payment_id}` }),
-      // });
-      // if (rece) {
-      //   const receiptData = await rece.json();
+      //     if (verificationResult.success) {
+      //       // console.log(verificationResponse);
+      //       alert(`Step ${currentStep} payment successful!`);
+      //       // setReceipts((prev) => [...prev, order.receipt]); // Add receipt to the list
+      //       console.log(payment_id);
+      //       const rece = await fetch("/api/payments/receipt", {
+      //         method: "POST",
+      //         headers: { "Content-Type": "application/json" },
+      //         body: JSON.stringify({ payment_id: `${payment_id}` }),
+      //       });
+      //       // if (rece) {
+      //       //   const receiptData = await rece.json();
 
-      //   if (receiptData?.receiptUrl) {
-      //     // Create a hidden anchor element to trigger the download
-      //     const link = document.createElement("a");
-      //     link.href = receiptData.receiptUrl; // Assuming receiptData.receiptUrl is the URL of the receipt file
-      //     link.download = "receipt.pdf"; // You can modify the file name if needed
-      //     document.body.appendChild(link);
-      //     link.click(); // Programmatically click the link to download
-      //     document.body.removeChild(link); // Clean up the link element
-      //   }
-      //   setReceipts(order.receipt);
-      // }
-      // if (rece.ok) {
-      //   const blob = await rece.blob(); // Get the response as a Blob (binary data)
+      //       //   if (receiptData?.receiptUrl) {
+      //       //     // Create a hidden anchor element to trigger the download
+      //       //     const link = document.createElement("a");
+      //       //     link.href = receiptData.receiptUrl; // Assuming receiptData.receiptUrl is the URL of the receipt file
+      //       //     link.download = "receipt.pdf"; // You can modify the file name if needed
+      //       //     document.body.appendChild(link);
+      //       //     link.click(); // Programmatically click the link to download
+      //       //     document.body.removeChild(link); // Clean up the link element
+      //       //   }
+      //       //   setReceipts(order.receipt);
+      //       // }
+      //       if (rece.ok) {
+      //         const blob = await rece.blob(); // Get the response as a Blob (binary data)
 
-      //   // Create a temporary download link for the Blob
-      //   const link = document.createElement("a");
-      //   const url = window.URL.createObjectURL(blob); // Create a URL for the Blob
-      //   link.href = url;
-      //   link.download = "receipt.pdf"; // Set the default download file name
-      //   link.click(); // Trigger the download
-      //   window.URL.revokeObjectURL(url); // Clean up the URL object
-      // }
-      // console.log("JSD");
-      // .then((changed) => {
-      // console.log(changed, "da");
-      //   if (changed) {
-      //     if (changed === "Successfully strted the step") {
-      //       window.location.reload();
+      //         // Create a temporary download link for the Blob
+      //         const link = document.createElement("a");
+      //         const url = window.URL.createObjectURL(blob); // Create a URL for the Blob
+      //         link.href = url;
+      //         link.download = "receipt.pdf"; // Set the default download file name
+      //         link.click(); // Trigger the download
+      //         window.URL.revokeObjectURL(url); // Clean up the URL object
+      //       }
+      // startStepProp({ id: stepId }).then((changed) => {
+      //         if (changed) {
+      //           if (changed === "Successfully strted the step") {
+      //             window.location.reload();
+      //           }
+      //         }
+      //       });
+      //       // setCurrentStep((prevStep) => prevStep + 1); // Move to next step
+      //     } else {
+      //       alert("Payment verification failed!");
       //     }
-      //   }
-      // });
-      // setCurrentStep((prevStep) => prevStep + 1); // Move to next step
-      // } else {
-      //   alert("Payment verification failed!");
-      // }
-      // },
+      //   },
       //   prefill: {
       //     name: "John Doe",
       //     email: "john.doe@example.com",
