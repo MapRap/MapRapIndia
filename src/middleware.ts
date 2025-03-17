@@ -10,12 +10,6 @@ import {
 } from "../route";
 
 
-//   if (
-//     pathname.startsWith("/jobs") &&
-//     !["student", "admin", "owner", "professional"].includes(
-//       `${payload.type}`
-//     )
-//   ) {
 //     return NextResponse.redirect(new URL("/unauthorized", request.url));
 //   } else if (
 //     pathname.startsWith("/admin/addPlan") &&
