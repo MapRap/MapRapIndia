@@ -9,10 +9,6 @@ import {
   publicRoutes,
 } from "../route";
 
-// if (token) {
-//   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-//   const { payload } = await jwtVerify(token, secret);
-//   console.log(pathname);
 //   const id = payload.id;
 //   if (!id) {
 //     return NextResponse.redirect(new URL("/", request.url));
