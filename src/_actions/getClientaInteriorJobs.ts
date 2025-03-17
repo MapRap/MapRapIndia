@@ -1,19 +1,28 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { getId } from "./getId";
+import { auth } from "@/auth";
 export const getClientInteriorJobs = async () => {
   try {
-    const user = await getId();
-    if (!user) {
-      return "Network Error";
-    } else if (user === "/unauthorized") {
-      return "Please login to continue";
+    const session = await auth();
+    if (!session?.user) {
+      return "Wrong token, please login again!";
+    } else if (!session.user.id) {
+      return "Wrong token, please login again!";
+    } else {
+      if (session.user) {
+        const unPaidJobs = await prisma.interior.deleteMany({
+          where: { givenBy: session.user.id, initialPayment: false },
+        });
+        if (!unPaidJobs) {
+          return `No Jobs`;
+        }
+      }
     }
 
     const interiorJobs = await prisma.interior.findMany({
       where: {
-        givenBy: user.id,
+        givenBy: session.user.id,
       },
       include: {
         steps: true,
@@ -22,7 +31,7 @@ export const getClientInteriorJobs = async () => {
     if (!interiorJobs) {
       return "Network Error";
     }
-    console.log("d=", user.id);
+    // console.log("d=", user.id);
 
     return interiorJobs;
   } catch (err) {

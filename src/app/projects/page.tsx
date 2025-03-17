@@ -79,35 +79,6 @@ const ProjectPage = () => {
       initialPayment: boolean;
     })[]
   >([]);
-  // {
-  //   steps:{
-  //     type: "",
-  //     currentStep: "",
-  //     id: "",
-  //     completed: false,
-  //     jobId: "",
-  //     receipt:""
-  //   }[]}&{
-  //   id: "",
-  //   type: "",
-  //   direction: "",
-  //   floors: 0,
-  //   price: 0,
-  //   plot: "",
-  //   specifications: "",
-  //   imageUrl: "",
-  //   A: 0,
-  //   B: 0,
-  //   C: 0,
-  //   D: 0,
-  //   D1: 0,
-  //   D2: 0,
-  //   givenBy: "",
-  //   isVerified: null,
-  //   assignedTo: "",
-  //   completed: false,
-  //   publishable: false,
-  // }
   const [interiorJobs, setInteriorJobs] = useState<
     ({
       steps: {
@@ -142,17 +113,9 @@ const ProjectPage = () => {
     })[]
   >([]);
   useEffect(() => {
-    // getId().then((e) => {
-    //   if (e) {
-    //     if (e !== "/unauthorized") {
-    //     }
-    //   }
-    // });
     getClientJobsWithSteps().then((e) => {
       if (e) {
-        // console.log("sdaf", e);
         if (e !== "Please login" && e !== "Wrong token, please login again!") {
-          //   console.log(e);
           if (typeof e !== "string") {
             setIsJob(true);
             console.log(e);
@@ -175,25 +138,16 @@ const ProjectPage = () => {
     getClientInteriorJobs().then((e) => {
       if (e) {
         if (e !== "Network Error") {
-          if (e !== "Please login to continue") {
-            setIsJob(true);
-            setInteriorJobs(e);
+          if (e !== "No Jobs") {
+            if (e !== "Wrong token, please login again!") {
+              setIsJob(true);
+              setInteriorJobs(e);
+            }
           }
         }
       }
     });
   }, []);
-  // const downloadReceipt = () => {
-  //   // Trigger download of the receipt
-  //   if (receipts) {
-  //     const link = document.createElement("a");
-  //     link.href = receipts; // This should be the URL or path to the file
-  //     link.download = "receipt.pdf";
-  //     link.click();
-  //   } else {
-  //     alert("No receipt available to download.");
-  //   }
-  // };
   const handlePayment = async ({
     currentStep,
     price,
