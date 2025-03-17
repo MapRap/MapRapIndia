@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const step = Number(request.step);
     const TwoStepsArr = [60, 40];
     const ThreeStepsArr = [40, 30, 30];
-    const FourStepsArr = [25, 25, 25];
+    const FourStepsArr = [25, 25, 25, 25];
     const stepId = request.stepId;
 
     let totalSteps = 2;
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     } else {
       stepAmount = amount * FourStepsArr[step - 1];
     }
-    console.log(amount,step,stepId);
+    console.log(amount, step, stepId);
     const urlEncodedData = new URLSearchParams({
       client_id: `${process.env.PHONEPE_CLIENT_ID}`,
       client_version: `${1}`,

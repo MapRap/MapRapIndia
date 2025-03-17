@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const step = request.step;
     const TwoStepsArr = [60, 40];
     const ThreeStepsArr = [40, 30, 30];
-    const FourStepsArr = [25, 25, 25];
+    const FourStepsArr = [25, 25, 25, 25];
     const jobId = request.jobId;
 
     let totalSteps = 2;
