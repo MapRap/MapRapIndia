@@ -9,9 +9,6 @@ import {
   publicRoutes,
 } from "../route";
 
-//     pathname.startsWith("/admin/addPlan") &&
-//     !["owner"].includes(`${payload.type}`)
-//   ) {
 //     return NextResponse.redirect(new URL("/unauthorized", request.url));
 //   } else if (pathname.endsWith("/")) {
 //   } else if (
