@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Loading2 } from "@/components/common/loader2";
 // import { useUploadThing } from "@/lib/uploadthing";
-import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
+// import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
 // import { signOut } from "@/auth";
 import LogOutButton from "@/components/auth/logOutButton";
 // import { auth } from "@/auth";
@@ -42,37 +42,37 @@ import Slide from "@/components/common/slide2";
 import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
-import TestSiteVisitComp from "@/components/common/textComp";
+// import TestSiteVisitComp from "@/components/common/textComp";
 // import { createOwner } from "@/_actions/createOwner";
 // import { createOwner } from "@/_actions/createOwner";
 
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
-  }
-}
+// declare global {
+//   interface Window {
+//     Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
+//   }
+// }
 
-interface RazorpayOptions {
-  key: string;
-  amount: number;
-  currency: string;
-  name?: string;
-  description?: string;
-  order_id: string;
-  prefill?: {
-    name?: string;
-    email?: string;
-    contact?: string;
-  };
-  theme?: {
-    color?: string;
-  };
-  handler?: (response: RazorpayPaymentResponse) => void;
-}
+// interface RazorpayOptions {
+//   key: string;
+//   amount: number;
+//   currency: string;
+//   name?: string;
+//   description?: string;
+//   order_id: string;
+//   prefill?: {
+//     name?: string;
+//     email?: string;
+//     contact?: string;
+//   };
+//   theme?: {
+//     color?: string;
+//   };
+//   handler?: (response: RazorpayPaymentResponse) => void;
+// }
 
-interface RazorpayInstance {
-  open: () => void;
-}
+// interface RazorpayInstance {
+//   open: () => void;
+// }
 
 export default function Home() {
   const session = useSession();
@@ -143,7 +143,9 @@ export default function Home() {
     </div>
   ) : (
     <div className="m-0 p-0">
-      <section className="top-0 left-0 w-full z-[1000] shadow-[#c7c3c3] shadow-md sticky bg-[url(https://utfs.io/f/GH57qH88dIR103p7T3PFZxh3y25JpRuUtmg0Yn4HXWMl8IrG)]">
+      {/* bg-[url(https://utfs.io/f/GH57qH88dIR103p7T3PFZxh3y25JpRuUtmg0Yn4HXWMl8IrG)] */}
+      {/* bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-50 to-yellow-300 */}
+      <section className="top-0 left-0 w-full z-[1000] shadow-[#c7c3c3] shadow-md sticky  bg-yellow-400">
         <section className="flex mt-0 flex-wrap justify-between items-center z-100 w-[90vw] p-2">
           <div className="">
             <img
@@ -162,27 +164,19 @@ export default function Home() {
             >
               Jobs
             </button> */}
-            <button
-              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer bg-[#273392] text-white px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
-              onClick={() => {
-                setMenu(!menu);
-                // scrollToSection6();
-              }}
-            >
-              <HamburgerMenuIcon className="w-5 h-3 md:w-10 md:h-7" />
-            </button>
-            <button
-              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer bg-[#273392] text-white px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
+            {/* <button
+              // bg-[#273392]
+              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer  text-black px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
               onClick={() => {
                 // setMenu(!menu);
                 // scrollToSection6();
-              }}
-            >
-              <TestSiteVisitComp />
-            </button>
+                }}
+                >
+                <TestSiteVisitComp />
+                </button> */}
             {!session.data?.user && (
               <button
-                className="md:text-base w-min bg-[#273392] text-white hover:text-orange-500 text-[10px] hover:underline cursor-pointer p-4 m-2 px-2 py-1 rounded- md:rounded-xl"
+                className="md:text-base w-min text-black hover:text-orange-500 text-[10px] hover:underline cursor-pointer p-4 m-2 px-2 py-1 rounded- md:rounded-xl"
                 onClick={() => {
                   window.location.replace("/auth/login");
                 }}
@@ -191,6 +185,15 @@ export default function Home() {
               </button>
             )}
 
+            <button
+              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer text-black px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
+              onClick={() => {
+                setMenu(!menu);
+                // scrollToSection6();
+              }}
+            >
+              <HamburgerMenuIcon className="w-5 h-3 md:w-10 md:h-7" />
+            </button>
             {session.data?.user && session.data?.user.name && (
               <div>
                 <DropdownMenu>
@@ -567,7 +570,10 @@ export default function Home() {
         </div>
       </div>
       <section className="">
-        <div ref={section2Ref} className="bg-slate-200 md:p-4">
+        <div
+          ref={section2Ref}
+          className="border-t-2 flex flex-row justify-center py-2"
+        >
           <Foot />
         </div>
       </section>

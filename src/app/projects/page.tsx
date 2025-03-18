@@ -91,6 +91,7 @@ const ProjectPage = () => {
         receipt: string | null;
         attachments: string | null;
         comments: string | null;
+        totalSteps: number;
       }[];
     } & {
       id: string;
@@ -694,6 +695,9 @@ const ProjectPage = () => {
                             <div className="pl-3">
                               Current Phase :
                               {job.steps.map((e) => {
+                                if (e.totalSteps < e.currentStep) {
+                                  return "Completed";
+                                }
                                 if (e.completed !== true) return e.currentStep;
                               })}{" "}
                             </div>

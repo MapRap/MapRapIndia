@@ -5,7 +5,7 @@ import { getJobs } from "@/_actions/getJobs";
 import { Loading2 } from "@/components/common/loader2";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { File } from "lucide-react";
+import { Clock, File } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -155,16 +155,25 @@ const JobsPage = () => {
               <div className="flex items-center justify-center h-screen text-3xl text-black">
                 <div className=" p-4">
                   {!session.data?.user ? (
-                    <div
-                      className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-2 text-base"
-                      onClick={() => {
-                        window.location.replace("/auth/login");
-                      }}
-                    >
-                      Please Login
+                    <div className="flex flex-col items-center gap-2">
+                      <div>
+                        Please Login as a student/professional to view available
+                        jobs
+                      </div>
+                      <div
+                        className="cursor-pointer w-fit h-min bg-blue-600 hover:bg-blue-700 text-white rounded-xl p-2 text-base"
+                        onClick={() => {
+                          window.location.replace("/auth/login");
+                        }}
+                      >
+                        Please Login
+                      </div>
                     </div>
                   ) : (
-                    "No Jobs Yet..."
+                    <div className="flex flex-row gap-2">
+                      <Clock />
+                      Jobs will soon be available...
+                    </div>
                   )}
                 </div>
               </div>

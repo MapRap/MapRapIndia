@@ -55,18 +55,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
+                  <DialogContent className="">
+                    <DialogHeader className="">
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription className="">
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI5kmbqEHC9QHG4RoL1ixrFbqJWYmnEkcINdB3"
                         alt="gg"
                         loading="lazy"
-                        width={300}
-                        height={300}
-                        className="m-2"
+                        width={2300}
+                        height={3300}
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -94,7 +94,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -121,7 +121,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -148,7 +148,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -186,20 +186,20 @@ const Slide = () => {
                       autoPlay
                       muted
                       loop
-                      className="absolute z-[-10] w-[20vw] h-[40vh]"
+                      className="absolute z-[-10] md:w-[20vw] h-[40vh]"
                     ></video>
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-fit h-fit">
+                    <DialogDescription className="">
                       <video
                         src="../homeVid1.mp4"
                         autoPlay
                         muted
                         loop
-                        className="absolute z-[-10] w-[20vw] h-[40vh]"
+                        className=" z-[-10] md:w-[25vw] h-[70vh]"
                       ></video>
                     </DialogDescription>
                   </DialogContent>
@@ -254,14 +254,14 @@ const Slide = () => {
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription className="">
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIR5AAV7UAvQye6328IqjpWBoKgFDiu9VRfh7b"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -288,7 +288,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -315,7 +315,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -342,7 +342,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -369,7 +369,7 @@ const Slide = () => {
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -398,7 +398,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -425,7 +425,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -452,7 +452,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -505,7 +505,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -532,7 +532,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -559,7 +559,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -586,7 +586,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -613,7 +613,7 @@ const Slide = () => {
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -666,7 +666,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -693,7 +693,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -746,7 +746,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -773,7 +773,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -799,7 +799,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2 gg"
+                        className="w-max h-[70vh]"
                         alt="gg"
                       />
                     </DialogDescription>
@@ -853,7 +853,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -880,7 +880,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -907,7 +907,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -934,7 +934,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -961,7 +961,7 @@ const Slide = () => {
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1014,7 +1014,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1041,7 +1041,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1068,7 +1068,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1121,7 +1121,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1148,7 +1148,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1175,7 +1175,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1202,7 +1202,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1229,7 +1229,7 @@ const Slide = () => {
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1282,7 +1282,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1309,7 +1309,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="m-2"
+                        className="w-max h-[70vh]"
                       />
                     </DialogDescription>
                   </DialogContent>
