@@ -179,7 +179,8 @@ export default function Calculated(props: { params: tParams }) {
   }>();
   // const { startUpload } = useUploadThing("pdfUploader");
   const [message, setMessage] = useState("");
-  const [receipt] = useState("");
+  console.log(message);
+  // const [receipt] = useState("");
   const [isPending, startTransition] = useTransition();
   const [count, setCount] = useState(0);
   const [currency] = useState("INR");
@@ -203,6 +204,8 @@ export default function Calculated(props: { params: tParams }) {
       floor: Number(searchParams.get("floors")),
       direction: "north",
       phone: "",
+      specifications: "",
+      drawing: "",
     },
   });
 
@@ -507,7 +510,7 @@ export default function Calculated(props: { params: tParams }) {
             currency={currency}
             setMessage={setMessage}
           />
-          <div className="">
+          {/* <div className="">
             <div className="flex justify-center text-center text-green-600 bg-green-300">
               {message}{" "}
               {receipt !== "" && (
@@ -521,7 +524,7 @@ export default function Calculated(props: { params: tParams }) {
                 </a>
               )}
             </div>
-          </div>
+          </div> */}
           <div className="text-2xl text-center">or</div>
         </div>
         {count < 3 && (

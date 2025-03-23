@@ -142,16 +142,24 @@ export default function Home() {
       <Loading2 loading={loading} />
     </div>
   ) : (
-    <div className="m-0 p-0">
+    <div
+      className="m-0 p-0"
+      onClick={() => {
+        setMenu(false);
+      }}
+    >
       {/* bg-[url(https://utfs.io/f/GH57qH88dIR103p7T3PFZxh3y25JpRuUtmg0Yn4HXWMl8IrG)] */}
-      {/* bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-50 to-yellow-300 */}
-      <section className="top-0 left-0 w-full z-[1000] shadow-[#c7c3c3] shadow-md sticky  bg-yellow-400">
-        <section className="flex mt-0 flex-wrap justify-between items-center z-100 w-[90vw] p-2">
+
+      {/* bg-[#fde99e] */}
+      {/* shadow-[#c7c3c3] shadow-md  */}
+      {/* bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#f2f2f3] to-[#d1d0d1] */}
+      <section className="top-0 left-0 w-full z-[1000]  sticky bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#f1f1f1] via-[#f1f1f1] via-40% to-[#d5d4d5]">
+        <section className="flex mt-0 flex-wrap justify-between items-center z-100 w-[90vw] p-2 ">
           <div className="">
             <img
-              src={`../logo.png`}
+              src={`../logo6.png`}
               alt="logo"
-              width={80}
+              width={130}
               className="rounded-lg cursor-pointer"
             />
           </div>
@@ -175,25 +183,18 @@ export default function Home() {
                 <TestSiteVisitComp />
                 </button> */}
             {!session.data?.user && (
-              <button
-                className="md:text-base w-min text-black hover:text-orange-500 text-[10px] hover:underline cursor-pointer p-4 m-2 px-2 py-1 rounded- md:rounded-xl"
-                onClick={() => {
-                  window.location.replace("/auth/login");
-                }}
-              >
-                Login
-              </button>
+              <div className="text-black underline border-b-2 border-black font-bold">
+                <button
+                  onClick={() => {
+                    window.location.replace("/auth/login");
+                  }}
+                >
+                  <span>Login</span>
+                </button>
+              </div>
             )}
+            {/* className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer text-black px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100" */}
 
-            <button
-              className="p-2 m-2 hover:underline hover:text-orange-500 lg:w-fit cursor-pointer text-black px-2 w-min py-3 md:py-1 rounded-md md:rounded-xl opacity-100"
-              onClick={() => {
-                setMenu(!menu);
-                // scrollToSection6();
-              }}
-            >
-              <HamburgerMenuIcon className="w-5 h-3 md:w-10 md:h-7" />
-            </button>
             {session.data?.user && session.data?.user.name && (
               <div>
                 <DropdownMenu>
@@ -288,6 +289,19 @@ export default function Home() {
                 </DropdownMenu>
               </div>
             )}
+            <div className="text-black flex items-center justify-center mx-2 font-bold">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMenu(!menu);
+                  // scrollToSection6();
+                }}
+              >
+                <span className="flex items-center justify-center">
+                  <HamburgerMenuIcon className="w-9 h-6v md:w-10 md:h-7" />
+                </span>
+              </button>
+            </div>
           </div>
         </section>
       </section>
@@ -469,8 +483,7 @@ export default function Home() {
               exploiting employees. We seek excellent work but also help our
               employees grow.{" "}
               <strong className="font-semibold">
-                Maprap isn{`'`}t just ours—it truly belongs to our online
-                employees.
+                Maprap isn{`'`}t just ours—it truly belongs to our employees.
               </strong>
             </div>
             <Button
@@ -572,7 +585,7 @@ export default function Home() {
       <section className="">
         <div
           ref={section2Ref}
-          className="border-t-2 flex flex-row justify-center py-2"
+          className="border-t-2 flex flex-row justify-center py-2 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#f1f1f1] via-[#f1f1f1] via-40% to-[#d5d4d5]"
         >
           <Foot />
         </div>

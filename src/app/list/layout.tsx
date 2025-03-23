@@ -1,7 +1,7 @@
 "use client";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="m-0 p-0 bg-[url('/yel5.jpg')] bg-cover h-fit min-h-screen">
+    <div className="m-0 p-0 bg-[url('/freelance3.webp')] bg-cover h-fit min-h-screen">
       <div className="flex">
         <img
           src={`/logo.png`}

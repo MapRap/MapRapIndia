@@ -149,7 +149,7 @@ const ChooseAraePage = () => {
               name: session.data.user.name!,
               property: searchParams.get("property") || "Residential",
               plan: searchParams.get("title") || "platinum",
-              specifications: specifications,
+              specifications: specifications || "",
               price: totalPrice.toString(),
               imageUrl: imageUrl,
               area: `${area}` || "1400",

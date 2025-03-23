@@ -2,6 +2,7 @@
 import { changeInteriorInititalPayment } from "@/_actions/changeInteriorInitialPayment";
 // import { changeInititalPayment } from "@/_actions/changeInititalPaymentDetails";
 import { Loading2 } from "@/components/common/loader2";
+import DownloadReceiptButton from "@/components/common/receipt";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -61,9 +62,17 @@ export default function PaymentSuccessPage() {
             <h1>Payment Successful!</h1>
             <div>orderId: {orderId}</div>
             <div>Amount: {amount}</div>
-            <div>By: {job.name}</div>
+            <div>By: {job.givenBy}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
+
+          <div>
+            <DownloadReceiptButton
+              id={orderId}
+              amount={amount}
+              gmail={job.givenBy}
+            />
+          </div>
         </div>
       )}
     </div>

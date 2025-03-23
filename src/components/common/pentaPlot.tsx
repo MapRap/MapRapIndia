@@ -147,6 +147,8 @@ const PentaPlot = ({
       floor: floors,
       direction: "north",
       phone: "",
+      specifications: "",
+      drawing: "",
     },
   });
   const handleSubmit = async (e: {

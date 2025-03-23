@@ -1,6 +1,7 @@
 "use client";
 import { startInteriorStepProp } from "@/_actions/startInteriorStepProp";
 import { Loading2 } from "@/components/common/loader2";
+import DownloadReceiptButton from "@/components/common/receipt";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -38,6 +39,10 @@ export default function PaymentSuccessPage() {
             <div>Amount: {amount}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
+
+          <div>
+            <DownloadReceiptButton id={orderId} amount={amount} />
+          </div>
         </div>
       )}
     </div>

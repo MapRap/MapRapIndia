@@ -159,7 +159,7 @@ const List = () => {
                     <AccordionItem key={item.area} value={`${item.area}`}>
                       <AccordionTrigger className="p-0 m-0">
                         <h1 className="font-bold text-center text-3xl p-4 w-full m-0 hover:underline">
-                          Area upto {item.area}² feet
+                          Plot Area upto {item.area}² feet
                         </h1>
                       </AccordionTrigger>
                       <AccordionContent>
@@ -264,8 +264,8 @@ const List = () => {
                   return (
                     <AccordionItem key={item.area} value={`${item.area}`}>
                       <AccordionTrigger className="p-0 m-0">
-                        <h1 className="font-bold text-center text-3xl p-4 w-full m-0 hover:underline">
-                          Area upto {item.area}² feet
+                        <h1 className="font-bold text-center text-3xl p-4 w-full text-black m-0 hover:underline">
+                          Plot Area upto {item.area}² feet
                         </h1>
                       </AccordionTrigger>
                       <AccordionContent>

@@ -78,6 +78,132 @@ body {
   overflow: hidden;
 }
 
+/* .outer {
+  position: relative;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+}
+
+.but {
+  height: 70px;
+  width: 220px;
+  border-radius: 50px;
+}
+
+.outer button,
+.outer span {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  transform: translate(-5%, -5%);
+}
+
+.outer button {
+  background: #111;
+  color: #f2f2f2;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  z-index: 9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.but button {
+  height: 60px;
+  width: 210px;
+  border-radius: 50px;
+}
+
+.outer span {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+}
+
+.but span {
+  border-radius: 50px;
+} */
+
+.btn button {
+  position: relative;
+  color: #f5f5f5;
+  height: 40px;
+  width: 80px;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  background-image: linear-gradient(
+    115deg,
+    #4fcf70,
+    #fad648,
+    #a767e5,
+    #12bcfe,
+    #44ce7b
+  );
+}
+.btn button {
+  animation: rotate 0.4s linear infinite;
+}
+@keyframes rotate {
+  100% {
+    filter: hue-rotate(-360deg);
+  }
+}
+.btn button span {
+  height: 88%;
+  width: 94%;
+  background: #111;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 6px;
+  line-height: 32px;
+  font-size: 12px;
+  transform: translate(-50%, -50%);
+}
+.btn2 button {
+  position: relative;
+  color: #f5f5f5;
+  height: 40px;
+  width: 50px;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  background-image: linear-gradient(
+    115deg,
+    #4fcf70,
+    #fad648,
+    #a767e5,
+    #12bcfe,
+    #44ce7b
+  );
+}
+.btn2 button {
+  animation: rotate 0.4s linear infinite;
+}
+@keyframes rotate {
+  100% {
+    filter: hue-rotate(-360deg);
+  }
+}
+.btn2 button span {
+  height: 88%;
+  width: 94%;
+  background: #111;
+  display: flex;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 6px;
+  line-height: 32px;
+  font-size: 15px;
+  transform: translate(-50%, -50%);
+}
+
 .slide {
   height: 55vh;
   /* width: 250px; */
