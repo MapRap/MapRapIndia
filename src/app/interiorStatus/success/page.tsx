@@ -70,7 +70,7 @@ export default function PaymentSuccessPage() {
             <DownloadReceiptButton
               id={orderId}
               amount={amount}
-              gmail={job.givenBy}
+              gmail={job.name}
             />
           </div>
         </div>

@@ -71,7 +71,7 @@ export default function PaymentSuccessPage() {
             <h1>Payment Successful!</h1>
             <div>orderId: {orderId}</div>
             <div>Amount: {amount}</div>
-            <div>By: {job.givenBy}</div>
+            <div>By: {job.name}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
           <div>

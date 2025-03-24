@@ -154,7 +154,7 @@ export default function Home() {
       {/* shadow-[#c7c3c3] shadow-md  */}
       {/* bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#f2f2f3] to-[#d1d0d1] */}
       <section className="top-0 left-0 w-full z-[1000]  sticky bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#f1f1f1] via-[#f1f1f1] via-40% to-[#d5d4d5]">
-        <section className="flex mt-0 flex-wrap justify-between items-center z-100 w-[90vw] p-2 ">
+        <section className="flex mt-0 flex-row justify-between items-center z-100 w-[90vw] p-2 ">
           <div className="">
             <img
               src={`../logo6.png`}
