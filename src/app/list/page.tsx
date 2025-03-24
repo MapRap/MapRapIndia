@@ -157,9 +157,9 @@ const List = () => {
                 if (item.property === "Residential") {
                   return (
                     <AccordionItem key={item.area} value={`${item.area}`}>
-                      <AccordionTrigger className="p-0 m-0">
-                        <h1 className="font-bold flex justify-center text-center text-3xl w-full text-white m-0 hover:underline opacity-70">
-                          <div className="w-1/2 bg-black p-4 h-max">
+                      <AccordionTrigger className="p-0 m-0  bg-black md:bg-white opacity-70 md:opacity-100">
+                        <h1 className="font-bold flex justify-center text-center text-3xl w-full text-white m-0 hover:underline md:opacity-70">
+                          <div className="md:w-1/2 md:bg-black p-4 h-max">
                             Plot Area upto {item.area}² feet
                           </div>
                         </h1>

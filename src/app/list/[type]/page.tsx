@@ -73,7 +73,7 @@ export default function CalculatePage(props: { params: tParams }) {
         </div>
       ) : (
         <div>
-          <h1 className="z-40 text-center font-bold p-8 text-lg md:text-2xl md:bg-black md:opacity-45 md:text-white lg:text-4xl">
+          <h1 className="z-40 text-center bg-white opacity-70 font-bold p-8 text-lg md:text-2xl lg:text-4xl">
             Select the type of plot that matches with your plot
           </h1>
           <div className="flex gap-5 justify-around ">

@@ -156,7 +156,7 @@ const Slide2 = () => {
             </CardHeader>
             <CardContent className="text-center">
               <div className="font-semibold">Vishwansh Kumar</div>
-              Website Devloper, Student at NIT Srinagar
+              Website Developer, Student at NIT Srinagar
             </CardContent>
           </Card>
         </div>

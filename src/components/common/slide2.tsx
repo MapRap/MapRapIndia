@@ -162,7 +162,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[32vw] md:w-[22vw] md:text-sm">
-                  Mr Ayush Choudhary
+                  Mr Ayush Choudhary Residence
                 </div>
                 <Image
                   src="https://utfs.io/f/GH57qH88dIR15WSz8yM3Rq9HnDQlUoLEwZT0a4gmIYB2jvOK"
@@ -466,7 +466,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
-                  Rahul Sharma, Gangyal, Jammu
+                  Mr. Rahul Sharma Residence, Gangyal, Jammu
                 </div>
                 <Image
                   src="/proj1.jpg"
@@ -519,7 +519,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
-                  Residential Building, Talab Tillo{" "}
+                  Mr. Neeraj Residence, Talab Tillo{" "}
                 </div>
                 <Image
                   src="/proj2.png"
@@ -733,7 +733,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[30vw] md:w-[20vw] md:text-sm">
-                  Commertial Building, Sunjwan{" "}
+                  Commercial Complex, Sunjwan{" "}
                 </div>
                 <Image
                   src="/proj31.jpg"
@@ -840,7 +840,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm lg:w-[20vw]">
-                  Mr Aman Verma
+                  Mr Aman Verma Residence
                 </div>
                 <Image
                   src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI0W7WGBQJZBCdzUpR5I98blMOsxua2NrfQXnP"
@@ -920,7 +920,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
-                  Commertial Building, Sunjwan{" "}
+                  Residential Building
                 </div>
                 <Image
                   src="/proj41.jpg"
@@ -1027,7 +1027,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
-                  Mr Naresh Kumar
+                  Mr Naresh Kumar Residence
                 </div>
                 <Image
                   src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIcNR5RED1i9eur5VwENSY3yAP40vgkDm7nsI8"
@@ -1295,7 +1295,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
-                  Mr. Rishab
+                  Mr. Rishab Residence
                 </div>
                 <Image
                   src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIXdDS5l8uDvKodNcTmRw208fBpQse4GC1Jyb7"
@@ -1563,7 +1563,7 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] lg:w-[20vw] md:text-sm">
-                  Mr. Vinay
+                  Mr. Vinay Residence
                 </div>
                 <Image
                   src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI5uURVQ7HC9QHG4RoL1ixrFbqJWYmnEkcINdB"
