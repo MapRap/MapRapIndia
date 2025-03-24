@@ -14,9 +14,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className="m-0 p-0">
       {/* {verified ? ( */}
       <img
-        src={`../logo.png`}
+        src={`../logo6.png`}
         alt="logo"
-        width={70}
+        width={100}
         className="rounded-lg cursor-pointer absolute top-0 left-0"
         onClick={() => {
           window.location.replace("/");

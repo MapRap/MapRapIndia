@@ -242,7 +242,7 @@ const AdminPage = () => {
         >
           Go to New Logins Page
         </Button>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {session.data &&
             session.data.user &&
             session.data.user.type === "owner" && (

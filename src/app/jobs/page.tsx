@@ -121,7 +121,7 @@ const JobsPage = () => {
                 width={300}
               />
               <div>
-                <div className="text-base md:text-xl">
+                <div className="text-sm md:text-xl">
                   Maprap isn{`'`}t just ours-it truly belongs to our online
                   employees.
                 </div>
@@ -170,7 +170,7 @@ const JobsPage = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="flex flex-row gap-2">
+                    <div className="flex items-center justify-center flex-row gap-2">
                       <Clock />
                       Jobs will soon be available...
                     </div>

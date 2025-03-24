@@ -263,7 +263,7 @@ body {
   .slide-track {
     display: flex;
     /* width: calc(250px * 12); */
-    animation: scroll 30s linear infinite;
+    animation: scroll6 30s linear infinite;
   }
   .slid::before,
   .slid::after {
@@ -473,7 +473,15 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-215vw);
+    transform: translateX(-405vw);
+  }
+}
+@keyframes scroll6 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-330vw);
   }
 }
 @keyframes scroll2 {
@@ -481,7 +489,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-365vw);
+    transform: translateX(-710vw);
   }
 }
 @keyframes scroll3 {
@@ -497,7 +505,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-120vw);
+    transform: translateX(-105vw);
   }
 }
 @keyframes scroll4 {

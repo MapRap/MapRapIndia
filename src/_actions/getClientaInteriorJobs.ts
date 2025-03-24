@@ -11,15 +11,16 @@ export const getClientInteriorJobs = async () => {
       return "Wrong token, please login again!";
     } else {
       if (session.user) {
+        // console.log(session.user.id);
         const unPaidJobs = await prisma.interior.deleteMany({
           where: { givenBy: session.user.id, initialPayment: false },
         });
         if (!unPaidJobs) {
-          return `No Jobs`;
+          return "No jobs";
         }
+        console.log("bef", unPaidJobs);
       }
     }
-
     const interiorJobs = await prisma.interior.findMany({
       where: {
         givenBy: session.user.id,
@@ -31,10 +32,15 @@ export const getClientInteriorJobs = async () => {
     if (!interiorJobs) {
       return "Network Error";
     }
+    console.log("ke", interiorJobs);
+    if (interiorJobs === null) {
+      return "Network Error";
+    }
     // console.log("d=", user.id);
 
     return interiorJobs;
   } catch (err) {
     console.log(err);
+    // return "Error";
   }
 };

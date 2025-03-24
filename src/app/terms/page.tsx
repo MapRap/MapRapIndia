@@ -5,9 +5,9 @@ const TermsPage = () => {
   return (
     <div className="m-2 flex flex-col ">
       <img
-        src={`../logo.png`}
+        src={`../logo6.png`}
         alt="logo"
-        width={80}
+        width={100}
         className="rounded-lg cursor-pointer absolute top-0 left-0"
         onClick={() => {
           window.location.replace("/");

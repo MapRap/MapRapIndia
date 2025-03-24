@@ -38,7 +38,7 @@ const DownloadReceiptButton: React.FC<DownloadReceiptButtonProps> = ({
 
     // Add receipt details
     if (gmail) {
-      page.drawText(`Gmail: ${gmail}`, {
+      page.drawText(`Name: ${gmail}`, {
         x: 50,
         y: height - 100,
         size: 16,
@@ -55,7 +55,7 @@ const DownloadReceiptButton: React.FC<DownloadReceiptButtonProps> = ({
       color: textColor,
     });
 
-    page.drawText(`Amount: Rs. ${amount}`, {
+    page.drawText(`Amount: Rs. ${Number(amount) / 100}`, {
       x: 50,
       y: height - 160,
       size: 16,

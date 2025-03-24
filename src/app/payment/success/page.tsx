@@ -2,7 +2,6 @@
 import { changeInititalPayment } from "@/_actions/changeInititalPaymentDetails";
 import { Loading2 } from "@/components/common/loader2";
 import DownloadReceiptButton from "@/components/common/receipt";
-// import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -60,25 +59,26 @@ export default function PaymentSuccessPage() {
   }, [jobId]);
   // console.log(job, orderId, jobId, amount);
   return loading ? (
-    <div className="h-screen w-screen flex items-center justify-center">
+    <div className="h-screen w-screen flex items-center flex-col justify-center">
       <Loading2 loading={loading} />
+      <div>Please do not close the window!</div>
     </div>
   ) : (
     <div>
       {job && orderId && jobId && amount && (
-        <div>
-          <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen">
+          <div className="flex flex-col items-center justify-center">
             <h1>Payment Successful!</h1>
             <div>orderId: {orderId}</div>
-            <div>Amount: {amount}</div>
+            <div>Amount: {Number(amount) / 100}</div>
             <div>By: {job.name}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
-          <div>
+          <div className="mt-4">
             <DownloadReceiptButton
               id={orderId}
               amount={amount}
-              gmail={job.givenBy}
+              gmail={job.name}
             />
           </div>
         </div>

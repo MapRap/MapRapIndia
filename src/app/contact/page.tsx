@@ -5,9 +5,9 @@ const ContactPage = () => {
   return (
     <div className="m-2">
       <img
-        src={`../logo.png`}
+        src={`../logo6.png`}
         alt="logo"
-        width={80}
+        width={120}
         className="rounded-lg cursor-pointer absolute top-0 left-0"
         onClick={() => {
           window.location.replace("/");

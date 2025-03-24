@@ -158,8 +158,10 @@ const List = () => {
                   return (
                     <AccordionItem key={item.area} value={`${item.area}`}>
                       <AccordionTrigger className="p-0 m-0">
-                        <h1 className="font-bold text-center text-3xl p-4 w-full m-0 bg-white opacity-70 hover:underline">
-                          Plot Area upto {item.area}² feet
+                        <h1 className="font-bold flex justify-center text-center text-3xl w-full text-white m-0 hover:underline opacity-70">
+                          <div className="w-1/2 bg-black p-4 h-max">
+                            Plot Area upto {item.area}² feet
+                          </div>
                         </h1>
                       </AccordionTrigger>
                       <AccordionContent>
@@ -264,8 +266,10 @@ const List = () => {
                   return (
                     <AccordionItem key={item.area} value={`${item.area}`}>
                       <AccordionTrigger className="p-0 m-0">
-                        <h1 className="font-bold text-center text-3xl p-4 w-full text-black m-0 hover:underline bg-white opacity-70">
-                          Plot Area upto {item.area}² feet
+                        <h1 className="font-bold flex justify-center text-center text-3xl w-full text-white m-0 hover:underline opacity-70">
+                          <div className="w-1/2 bg-black p-4 h-max">
+                            Plot Area upto {item.area}² feet
+                          </div>
                         </h1>
                       </AccordionTrigger>
                       <AccordionContent>

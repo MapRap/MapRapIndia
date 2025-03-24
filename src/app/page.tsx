@@ -42,6 +42,7 @@ import Slide from "@/components/common/slide2";
 import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
+// import { createOwner } from "@/_actions/createOwner";
 // import TestSiteVisitComp from "@/components/common/textComp";
 // import { createOwner } from "@/_actions/createOwner";
 // import { createOwner } from "@/_actions/createOwner";
@@ -183,7 +184,7 @@ export default function Home() {
                 <TestSiteVisitComp />
                 </button> */}
             {!session.data?.user && (
-              <div className="text-black underline border-b-2 border-black font-bold">
+              <div className="text-black underline border-b-2 border-black hover:bg-gray-300 hover:rounded-xl px-4 font-bold">
                 <button
                   onClick={() => {
                     window.location.replace("/auth/login");
@@ -305,7 +306,10 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <div ref={section6Ref} className="sticky z-[1000] w-full top-20 right-0">
+      <div
+        ref={section6Ref}
+        className="sticky z-[1000] w-[30vw] top-20 left-[100vw]"
+      >
         {menu && <HamburgerContent scrollToSection1={scrollToSection1} />}
       </div>
 
@@ -585,6 +589,7 @@ export default function Home() {
       <section className="">
         <div
           ref={section2Ref}
+          // bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#4d4c4d] via-[#4d4c4d] via-40% to-[#898889]
           className="border-t-2 flex flex-row justify-center py-2 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#f1f1f1] via-[#f1f1f1] via-40% to-[#d5d4d5]"
         >
           <Foot />

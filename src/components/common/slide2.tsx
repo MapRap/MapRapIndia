@@ -466,6 +466,112 @@ const Slide = () => {
             <DrawerTrigger asChild>
               <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
+                  Rahul Sharma, Gangyal, Jammu
+                </div>
+                <Image
+                  src="/proj1.jpg"
+                  loading="lazy"
+                  width={5000}
+                  height={300}
+                  className="m-2 gg"
+                  alt="gg"
+                />
+              </div>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle></DrawerTitle>
+              </DrawerHeader>
+              <div className="flex overflow-x-scroll">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj1.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj1.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
+        <div className="slide">
+          <Drawer>
+            <DrawerTrigger asChild>
+              <div className="gg">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
+                  Residential Building, Talab Tillo{" "}
+                </div>
+                <Image
+                  src="/proj2.png"
+                  loading="lazy"
+                  width={5000}
+                  height={300}
+                  className="m-2 gg"
+                  alt="gg"
+                />
+              </div>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle></DrawerTitle>
+              </DrawerHeader>
+              <div className="flex overflow-x-scroll">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj2.png"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj2.png"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
+        <div className="slide">
+          <Drawer>
+            <DrawerTrigger asChild>
+              <div className="gg">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
                   Landscape Design
                 </div>
                 <Image
@@ -626,6 +732,113 @@ const Slide = () => {
           <Drawer>
             <DrawerTrigger asChild>
               <div className="gg">
+                <div className="text-center text-[13px] w-[30vw] md:w-[20vw] md:text-sm">
+                  Commertial Building, Sunjwan{" "}
+                </div>
+                <Image
+                  src="/proj31.jpg"
+                  loading="lazy"
+                  width={3000}
+                  height={200}
+                  className="m-2 gg"
+                  alt="gg"
+                />
+              </div>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle></DrawerTitle>
+              </DrawerHeader>
+              <div className="flex overflow-x-scroll">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj31.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj31.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj32.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj32.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj33.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj33.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
+        <div className="slide">
+          <Drawer>
+            <DrawerTrigger asChild>
+              <div className="gg">
                 <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm lg:w-[20vw]">
                   Mr Aman Verma
                 </div>
@@ -689,6 +902,113 @@ const Slide = () => {
                     <DialogDescription className="w-full h-full">
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI0W7WGBQJZBCdzUpR5I98blMOsxua2NrfQXnP"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
+        <div className="slide">
+          <Drawer>
+            <DrawerTrigger asChild>
+              <div className="gg">
+                <div className="text-center text-[13px] w-[40vw] md:w-[30vw] md:text-sm">
+                  Commertial Building, Sunjwan{" "}
+                </div>
+                <Image
+                  src="/proj41.jpg"
+                  loading="lazy"
+                  width={3000}
+                  height={200}
+                  className="m-2 gg"
+                  alt="gg"
+                />
+              </div>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle></DrawerTitle>
+              </DrawerHeader>
+              <div className="flex overflow-x-scroll">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj41.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj41.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj42.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj42.jpg"
+                        alt="gg"
+                        loading="lazy"
+                        width={300}
+                        height={300}
+                        className="w-max h-[70vh]"
+                      />
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Image
+                      src="/proj43.jpg"
+                      alt="gg"
+                      loading="lazy"
+                      width={300}
+                      height={300}
+                      className="m-2"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle></DialogTitle>
+                    </DialogHeader>
+                    <DialogDescription className="">
+                      <Image
+                        src="/proj43.jpg"
                         alt="gg"
                         loading="lazy"
                         width={300}

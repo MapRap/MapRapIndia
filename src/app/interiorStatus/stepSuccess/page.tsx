@@ -26,21 +26,22 @@ export default function PaymentSuccessPage() {
   console.log(orderId, stepId, amount);
   console.log(orderId, stepId, amount);
   return loading ? (
-    <div className="h-screen w-screen flex items-center justify-center">
+    <div className="h-screen w-screen flex items-center flex-col justify-center">
       <Loading2 loading={loading} />
+      <div>Please do not close the window!</div>
     </div>
   ) : (
     <div>
       {orderId && stepId && amount && (
-        <div>
-          <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen">
+          <div className="flex flex-col items-center justify-center">
             <h1>Payment Successful!</h1>
             <div>orderId: {orderId}</div>
-            <div>Amount: {amount}</div>
+            <div>Amount: {Number(amount) / 100}</div>
           </div>
           <div>Our Team will soon start working on your project</div>
 
-          <div>
+          <div className="mt-4">
             <DownloadReceiptButton id={orderId} amount={amount} />
           </div>
         </div>

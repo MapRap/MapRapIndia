@@ -4,7 +4,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <div className="m-0 bg-cover p-0 bg-[url(https://utfs.io/f/GH57qH88dIR16XKLQ9jxgPGhBNQryDlCL3wSsbFTdA1ni47v)]">
       {" "}
       <img
-        src={`../logo.png`}
+        src={`../logo6.png`}
         alt="logo"
         width={80}
         className="rounded-lg cursor-pointer top-4 left-2 z-50"

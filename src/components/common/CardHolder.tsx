@@ -22,7 +22,7 @@ const CardHolder = () => {
       <div className="">
         <WorkCard
           title="Select a premium interior plan"
-          content="Unlock exclusive features with our premium plans – choose the perfect one for you today"
+          content="Unlock exclusive features with our premium plans - choose the perfect one for you today"
           img="ava3.webp"
           Butto="Select Plan"
           onClick={() => {

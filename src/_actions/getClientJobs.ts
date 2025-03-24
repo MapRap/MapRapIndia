@@ -25,7 +25,7 @@ export const getClientJobsWithSteps = async () => {
           where: { givenBy: session.user.id, initialPayment: false },
         });
         if (!unPaidJobs) {
-          return `${session.user.id}`;
+          console.log("No such jobs");
         }
         const job = await prisma.maps.findMany({
           where: {
@@ -40,6 +40,9 @@ export const getClientJobsWithSteps = async () => {
           return `${session.user.id}`;
         }
         // console.log("job=", job);
+        if (job === null) {
+          return `${session.user.id}`;
+        }
         if (job !== null) {
           if (job[0] === undefined) {
             return `${session.user.id}`;

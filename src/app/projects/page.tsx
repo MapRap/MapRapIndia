@@ -137,9 +137,10 @@ const ProjectPage = () => {
       }
     });
     getClientInteriorJobs().then((e) => {
+      console.log("fd", e);
       if (e) {
         if (e !== "Network Error") {
-          if (e !== "No Jobs") {
+          if (e !== "No jobs") {
             if (e !== "Wrong token, please login again!") {
               setIsJob(true);
               setInteriorJobs(e);
