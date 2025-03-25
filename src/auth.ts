@@ -19,7 +19,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   events: {
     async linkAccount({ user }) {
-      console.log("Sdfekndf");
+      // console.log("Sdfekndf");
       if (user.id) {
         const exist = await prisma.user.findUnique({ where: { id: user.id } });
         if (exist) {
@@ -49,7 +49,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async session({ session, token }) {
-      console.log("Dsfde");
+      // console.log("Dsfde");
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }

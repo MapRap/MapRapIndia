@@ -504,7 +504,7 @@ export default function Calculated(props: { params: tParams }) {
   ) : (
     user && (
       <div className="flex flex-col">
-        <div>
+        <div className="bg-white opacity-80">
           <SiteVisitComp
             user={user}
             currency={currency}
