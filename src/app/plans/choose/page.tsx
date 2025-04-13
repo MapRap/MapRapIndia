@@ -7,7 +7,7 @@ import { createInterioJob } from "@/_actions/createInteriorPlan";
 import FileUpload from "@/components/common/fileUpload";
 import { Loading2 } from "@/components/common/loader2";
 // import { InteriorPdfUploadForm } from "@/components/common/interiorDesignUploadForm";
-import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
+// import { RazorpayPaymentResponse } from "@/components/common/trapPlot";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // import { FormLabel } from "@/coaaaaaaaaaaaaaamponents/ui/form";
@@ -17,35 +17,35 @@ import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState, useTransition } from "react";
 
-declare global {
-  interface Window {
-    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
-  }
-}
+// declare global {
+//   interface Window {
+//     Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
+//   }
+// }
 
 // const stepPayments = [25, 25, 25, 25];
 
-interface RazorpayOptions {
-  key: string;
-  amount: number;
-  currency: string;
-  name?: string;
-  description?: string;
-  order_id: string;
-  prefill?: {
-    name?: string;
-    email?: string;
-    contact?: string;
-  };
-  theme?: {
-    color?: string;
-  };
-  handler?: (response: RazorpayPaymentResponse) => void;
-}
+// interface RazorpayOptions {
+//   key: string;
+//   amount: number;
+//   currency: string;
+//   name?: string;
+//   description?: string;
+//   order_id: string;
+//   prefill?: {
+//     name?: string;
+//     email?: string;
+//     contact?: string;
+//   };
+//   theme?: {
+//     color?: string;
+//   };
+//   handler?: (response: RazorpayPaymentResponse) => void;
+// }
 
-interface RazorpayInstance {
-  open: () => void;
-}
+// interface RazorpayInstance {
+//   open: () => void;
+// }
 const ChooseAraePage = () => {
   // const [jobs, setJobs] = useState<
   //   {
