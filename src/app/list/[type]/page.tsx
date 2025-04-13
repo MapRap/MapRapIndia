@@ -74,7 +74,7 @@ export default function CalculatePage(props: { params: tParams }) {
       ) : (
         <div>
           <h1 className="z-40 text-center bg-white opacity-70 font-bold p-8 text-lg md:text-2xl lg:text-4xl">
-            Select the type of plot that matches with your plot
+            Select the type of plot that matches with your plot {`(optional)`}
           </h1>
           <div className="flex gap-5 justify-around ">
             <Card
@@ -123,22 +123,40 @@ export default function CalculatePage(props: { params: tParams }) {
                 Next
               </Button>
             ) : (
-              <Button
-                className="bg-green-600 w-32 hover:bg-green-700 "
-                onClick={() => {
-                  router.push(
-                    `/list/${type}/${plot}?pack=${searchParams.get(
-                      "pack"
-                    )}&floors=${searchParams.get(
-                      "floors"
-                    )}&price=${searchParams.get(
-                      "price"
-                    )}&property=${searchParams.get("property")}`
-                  );
-                }}
-              >
-                Next
-              </Button>
+              <div className="flex flex-row gap-4 items-center justify-center">
+                <Button
+                  className="bg-green-600 w-32 hover:bg-green-700 "
+                  onClick={() => {
+                    router.push(
+                      `/list/${type}/${plot}?pack=${searchParams.get(
+                        "pack"
+                      )}&floors=${searchParams.get(
+                        "floors"
+                      )}&price=${searchParams.get(
+                        "price"
+                      )}&property=${searchParams.get("property")}`
+                    );
+                  }}
+                >
+                  Next
+                </Button>
+                <Button
+                  className="bg-blue-500  w-32 hover:bg-blue-600 "
+                  onClick={() => {
+                    router.push(
+                      `/list/${type}/${plot}?pack=${searchParams.get(
+                        "pack"
+                      )}&floors=${searchParams.get(
+                        "floors"
+                      )}&price=${searchParams.get(
+                        "price"
+                      )}&property=${searchParams.get("property")}`
+                    );
+                  }}
+                >
+                  Skip
+                </Button>
+              </div>
             )}
           </div>
         </div>

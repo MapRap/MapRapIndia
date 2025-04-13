@@ -13,7 +13,7 @@ import axios from "axios";
 import FormSuccess from "./formSuccess";
 import FormError from "./formError";
 
-const QueryForm = ({
+const UserForm = ({
   buttonText,
   head,
 }: {
@@ -173,4 +173,4 @@ const QueryForm = ({
   );
 };
 
-export default QueryForm;
+export default UserForm;

@@ -48,13 +48,19 @@ export const QuerySchema = z.object({
   requirement: z.string().min(1, {
     message: "Required",
   }),
-
-  // otp: z.number().min(6, {
-  //   message: "Minimum 6 digits required",
-  // }),
-  // type: z.string().min(1, {
-  //   message: "type is required",
-  // }),
+});
+export const QuerySchema2 = z.object({
+  email: z.string().min(0),
+  name: z.string().min(0, {
+    message: "Name is required",
+  }),
+  city: z.string().min(0, { message: "City required" }),
+  phone: z.string().min(0, {
+    message: "Enter valid value",
+  }),
+  requirement: z.string().min(0, {
+    message: "Required",
+  }),
 });
 
 export const CreateJobSchema = z.object({

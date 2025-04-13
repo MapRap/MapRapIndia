@@ -32,18 +32,18 @@ export const createJob = async (values: {
   D2?: number;
   D3?: number;
   D4?: number;
-  specifications: string;
-  imageUrl: string;
+  specifications?: string;
+  imageUrl?: string;
   price: number;
   type: string;
-  direction: string;
+  direction?: string;
   property: string;
-  phone: string;
+  phone?: string;
+  name?: string;
+  email?: string;
+  city?: string;
 }) => {
-  // const cookie = await cookies();
-  // const token = cookie.get("token")?.value;
   const session = await auth();
-
   try {
     // console.lof
     const plans = await getOtherPlans();
@@ -117,100 +117,199 @@ export const createJob = async (values: {
           console.log("Error");
           return "user not approved";
         }
-        if (values.plot === "plot2") {
-          const map = await prisma.maps.create({
-            data: {
-              A: values.A || 0,
-              B: values.B || 0,
-              C: values.C || 0,
-              D: values.D || 0,
-              D1: values.D1 || 0,
-              D2: values.D2 || 0,
-              plot: values.plot || "",
-              specifications: values.specifications || "",
-              givenBy: `${session.user.id}`,
-              price: values.price,
-              floors: values.floor,
-              imageUrl: values.imageUrl || "",
-              type: values.property || "",
-              direction: values.direction || "",
-              publishable: false,
-              area: area || "",
-              phone: values.phone || "",
-              name: realUser.name!,
-            },
-          });
-          if (map) {
-            return {
-              success:
-                "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
-              job: map,
-            };
-          }
-        } else if (values.plot === "plot1") {
-          const map = await prisma.maps.create({
-            data: {
-              A: values.A || 0,
-              B: values.B || 0,
-              C: values.C || 0,
-              D: values.D || 0,
-              plot: values.plot,
-              specifications: values.specifications || "",
-              givenBy: `${session.user.id}`,
-              price: values.price,
-              floors: values.floor,
-              area: area || "",
-              imageUrl: values.imageUrl || "",
-              type: values.property || "",
-              direction: values.direction || "",
-              publishable: false,
-              phone: values.phone || "",
-              name: realUser.name!,
-            },
-          });
-          if (map) {
-            return {
-              success:
-                "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
-              job: map,
-            };
-          }
-        } else if (values.plot === "plot3") {
-          const map = await prisma.maps.create({
-            data: {
-              A: values.A || 0,
-              B: values.B || 0,
-              C: values.C || 0,
-              D: values.D || 0,
-              E: values.E || 0,
-              D1: values.D1 || 0,
-              D2: values.D2 || 0,
-              D3: values.D3 || 0,
-              D4: values.D4 || 0,
-              plot: values.plot || "",
-              area: area || "",
-              specifications: values.specifications || "",
-              givenBy: `${session.user.id}`,
-              price: values.price,
-              floors: values.floor,
-              imageUrl: values.imageUrl || "",
-              type: values.property,
-              direction: values.direction || "",
-              publishable: false,
-              phone: values.phone || "",
-              name: realUser.name!,
-            },
-          });
-          if (map) {
-            return {
-              success:
-                "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
-              job: map,
-            };
+        if (values.city) {
+          if (values.plot === "plot2") {
+            const map = await prisma.maps.create({
+              data: {
+                A: 0,
+                B: 0,
+                C: 0,
+                D: 0,
+                D1: 0,
+                D2: 0,
+                plot: values.plot || "",
+                specifications:
+                  `${values.email} | ${values.city} | ${values.specifications}` ||
+                  "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                imageUrl: values.imageUrl || "",
+                type: values.property || "",
+                direction: values.direction || "",
+                publishable: false,
+                area: area || "",
+                phone: values.phone || "",
+                name: values.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
+          } else if (values.plot === "plot1") {
+            const map = await prisma.maps.create({
+              data: {
+                A: 0,
+                B: 0,
+                C: 0,
+                D: 0,
+                plot: values.plot || "",
+                specifications:
+                  `${values.email} | ${values.city} | ${values.specifications}` ||
+                  "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                imageUrl: values.imageUrl || "",
+                type: values.property || "",
+                direction: values.direction || "",
+                publishable: false,
+                area: area || "",
+                phone: values.phone || "",
+                name: values.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
+          } else if (values.plot === "plot3") {
+            const map = await prisma.maps.create({
+              data: {
+                D3: 0,
+                D4: 0,
+                A: 0,
+                B: 0,
+                C: 0,
+                D: 0,
+                D1: 0,
+                D2: 0,
+                plot: values.plot || "",
+                specifications:
+                  `${values.email} | ${values.city} | ${values.specifications}` ||
+                  "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                imageUrl: values.imageUrl || "",
+                type: values.property || "",
+                direction: values.direction || "",
+                publishable: false,
+                area: area || "",
+                phone: values.phone || "",
+                name: values.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
           }
         }
-        // }
-        else {
+        if (!values.city) {
+          if (values.plot === "plot2") {
+            const map = await prisma.maps.create({
+              data: {
+                A: values.A || 0,
+                B: values.B || 0,
+                C: values.C || 0,
+                D: values.D || 0,
+                D1: values.D1 || 0,
+                D2: values.D2 || 0,
+                plot: values.plot || "",
+                specifications: values.specifications || "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                imageUrl: values.imageUrl || "",
+                type: values.property || "",
+                direction: values.direction || "",
+                publishable: false,
+                area: area || "",
+                phone: values.phone || "",
+                name: realUser.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
+          } else if (values.plot === "plot1") {
+            const map = await prisma.maps.create({
+              data: {
+                A: values.A || 0,
+                B: values.B || 0,
+                C: values.C || 0,
+                D: values.D || 0,
+                plot: values.plot,
+                specifications: values.specifications || "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                area: area || "",
+                imageUrl: values.imageUrl || "",
+                type: values.property || "",
+                direction: values.direction || "",
+                publishable: false,
+                phone: values.phone || "",
+                name: realUser.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
+          } else if (values.plot === "plot3") {
+            const map = await prisma.maps.create({
+              data: {
+                A: values.A || 0,
+                B: values.B || 0,
+                C: values.C || 0,
+                D: values.D || 0,
+                E: values.E || 0,
+                D1: values.D1 || 0,
+                D2: values.D2 || 0,
+                D3: values.D3 || 0,
+                D4: values.D4 || 0,
+                plot: values.plot || "",
+                area: area || "",
+                specifications: values.specifications || "",
+                givenBy: `${session.user.id}`,
+                price: values.price,
+                floors: values.floor,
+                imageUrl: values.imageUrl || "",
+                type: values.property,
+                direction: values.direction || "",
+                publishable: false,
+                phone: values.phone || "",
+                name: realUser.name!,
+              },
+            });
+            if (map) {
+              return {
+                success:
+                  "Thank-you-for-your-request!-It's-now-under-review-and-we-will-have-a-solution-for-you-soon.",
+                job: map,
+              };
+            }
+          }
+        } else {
           return {
             error: "Invalid-User-or-Token Expired!-Please-login-again",
           };

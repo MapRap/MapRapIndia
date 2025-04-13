@@ -11,7 +11,7 @@ const CardHolder = () => {
         <WorkCard
           title="Pick your House map"
           content="Enter your plot details to get a customized and perfect layout plan"
-          img="ava1.webp"
+          img="/proj3.png"
           Butto="Select Plan"
           onClick={() => {
             router.push("/list");
@@ -23,7 +23,7 @@ const CardHolder = () => {
         <WorkCard
           title="Select a premium interior plan"
           content="Unlock exclusive features with our premium plans - choose the perfect one for you today"
-          img="ava3.webp"
+          img="ava4.jpg"
           Butto="Select Plan"
           onClick={() => {
             router.push("/plans");
@@ -34,7 +34,7 @@ const CardHolder = () => {
         <WorkCard
           title="Job Opportunities for Creative Architects and Aspiring Students"
           content="Take on a building design contract and gain invaluable real-world experience."
-          img="ava2.webp"
+          img="ava5.jpg"
           Butto="Start Working"
           onClick={() => {
             router.push("/jobs");

@@ -520,7 +520,10 @@ export default function Home() {
       </section>
 
       <div>
-        <QueryForm />{" "}
+        <QueryForm
+          buttonText="Book Online Consultatioin"
+          head="Consult With Our Home Design Experts"
+        />{" "}
       </div>
       <div>
         <div className="text-3xl text-center font-semibold">
