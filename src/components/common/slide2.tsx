@@ -55,7 +55,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent className="">
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader className="">
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -66,7 +66,7 @@ const Slide = () => {
                         loading="lazy"
                         width={2300}
                         height={3300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -83,18 +83,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIufjyJk0b1d0WrnIGikZpwj7vg326BqRcEP5F"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -110,18 +110,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIqufJEJcObDNf85SGrpvqu9K7hVkol0UR2isZ"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -137,18 +137,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIH0OlOQPCQMX2Ybk8lCzs7mNe9ZGDfyPpAthr"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -189,7 +189,7 @@ const Slide = () => {
                       className="absolute z-[-10] md:w-[20vw] h-[40vh]"
                     ></video>
                   </DialogTrigger>
-                  <DialogContent className="">
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -250,7 +250,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -261,7 +261,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -277,18 +277,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIosnFeet1OKGk3cCDytE7jqAFuVNU2IdWXxQv"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -304,18 +304,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIC98ygIuLTSkXbe1g8UWQYzGyRrsC9d6E3iBw"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -331,18 +331,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI0hjzRgQJZBCdzUpR5I98blMOsxua2NrfQXnP"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -358,18 +358,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI79TzqalgJ0scwFBh6vtHy7PdEISQruU5oenj"
                         alt="gg"
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -387,18 +387,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI8PHKryY3NIvg4qmitproZxLuGbEV0kRz9Xfe"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -414,18 +414,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIJErdjIyycuNlfwBY8rVGtnR6ZEQ3LCKDpm9o"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -441,18 +441,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIw6eCho7HXV31qyIYPUuQc4sLtnOv8bM9FlTo"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -494,7 +494,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -505,7 +505,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -547,7 +547,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -558,7 +558,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -600,18 +600,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihICT7B9cuLTSkXbe1g8UWQYzGyRrsC9d6E3iBw"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -627,18 +627,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIkPe12fzUAwEeZODTuPm6GVJyB7ogSb0QMYnk"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -654,18 +654,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIMpv6ML4kKc8tAa5BrF7NeQSCwGXiPbylzJ43"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -681,18 +681,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIMLKVhS4kKc8tAa5BrF7NeQSCwGXiPbylzJ43"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -708,18 +708,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIWnMw2yqDli9ewVAIFWJfKc3xuGQUyHgm8jX5"
                         alt="gg"
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -761,7 +761,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -772,7 +772,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -788,7 +788,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -799,7 +799,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -815,7 +815,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -826,7 +826,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -868,18 +868,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIX7TtZM8uDvKodNcTmRw208fBpQse4GC1Jyb7"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -895,18 +895,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI0W7WGBQJZBCdzUpR5I98blMOsxua2NrfQXnP"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -948,7 +948,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -959,7 +959,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -975,7 +975,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -986,7 +986,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1002,7 +1002,7 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
@@ -1013,7 +1013,7 @@ const Slide = () => {
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1055,18 +1055,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIcNR5RED1i9eur5VwENSY3yAP40vgkDm7nsI8"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1082,18 +1082,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIWD3ZcWhqDli9ewVAIFWJfKc3xuGQUyHgm8jX"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1109,17 +1109,17 @@ const Slide = () => {
                       alt="gg"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIFYa5MVGsoMJ9iY2veOW5IF8zStZEDC1afryd"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-3/4"
                         alt="gg"
                       />
                     </DialogDescription>
@@ -1162,18 +1162,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIgf7V8cixDuZ3qcKOkw9U5gy80CJTE1XRSG7d"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1189,18 +1189,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIQVV6OadmJihI2nXL4pu1YHcVo9s0EFSj3yZK"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1216,18 +1216,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIbu9QF5RVGPvuSIdp6yR0ZjT1AgH9q57ONrUW"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1243,18 +1243,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIl4Hwn5I76DTBcNSM4zFvWrK2mVP9O5JXyhoe"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1270,18 +1270,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIBsRxIuJ1sRzXNAt7oiT5caSuMLIgEjewQU4Z"
                         alt="gg"
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1323,18 +1323,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIT98W3UZI49wvHgotShBaN1P3cQ8xOCfbzVKR"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1350,18 +1350,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIXeDpWhp8uDvKodNcTmRw208fBpQse4GC1Jyb"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-3/4"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1377,18 +1377,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIXdDS5l8uDvKodNcTmRw208fBpQse4GC1Jyb7"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1430,18 +1430,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIBPVFBcJ1sRzXNAt7oiT5caSuMLIgEjewQU4Z"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1457,18 +1457,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIACjEeYwhsCHMSfGVTUwzDgqIcW7uFb1mn2eL"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className=" w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1484,18 +1484,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIQ30SgFmJihI2nXL4pu1YHcVo9s0EFSj3yZKW"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1511,18 +1511,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI4kLHbYW6lkDaZ0KzdOWFbcGsynNg3VLQ9p5f"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1538,18 +1538,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihI0qEjCQJZBCdzUpR5I98blMOsxua2NrfQXnPA"
                         alt="gg"
                         loading="lazy"
                         width={250}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-full"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1591,18 +1591,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIQQcuWDmJihI2nXL4pu1YHcVo9s0EFSj3yZKW"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="w-3/4"
                       />
                     </DialogDescription>
                   </DialogContent>
@@ -1618,18 +1618,18 @@ const Slide = () => {
                       className="m-2"
                     />
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="w-full max-w-[50vw] h-full">
                     <DialogHeader>
                       <DialogTitle></DialogTitle>
                     </DialogHeader>
-                    <DialogDescription className="w-full h-full">
+                    <DialogDescription>
                       <Image
                         src="https://x0nyubhq8o.ufs.sh/f/QVOgSjymJihIgKZCkCixDuZ3qcKOkw9U5gy80CJTE1XRSG7d"
                         alt="gg"
                         loading="lazy"
                         width={300}
                         height={300}
-                        className="w-max h-[70vh]"
+                        className="h-full w-full"
                       />
                     </DialogDescription>
                   </DialogContent>

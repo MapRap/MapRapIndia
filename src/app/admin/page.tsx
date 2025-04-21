@@ -21,6 +21,7 @@ import { isRealUser } from "@/_actions/isReal";
 // import { onOtherJobDelete } from "@/_actions/onOtherJobDelete";
 // import { otherJobPdf } from "@/_actions/otherJobPdf";
 import { publishJob } from "@/_actions/publishJob";
+import { reminderMessage } from "@/_actions/reminderMessage";
 // import { publishOtherJob } from "@/_actions/publishOtherJob";
 // import { publishPaint } from "@/_actions/publishPainting";
 import { startStep } from "@/_actions/startStep";
@@ -103,8 +104,11 @@ const AdminPage = () => {
       phone: string;
       expected: string | null;
       studentPrice: string | null;
+      remind: boolean;
+      remindMessage: string | null;
     })[]
   >([]);
+  const [reminder, setReminder] = useState("");
   const [requestUser, setRequestUser] = useState<
     {
       id: string;
@@ -284,7 +288,11 @@ const AdminPage = () => {
           : jobs.map((job) => (
               // <div key={job.id}>
               <Drawer key={job.id}>
-                <DrawerTrigger className="font-bold w-screen">
+                <DrawerTrigger
+                  className={`font-bold w-screen ${
+                    job.remind ? "text-red-600" : ""
+                  }`}
+                >
                   <div>
                     {`${job.floors} floored ${job.type} Building by ${job.name} | Phone:${job.phone} | Completed : ${job.completed}`}
                   </div>
@@ -498,7 +506,36 @@ const AdminPage = () => {
                         />
                       )}
                     </div>
-
+                    {job.remind && (
+                      <div>
+                        <div className="flex text-red-600 w-full items-center justify-center flex-row gap-2">
+                          Reminder Message :{" "}
+                          <Input
+                            placeholder="Enter message to send to the client"
+                            onChange={(e) => {
+                              setReminder(e.target.value);
+                            }}
+                            className="w-1/2 text-black"
+                          />
+                          <Button
+                            onClick={async () => {
+                              reminderMessage({
+                                id: job.id,
+                                text: reminder,
+                              }).then((e) => {
+                                if (e) {
+                                  if (e === "Success") {
+                                    window.location.reload();
+                                  }
+                                }
+                              });
+                            }}
+                          >
+                            Send Client this message
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                     <div>
                       <div>
                         Assigned:
@@ -710,6 +747,7 @@ const AdminPage = () => {
                                             onClick={() => {
                                               completeStep({
                                                 id: st.id,
+                                                jobId: job.id,
                                               }).then((res) => {
                                                 if (!res) {
                                                   setMessage("error");

@@ -42,10 +42,7 @@ import Slide from "@/components/common/slide2";
 import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
-// import { createOwner } from "@/_actions/createOwner";
 // import TestSiteVisitComp from "@/components/common/textComp";
-// import { createOwner } from "@/_actions/createOwner";
-// import { createOwner } from "@/_actions/createOwner";
 
 // declare global {
 //   interface Window {
@@ -415,7 +412,7 @@ export default function Home() {
               <div className="mb-2 bg-[#2090a0] rounded-full text-white w-min p-4 px-5">
                 2
               </div>
-              Devlopment
+              Development
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">

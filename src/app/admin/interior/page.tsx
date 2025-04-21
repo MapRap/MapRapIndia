@@ -6,6 +6,7 @@ import { deleteInteriorJob } from "@/_actions/deleteInteriorJob";
 // import { deleteJob } from "@/_actions/deleteJob";
 // import { getId } from "@/_actions/getId";
 import { getAllInteriorJobs } from "@/_actions/getInteriorJobs";
+import { reminderInteriorMessage } from "@/_actions/reminderInteriorMessage";
 import { startInteriorStep } from "@/_actions/startInteriorStep";
 // import { startStep } from "@/_actions/startStep";
 import { verifyInteriorJobs } from "@/_actions/verifyInteriorJobs";
@@ -28,6 +29,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -66,8 +68,11 @@ const InteriorAdminPage = () => {
       name: string;
       plan: string;
       studentPrice: string | null;
+      remind: boolean;
+      remindMessage: string | null;
     })[]
   >([]);
+  const [reminder, setReminder] = useState("");
   const [loading, setLoading] = useState(true);
   // const [user, setUser] = useState<{
   //   id: string;
@@ -120,7 +125,11 @@ const InteriorAdminPage = () => {
           : jobs.map((job) => (
               // <div key={job.id}>
               <Drawer key={job.id}>
-                <DrawerTrigger className="font-bold w-screen">{`${job.property} Building by ${job.name} Phone:${job.phone}`}</DrawerTrigger>
+                <DrawerTrigger
+                  className={`font-bold w-screen ${
+                    job.remind ? "text-red-600" : ""
+                  }`}
+                >{`${job.property} Building by ${job.name} Phone:${job.phone}`}</DrawerTrigger>
                 <DrawerContent className="">
                   <DrawerHeader>
                     <DrawerTitle></DrawerTitle>
@@ -202,17 +211,49 @@ const InteriorAdminPage = () => {
                         </Button>
                       </div>
                     </div>
-                    <div className="flex flex-wrap items-center justify-center">
-                      <Image
-                        src={`${job.imageUrl}`}
-                        alt="gg"
-                        loading="lazy"
-                        width={500}
-                        height={500}
-                        className="m-2"
-                      />
-                    </div>
+                    {job.imageUrl && (
+                      <div className="flex flex-wrap items-center justify-center">
+                        <Image
+                          src={`${job.imageUrl}`}
+                          alt="gg"
+                          loading="lazy"
+                          width={500}
+                          height={500}
+                          className="m-2"
+                        />
+                      </div>
+                    )}
 
+                    {job.remind && (
+                      <div>
+                        <div className="flex text-red-600 w-full items-center justify-center flex-row gap-2">
+                          Reminder Message :{" "}
+                          <Input
+                            placeholder="Enter message to send to the client"
+                            onChange={(e) => {
+                              setReminder(e.target.value);
+                            }}
+                            className="w-1/2 text-black"
+                          />
+                          <Button
+                            onClick={async () => {
+                              reminderInteriorMessage({
+                                id: job.id,
+                                text: reminder,
+                              }).then((e) => {
+                                if (e) {
+                                  if (e === "Success") {
+                                    window.location.reload();
+                                  }
+                                }
+                              });
+                            }}
+                          >
+                            Send Client this message
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                     <div>
                       <div>
                         {job.steps.map((st) => (
@@ -232,7 +273,6 @@ const InteriorAdminPage = () => {
                                       {st.completed ? " true" : " false"}
                                     </div>
                                   </div>
-
                                   {st.attachments && (
                                     <div key={st.id}>
                                       <Dialog>
@@ -274,6 +314,7 @@ const InteriorAdminPage = () => {
                                           onClick={() => {
                                             completeInteriorStep({
                                               id: st.id,
+                                              jobId: job.id,
                                             }).then((res) => {
                                               if (!res) {
                                                 setMessage("error");

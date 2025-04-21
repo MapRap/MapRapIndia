@@ -110,6 +110,8 @@ model Interior{
   plan String
   studentPrice String?
   initialPayment Boolean @default(false)
+  remind Boolean @default(false)
+  remindMessage String?
   steps InteriorSteps[]
 }
 
@@ -170,6 +172,8 @@ model Maps{
   expected String?
   studentPrice String?
   initialPayment Boolean @default(false)
+  remind Boolean @default(false)
+  remindMessage String?
   // premium Boolean @default(false)
   requests Requests[]
   steps Steps[]

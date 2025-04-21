@@ -93,6 +93,8 @@ CREATE TABLE "Interior" (
     "plan" TEXT NOT NULL,
     "studentPrice" TEXT,
     "initialPayment" BOOLEAN NOT NULL DEFAULT false,
+    "remind" BOOLEAN NOT NULL DEFAULT false,
+    "remindMessage" TEXT,
 
     CONSTRAINT "Interior_pkey" PRIMARY KEY ("id")
 );
@@ -158,6 +160,8 @@ CREATE TABLE "Maps" (
     "expected" TEXT,
     "studentPrice" TEXT,
     "initialPayment" BOOLEAN NOT NULL DEFAULT false,
+    "remind" BOOLEAN NOT NULL DEFAULT false,
+    "remindMessage" TEXT,
 
     CONSTRAINT "Maps_pkey" PRIMARY KEY ("id")
 );

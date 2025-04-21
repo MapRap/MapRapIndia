@@ -22,7 +22,6 @@ import { useRouter } from "next/navigation";
 // import { Tabs } from "@radix-ui/react-tabs";
 import React, { useEffect, useState } from "react";
 // import { addAreaPlans } from "@/_actions/addPlans";
-// import { addAreaPlans } from "@/_actions/addPlans";
 // import { Aladin } from "next/font/google";
 
 const AddPlanPage = () => {

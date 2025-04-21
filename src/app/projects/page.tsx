@@ -3,6 +3,8 @@
 import { getClientInteriorJobs } from "@/_actions/getClientaInteriorJobs";
 import { getClientJobsWithSteps } from "@/_actions/getClientJobs";
 import { getClientOtherJobs } from "@/_actions/getClientOtherJobs";
+import { remiderInteriorToggle } from "@/_actions/interiorRemind";
+import { remiderToggle } from "@/_actions/remind";
 import { Loading2 } from "@/components/common/loader2";
 // import { stepPercentages } from "@/components/common/trapPlot";
 import { Button } from "@/components/ui/button";
@@ -77,6 +79,8 @@ const ProjectPage = () => {
       expected: string | null;
       studentPrice: string | null;
       initialPayment: boolean;
+      remind: boolean;
+      remindMessage: string | null;
     })[]
   >([]);
   const [interiorJobs, setInteriorJobs] = useState<
@@ -111,6 +115,8 @@ const ProjectPage = () => {
       name: string;
       plan: string;
       studentPrice: string | null;
+      remind: boolean;
+      remindMessage: string | null;
     })[]
   >([]);
   useEffect(() => {
@@ -119,7 +125,6 @@ const ProjectPage = () => {
         if (e !== "Please login" && e !== "Wrong token, please login again!") {
           if (typeof e !== "string") {
             setIsJob(true);
-            console.log(e);
             setJobs(e);
           }
         }
@@ -599,13 +604,42 @@ const ProjectPage = () => {
                               View Attachment <File />
                             </a>
                           )}
+                          {job.remind === false && (
+                            <div className="w-full flex items-center justify-center flex-col">
+                              <div>
+                                <div className="text-center underline">
+                                  Job Delayed ?
+                                </div>
+                                <Button
+                                  className="bg-green-500 hover:bg-green-600"
+                                  onClick={() => {
+                                    remiderToggle({ id: job.id }).then((e) => {
+                                      if (e) {
+                                        if (e === "Success") {
+                                          window.location.reload();
+                                        }
+                                      }
+                                    });
+                                  }}
+                                >
+                                  Remind our team{" "}
+                                  {"(Can only be used once per step)"}
+                                </Button>
+                              </div>
+                            </div>
+                          )}
+                          {job.remindMessage && (
+                            <div className="pl-3">
+                              Message : {job.remindMessage}
+                            </div>
+                          )}
                           <div className="overflow-y-scroll md:w-[30vw] w-[60vw] h-[30vh] ">
                             Details:
                             {job.steps.map((step) => (
                               <Card key={step.id} className="m-2">
                                 <CardHeader>
                                   <CardTitle>
-                                    Phase:{step.currentStep}
+                                    Phase : {step.currentStep}
                                   </CardTitle>
                                 </CardHeader>
                                 <CardContent>
@@ -713,6 +747,39 @@ const ProjectPage = () => {
                             >
                               View Attachment <File />
                             </a>
+                            <div>
+                              {job.remind === false && (
+                                <div className="w-full flex items-center justify-center flex-col">
+                                  <div>
+                                    <div className="text-center underline">
+                                      Job Delayed ?
+                                    </div>
+                                    <Button
+                                      className="bg-green-500 hover:bg-green-600"
+                                      onClick={() => {
+                                        remiderInteriorToggle({
+                                          id: job.id,
+                                        }).then((e) => {
+                                          if (e) {
+                                            if (e === "Success") {
+                                              window.location.reload();
+                                            }
+                                          }
+                                        });
+                                      }}
+                                    >
+                                      Remind our team{" "}
+                                      {"(Can only be used once per step)"}
+                                    </Button>
+                                  </div>
+                                </div>
+                              )}
+                              {job.remindMessage && (
+                                <div className="pl-3">
+                                  Message : {job.remindMessage}
+                                </div>
+                              )}
+                            </div>
                             <div className="overflow-y-scroll md:w-[30vw] w-[60vw] h-[30vh]">
                               Details:
                               {job.steps.map(

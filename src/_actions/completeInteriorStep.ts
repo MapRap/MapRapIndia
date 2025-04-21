@@ -2,7 +2,13 @@
 
 import prisma from "@/lib/db";
 
-export const completeInteriorStep = async ({ id }: { id: string }) => {
+export const completeInteriorStep = async ({
+  id,
+  jobId,
+}: {
+  id: string;
+  jobId: string;
+}) => {
   try {
     const step = await prisma.interiorSteps.update({
       where: {
@@ -13,6 +19,18 @@ export const completeInteriorStep = async ({ id }: { id: string }) => {
       },
     });
     if (!step) {
+      return "No such order, please make a request";
+    }
+    const toggle = await prisma.interior.update({
+      where: {
+        id: jobId,
+      },
+      data: {
+        remind: false,
+        remindMessage: null,
+      },
+    });
+    if (!toggle) {
       return "No such order, please make a request";
     }
     return step;
