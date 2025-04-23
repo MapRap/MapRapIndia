@@ -42,6 +42,7 @@ import Slide from "@/components/common/slide2";
 import Slide2 from "@/components/common/slide";
 import AnimatedNumberSection from "@/components/common/countNum";
 import QueryForm from "@/components/common/queryForm";
+// import { createOwner } from "@/_actions/createOwner";
 // import TestSiteVisitComp from "@/components/common/textComp";
 
 // declare global {
