@@ -1098,7 +1098,7 @@ export default function Calculated(props: { params: tParams }) {
                             {searchParams.get("pack") && (
                               <div className="pl-3 font-semibold">
                                 {searchParams.get("pack") === "Basic" &&
-                                  "Stage 1: 50% advance payment for the initial design.Stage 2: After revision,the remaining 50% payment is required before the final plan is sent."}
+                                  "Stage 1: 60% advance payment for the initial design.Stage 2: After revision,the remaining 40% payment is required before the final plan is sent."}
                               </div>
                             )}
                             {searchParams.get("pack") && (
